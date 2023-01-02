@@ -24,11 +24,12 @@ router.get("/", (req,res) => {
 
 //router.get("/user/:id", getUser)
 
-router.get("/:userid", getUser)
+
+router.get("/collection", getBooks)
 
 router.get("/:userid/user_collection", getUserBooks)
 
-router.get("/collection", getBooks)
+router.get("/:userid", getUser)
 
 router.get("/collection/:id", getBook)
 
