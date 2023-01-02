@@ -18,7 +18,15 @@ Adress: {
 PLZ: {
     type: Number,
     required: true
+},
+Books: {
+    type: mongoose.Schema.Types.ObjectId, 
+ref: "Book"
+
+
 }
+
+
 
 
 }, {timestamps: true})
