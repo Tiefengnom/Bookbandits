@@ -73,10 +73,13 @@ const deleteBook = async (req,res) => {
   // get books from a Usercollection
 
 const getUserBooks = async (req,res) => {
+   const books = await Book.find({owner: req.params.userid}).sort({createdAt: -1})
 
+   res.status(200).json(books)
+  }
 
    
-}
+
 
 
 
@@ -110,13 +113,13 @@ const getUserBooks = async (req,res) => {
 
 //get a single user
 const getUser = async (req,res) => {
- const  {id} = req.params
+ const  {userid} = req.params
 
- if (!mongoose.Types.ObjectId.isValid(id)) {
+ if (!mongoose.Types.ObjectId.isValid(userid)) {
     return res.status(404).json({error: "No such user"})
  }
 
- const user = await User.findById(id)
+ const user = await User.findById(userid)
 
  if(!user) {
  return res.status(400).json({error: "No such user"})
@@ -154,7 +157,8 @@ getBooks,
 getBook,
 getUser,
 deleteBook,
-updateBook
+updateBook,
+getUserBooks
 
 
 }
