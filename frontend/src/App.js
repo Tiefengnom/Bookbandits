@@ -1,5 +1,6 @@
 
 import {BrowserRouter, Routes, Route} from "react-router-dom"
+import AddBook from "./components/AddBook";
 
 //pages & components
 import Home from "./pages/Home"
@@ -17,6 +18,10 @@ function App() {
             path="/"
             element={<Home />}
             />
+            <Route
+							path='/:userid/addbook'
+							element={<AddBook />}
+						/>
         </Routes>
       </div>
      </BrowserRouter>
