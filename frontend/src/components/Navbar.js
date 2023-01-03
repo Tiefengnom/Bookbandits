@@ -8,7 +8,13 @@ const Navbar = () => {
     <div className = "container">
         <Link to= "/">
             <h1>BookBandits</h1>
+            
         </Link>
+        <ul>
+                <Link to="/addbook"><li>
+                    Add Book
+                </li></Link>
+            </ul>
     </div>
 </header>
 )

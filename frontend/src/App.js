@@ -1,27 +1,35 @@
-
-import {BrowserRouter, Routes, Route} from "react-router-dom"
+import {
+	BrowserRouter,
+	Routes,
+	Route,
+} from "react-router-dom";
 
 //pages & components
-import Home from "./pages/Home"
-import Navbar from "./components/Navbar"
-
+import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
+import AddBook from "./components/AddBook";
 
 function App() {
-  return (
-    <div className="App">
-     <BrowserRouter>
-     <Navbar />
-      <div className="pages">
-        <Routes>
-          <Route
-            path="/"
-            element={<Home />}
-            />
-        </Routes>
-      </div>
-     </BrowserRouter>
-    </div>
-  );
+	return (
+		<div className='App'>
+			<BrowserRouter>
+				<Navbar />
+
+				<div className='pages'>
+					<Routes>
+						<Route
+							path='/'
+							element={<Home />}
+						/>
+						<Route
+							path='/addbook'
+							element={<AddBook />}
+						/>
+					</Routes>
+				</div>
+			</BrowserRouter>
+		</div>
+	);
 }
 
 export default App;
