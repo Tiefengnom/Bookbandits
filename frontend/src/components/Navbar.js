@@ -11,8 +11,11 @@ const Navbar = () => {
             
         </Link>
         <ul>
-                <Link to="/addbook"><li>
+                <Link to="/:userid/create_book"><li>
                     Add Book
+                </li></Link>
+                <Link to="/:userid/user_collection"><li>
+                    My Books
                 </li></Link>
             </ul>
     </div>

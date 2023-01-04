@@ -45,7 +45,7 @@ function AddBook() {
 			state: data.language,
 			owner: data.title,
 		}
-		const response = await fetch('bookbandits/user/create_book', {
+		const response = await fetch('bookbandits/63af576eae900886989f3967/create_book', {
 		method: 'POST',
 		body: JSON.stringify(book),
 		headers: {
