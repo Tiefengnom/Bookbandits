@@ -36,31 +36,33 @@ function AddBook() {
 
 	const submitBook = async (mybook) => {
 		const data = mybook.volumeInfo;
-		console.log(data);
+		console.log("above return", data);
 		// saveToDB(data.title, data.desc)// async and await
-		const book={
-			title: data.title ,
-			author: data.authors,
+		const book = {
+			title: data.title,
+			author: data.authors.join(", "),
 			synopsis: data.description,
 			state: data.language,
-			owner: data.title,
-		}
-		const response = await fetch('bookbandits/63af576eae900886989f3967/create_book', {
-		method: 'POST',
-		body: JSON.stringify(book),
-		headers: {
-			'Content-Type':'application/json'}
-		})
-		const json = await response.json()
+			owner: "63b2e9a143d527b661a21e42",
+		};
+		const response = await fetch("http://localhost:4000/bookbandits/user/create_book", {
+			method: "POST",
+			body: JSON.stringify(book),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+		const json = await response.json();
 
 		if (!response.ok) {
-setError(json.error)
+			setError(json.error);
 		}
-		if (response.ok)
-		{	setSearchKey('')
-		setBooks([])
-			setError(null)
-			console.log('new book added', json)}
+		if (response.ok) {
+			setSearchKey("");
+			setBooks([]);
+			setError(null);
+			console.log("new book added", json);
+		}
 	};
 
 	return (
@@ -92,7 +94,7 @@ setError(json.error)
 										<p>
 											<strong>Description:</strong> {b.volumeInfo.description}
 										</p>
-										<img src={b.volumeInfo.imageLinks?.smallThumbnail || ""} alt="book thumbnail" />
+										<img src={b.volumeInfo.imageLinks?.smallThumbnail || ""} alt='book thumbnail' />
 										<form
 											onSubmit={(e) => {
 												e.preventDefault();
