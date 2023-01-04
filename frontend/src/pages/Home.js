@@ -19,6 +19,7 @@ const Home = () => {
     
     return (
         <div className="home">
+            <h2>Welcome!</h2>
             <div className="Books">
                 {books && books.map((book) => (
                     <p key={book._id}>{book.title}</p>
