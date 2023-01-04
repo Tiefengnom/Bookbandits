@@ -67,7 +67,7 @@ const SignUp = () => {
                       
         </form>
         <NavLink to={{
-                pathname: `/${userid}`
+                pathname: `/${userID}`
         }}  >Profile</NavLink>
         <div>{userid}</div>
     </div>
