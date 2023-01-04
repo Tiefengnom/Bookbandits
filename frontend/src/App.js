@@ -8,6 +8,7 @@ import {
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import AddBook from "./components/AddBook";
+import SignUp from "./components/SignUp";
 
 function App() {
 	return (
@@ -24,6 +25,10 @@ function App() {
 						<Route
 							path='/addbook'
 							element={<AddBook />}
+						/>
+						<Route
+							path="/signup"
+							element={<SignUp />}
 						/>
 					</Routes>
 				</div>

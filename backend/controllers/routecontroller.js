@@ -111,6 +111,19 @@ const getUserBooks = async (req,res) => {
 //User
 
 
+//signup as a User
+
+const signUser = async (req,res) => {
+const {first_name,last_name} = req.body
+
+const user = await User.findOne({first_name: first_name, last_name: last_name})
+
+if(!user) {
+   return res.status(400).json({error: "No such user"})
+   }
+res.status(200).json(user)
+}
+
 //get a single user
 const getUser = async (req,res) => {
  const  {userid} = req.params
@@ -158,7 +171,8 @@ getBook,
 getUser,
 deleteBook,
 updateBook,
-getUserBooks
+getUserBooks,
+signUser
 
 
 }
