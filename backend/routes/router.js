@@ -28,7 +28,7 @@ router.get("/", (req,res) => {
 
 router.get("/collection", getBooks)
 
-router.get("signup", signUser)
+router.post("/signup", signUser)
 
 router.get("/:userid/user_collection", getUserBooks)
 
