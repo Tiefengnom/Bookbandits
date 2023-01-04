@@ -6,6 +6,8 @@ import Navbar from "./components/Navbar";
 import AddBook from "./components/AddBook";
 import MyBooks from "./components/MyBooks";
 import AccountLanding from "./pages/AccountLanding";
+import Catalogue from "./pages/Catalogue";
+import SingleBook from "./components/SingleBook";
 
 function App() {
 	return (
@@ -18,11 +20,13 @@ function App() {
 						<Route index element={<Home />} />
 
 						<Route path='account' element={<AccountLanding />}>
-
 							<Route path='create_book' element={<AddBook />} />
 
 							<Route path='user_collection' element={<MyBooks />} />
+						</Route>
 
+						<Route path='catalogue' element={<Catalogue />}>
+							<Route path=':title' element={<SingleBook />} />
 						</Route>
 					</Routes>
 				</div>

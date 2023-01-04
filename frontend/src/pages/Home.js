@@ -1,32 +1,14 @@
-import { useEffect, useState} from "react"
+import React from "react"
+import Catalogue from "./Catalogue"
+//right now catalogue is a component in home and a stand-alone page..need to decide
 
 const Home = () => {
-    const [books, setBooks] = useState(null)
+   
 
-    useEffect(() => {
-        const fetchBooks = async () => {
-            const response = await fetch("http://localhost:4000/bookbandits/collection")
-            const json = await response.json()
-
-            if (response.ok) {
-                setBooks(json)
-            }
-        }
-
-
-        fetchBooks()
-    }, [])
-    
+   
     return (
         <div className="home">
-            <h2>Welcome!</h2>
-            <div className="Books">
-                {books && books.map((book) => (
-                    <p key={book._id}>{book.title}</p>
-
-
-                ))}
-            </div>
+           <Catalogue />
         </div>
 
 
