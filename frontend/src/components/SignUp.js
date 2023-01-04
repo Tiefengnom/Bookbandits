@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link, NavLink, useNavigate} from "react-router-dom"
+import { useUserContext } from "../hooks/useUserContext"
 //
 
 
@@ -11,10 +12,12 @@ const SignUp = () => {
     const[userid, setUserid] = useState("")
     const [error, setError] = useState(null)
     const navigate = useNavigate();
+    const {userID, setUserID} = useUserContext()
     
 
     const handleSubmit= async (e) => {
         e.preventDefault()
+        
 
         const userdata = {first_name,last_name}
 
@@ -28,7 +31,7 @@ const SignUp = () => {
         const json = await response.json()
         console.log(json)
         const id = json._id
-        setUserid(id)
+        setUserID(id)
         console.log(userid)
 
         if (!response.ok) {
@@ -38,12 +41,15 @@ const SignUp = () => {
         setfname("")
         setlname("")
         setError(null)
+        
+        console.log(userID)
         console.log("Welcome, youre signed in")
      }
     }
 
   return (
    
+    
     <div className = "Signup" >
         <form className="signin" onSubmit={handleSubmit}>
             <label>first_name</label>
