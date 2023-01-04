@@ -1,15 +1,36 @@
-import {
-	BrowserRouter,
-	Routes,
-	Route,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
 
 //pages & components
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import AddBook from "./components/AddBook";
+import MyBooks from "./components/MyBooks";
+import AccountLanding from "./pages/AccountLanding";
+import Catalogue from "./pages/Catalogue";
+import SingleBook from "./components/SingleBook";
 
 function App() {
+
+	//fetch the user id and x is user id
+//user gibt name ein und wir machen find in db mit last name und first name
+
+
+
+// useEffect(() => {
+// 	const fetchBooks = async () => {
+// 		const response = await fetch(`http://localhost:4000/bookbandits/${x}`)
+// 		const json = await response.json()
+
+// 		if (response.ok) {
+// 			setBooks(json)
+// 		}
+// 	}
+
+
+// 	fetchBooks()
+// }, [])
+
 	return (
 		<div className='App'>
 			<BrowserRouter>
@@ -17,14 +38,17 @@ function App() {
 
 				<div className='pages'>
 					<Routes>
-						<Route
-							path='/'
-							element={<Home />}
-						/>
-						<Route
-							path='/addbook'
-							element={<AddBook />}
-						/>
+						<Route index element={<Home />} />
+
+						<Route path='account' element={<AccountLanding />}>
+							<Route path='create_book' element={<AddBook />} />
+
+							<Route path='user_collection' element={<MyBooks />} />
+						</Route>
+
+						<Route path='catalogue' element={<Catalogue />}>
+							<Route path=':title' element={<SingleBook />} />
+						</Route>
 					</Routes>
 				</div>
 			</BrowserRouter>

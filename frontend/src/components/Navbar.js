@@ -1,23 +1,37 @@
-import { Link} from "react-router-dom"
+import { Link, NavLink, useNavigate } from "react-router-dom";
 //
 
 const Navbar = () => {
+	const navigate = useNavigate();
+	//remember to add active class to navbar in css
 
-  return (
-   <header>
-    <div className = "container">
-        <Link to= "/">
-            <h1>BookBandits</h1>
-            
-        </Link>
-        <ul>
-                <Link to="/addbook"><li>
-                    Add Book
-                </li></Link>
-            </ul>
-    </div>
-</header>
-)
-} 
+	return (
+		<header>
+			<div className='container'>
+				<Link to='/'>
+					<h1>BookBandits</h1>
+				</Link>
+				<ul className='navbar-list'>
+					<NavLink to='/' end>
+						<li>Home</li>
+					</NavLink>
+                    <NavLink to='/catalogue' end>
+						<li>Catalogue</li>
+					</NavLink>
+					<Link to='/account'>
+						<li>Account</li>
+					</Link>
+					<NavLink to='/account/create_book'>
+						<li>Add Book</li>
+					</NavLink>
+					<Link to='/account/user_collection'>
+						<li>My Books</li>
+					</Link>
+				</ul>
+                <button onClick={()=>navigate(-1)} >Back</button>
+			</div>
+		</header>
+	);
+};
 
-export default Navbar 
+export default Navbar;
