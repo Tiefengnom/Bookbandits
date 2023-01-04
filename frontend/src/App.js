@@ -15,13 +15,14 @@ function App() {
 
 				<div className='pages'>
 					<Routes>
-						<Route path='/' element={<Home />} />
+						<Route index element={<Home />} />
 
-						<Route path='/:userid/create_book' element={<AccountLanding />}>
+						<Route path='account' element={<AccountLanding />}>
 
-							<Route path='/:userid/create_book' element={<AddBook />} />
+							<Route path='create_book' element={<AddBook />} />
 
-							<Route path='/:userid/user_collection' element={<MyBooks />} />
+							<Route path='user_collection' element={<MyBooks />} />
+
 						</Route>
 					</Routes>
 				</div>
