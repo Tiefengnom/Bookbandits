@@ -1,14 +1,22 @@
 import React, { useState, useEffect } from "react";
-import {useParams} from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useUserContext } from "../hooks/useUserContext";
+import Select from "react-select";
+
+const options = [
+	{ value: "new", label: "new" },
+	{ value: "good", label: "good" },
+	{ value: "shabby", label: "has visible signs of use" },
+];
 
 function AddBook() {
 	const [input, setInput] = useState("");
 	const [books, setBooks] = useState([]);
 	const [searchKey, setSearchKey] = useState();
 	const [error, setError] = useState(null);
-	const {userID, setUserID} = useUserContext()
+	const { userID, setUserID } = useUserContext();
+	const [bookState, setBookState] = useState();
 
 	const handleChange = ({ target }) => {
 		setInput(target.value);
@@ -17,14 +25,17 @@ function AddBook() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log(input);
-		setSearchKey(input);
+		setSearchKey(input.split('-').join(''));
 	};
+
+	
+	// console.log(bookState.value);
 
 	const getBooks = async () => {
 		console.log(searchKey);
 		// %3A is url-encoding of char ':'
 		//how to prevent the search of "isbn" while searchkey is not yet set?
-		const url = `https://www.googleapis.com/books/v1/volumes?q=isbn%3A${searchKey}&key=AIzaSyAxUzNiUiHcisMxQTYFq5Hy-35A2C91-fQ`;
+		const url = `https://www.googleapis.com/books/v1/volumes?q=isbn%3A${searchKey}`;
 		console.log(url);
 
 		const { data } = await axios.get(url);
@@ -47,9 +58,10 @@ function AddBook() {
 			title: data.title,
 			author: data.authors.join(", "),
 			synopsis: data.description,
-			state: data.language,
+			state: bookState.value,
 			owner: userID,
 		};
+		console.log(book)
 		const response = await fetch("http://localhost:4000/bookbandits/user/create_book", {
 			method: "POST",
 			body: JSON.stringify(book),
@@ -105,13 +117,7 @@ function AddBook() {
 												e.preventDefault();
 												submitBook(b);
 											}}>
-											<input type='text' placeholder='add info'></input>
-											<label for="state">What is the state of the book?</label>
-											<select name="state" id="state">
-												<option value="new">new</option>
-												<option value="ok">ok</option>
-												<option value="some damage or markings">some damage or markings</option>
-											</select>
+											<Select placeholder='Select the state of your book' onChange={setBookState} options={options} />
 											<button type='submit'>Add to my books</button>
 										</form>
 									</div>

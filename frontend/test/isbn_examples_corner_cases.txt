@@ -1,2 +1,5 @@
 '9781451648546'; // Steve Jobs book
 
+9780451530035 the three musketeers - das ergibt zwei bücher und dann kann man den state nicht individuell setzen weil der state nur einmal pro seite gesetzt wird. also lösungen: entweder nur immer jeweils 1 buch als ergebnis zeigen oder irgendwie state an individuelles buch binden. 
+
+ferner: 13-stellige isbns funktionieren nur wenn der bindestrich entfernt wird. also split und join bevor der request rausgeht an die api. 
