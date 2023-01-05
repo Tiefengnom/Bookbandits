@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import {useParams} from 'react-router-dom';
 import axios from "axios";
 
 function AddBook() {
@@ -38,6 +39,8 @@ function AddBook() {
 		const data = mybook.volumeInfo;
 		console.log("above return", data);
 		// saveToDB(data.title, data.desc)// async and await
+		//connect the selected option in the form to the state in db
+		//add dynamic params to owner
 		const book = {
 			title: data.title,
 			author: data.authors.join(", "),
@@ -101,6 +104,12 @@ function AddBook() {
 												submitBook(b);
 											}}>
 											<input type='text' placeholder='add info'></input>
+											<label for="state">What is the state of the book?</label>
+											<select name="state" id="state">
+												<option value="new">new</option>
+												<option value="ok">ok</option>
+												<option value="some damage or markings">some damage or markings</option>
+											</select>
 											<button type='submit'>Add to my books</button>
 										</form>
 									</div>

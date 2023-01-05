@@ -47,7 +47,7 @@ function App() {
 						</Route>
 
 						<Route path='catalogue' element={<Catalogue />}>
-							<Route path=':title' element={<SingleBook />} />
+							<Route path=':id' element={<SingleBook />} />
 						</Route>
 					</Routes>
 				</div>

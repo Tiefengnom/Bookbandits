@@ -1,14 +1,21 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
 
 function SingleBook() {
 
-const myParams=useParams();
-console.log(myParams)
+const [fetchedBook, setFetchedBook]=useState();
+
+const {id}=useParams();
+useEffect(() => {
+    fetch(`http://localhost:4000/bookbandits/collection/${id}`)
+      .then(res => res.json())
+      .then(finalResult => setFetchedBook(finalResult))
+      console.log(fetchedBook)
+  }, []) 
 
   return (
-    <div>
-      Some Book here
+    fetchedBook &&    <div>
+     Some Book here: {fetchedBook.title}
     </div>
   )
 }

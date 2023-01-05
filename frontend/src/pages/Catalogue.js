@@ -27,7 +27,7 @@ function Catalogue() {
 
 
                 ))}
-            </div>
+            </div> 
             <Outlet />
         </div>
 
