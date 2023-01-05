@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useUserContext } from "../hooks/useUserContext";
 
 function AddBook() {
 	const [input, setInput] = useState("");
 	const [books, setBooks] = useState([]);
 	const [searchKey, setSearchKey] = useState();
 	const [error, setError] = useState(null);
+	const {userID, setUserID} = useUserContext()
 
 	const handleChange = ({ target }) => {
 		setInput(target.value);
@@ -43,7 +45,7 @@ function AddBook() {
 			author: data.authors.join(", "),
 			synopsis: data.description,
 			state: data.language,
-			owner: "63b2e9a143d527b661a21e42",
+			owner: userID,
 		};
 		const response = await fetch("http://localhost:4000/bookbandits/user/create_book", {
 			method: "POST",
