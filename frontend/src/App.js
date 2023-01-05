@@ -45,9 +45,9 @@ function App() {
 
 							<Route path='user_collection' element={<MyBooks />} />
 						</Route>
-
+						<Route path='catalogue/:id' element={<SingleBook />} />
 						<Route path='catalogue' element={<Catalogue />}>
-							<Route path=':id' element={<SingleBook />} />
+							
 						</Route>
 					</Routes>
 				</div>
