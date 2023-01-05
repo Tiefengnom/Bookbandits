@@ -8,7 +8,8 @@ const {
     getUser,
     deleteBook,
     updateBook,
-    getUserBooks
+    getUserBooks,
+    signUser
 }               = require("../controllers/routecontroller")
 
 const router = express.Router()
@@ -27,6 +28,8 @@ router.get("/", (req,res) => {
 
 router.get("/collection", getBooks)
 
+router.post("/signup", signUser)
+
 router.get("/:userid/user_collection", getUserBooks)
 
 router.get("/:userid", getUser)
@@ -34,6 +37,8 @@ router.get("/:userid", getUser)
 router.get("/collection/:id", getBook)
 
 router.post("/user/create_book", createBook)
+
+
    
 
 router.delete("/user/user_collection/:id", deleteBook)

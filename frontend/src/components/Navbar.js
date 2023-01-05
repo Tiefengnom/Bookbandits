@@ -27,6 +27,9 @@ const Navbar = () => {
 					<Link to='/account/user_collection'>
 						<li>My Books</li>
 					</Link>
+                <Link to="/signup"><li>
+                    Signup    
+                </li></Link>
 				</ul>
                 <button onClick={()=>navigate(-1)} >Back</button>
 			</div>
