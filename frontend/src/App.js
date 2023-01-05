@@ -6,14 +6,15 @@ import { useUserContext } from "./hooks/useUserContext";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import AddBook from "./components/AddBook";
-import SignUp from "./components/SignUp";
+import Login from "./components/Login";
 import MyBooks from "./components/MyBooks";
 import AccountLanding from "./pages/AccountLanding";
 import Catalogue from "./pages/Catalogue";
 import SingleBook from "./components/SingleBook";
+import SignUp from "./components/SignUp";
 
 function App() {
-	const {userID, setUserID} = useUserContext()
+	
 	//fetch the user id and x is user id
 //user gibt name ein und wir machen find in db mit last name und first name
 
@@ -52,7 +53,10 @@ function App() {
 							
 						</Route>
 						<Route
-							path="/signup"		element={<SignUp />}
+							path="/login"		element={<Login />}
+						/>
+						<Route
+							path="/signup" 		element={<SignUp />}
 						/>
 					</Routes>
 				</div>

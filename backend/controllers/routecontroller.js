@@ -35,11 +35,7 @@ let id = ""
     
  try  {
       const book = await Book.create({title,author,synopsis,state,owner})
-      id = book._id
-
-      const user = await User.findOneAndUpdate({_id: owner}, {
-         Books: id
-      })
+      
       res.status(200).json(book)
                   
       } 
@@ -79,10 +75,6 @@ const getUserBooks = async (req,res) => {
   }
 
    
-
-
-
-
 
   //update a book
   
@@ -156,6 +148,7 @@ const createUser = async (req,res) => {
 
     }
 }
+
 
 
 
