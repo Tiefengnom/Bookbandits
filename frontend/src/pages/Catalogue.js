@@ -1,41 +1,39 @@
-import React, { useEffect, useState } from 'react'
-import { Outlet } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { Outlet, Link } from "react-router-dom";
 
 function Catalogue() {
-    const [books, setBooks] = useState(null)
+	const [books, setBooks] = useState(null);
 
-    useEffect(() => {
-        const fetchBooks = async () => {
-            const response = await fetch("http://localhost:4000/bookbandits/collection")
-            const json = await response.json()
-            console.log(json)
+	useEffect(() => {
+		const fetchBooks = async () => {
+			const response = await fetch("http://localhost:4000/bookbandits/collection");
+			const json = await response.json();
 
-            if (response.ok) {
-                setBooks(json)
-            }
-        }
+			if (response.ok) {
+				setBooks(json);
+			}
+		};
 
+		fetchBooks();
+	}, []);
 
-        fetchBooks()
-    }, [])
-    
-    return (
-        <div className="catalogue">
-            <h2>Complete List of Books</h2>
-            <div className="Books">
-                {books && books.map((book) => (
-                    <p key={book._id}>{book.title}</p>
-
-
-                ))}
-            </div>
-            <Outlet />
-        </div>
-
-
-    )
-
-
+	return (
+		<div className='catalogue'>
+			<h2>Complete List of Books</h2>
+			<div className='Books'>
+				{books &&
+					books.map((book) => (
+						<>
+							<p key={book._id}>{book.title}</p>
+							<p>
+								<Link to={`/catalogue/${book._id}`}>more info</Link>
+							</p>
+						</>
+					))}
+			</div>
+			<Outlet />
+		</div>
+	);
 }
 
-export default Catalogue
+export default Catalogue;
