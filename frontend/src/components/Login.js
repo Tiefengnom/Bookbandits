@@ -6,11 +6,9 @@ import { useUserContext } from "../hooks/useUserContext"
 
 	
 
-const SignUp = () => {
+const Login = () => {
     const[first_name, setfname] = useState("")
     const[last_name, setlname] = useState("")
-    const[Adress, setAdress] = useState("")
-    const[PLZ, setPLZ] = useState("")
     const[userid, setUserid] = useState("")
     const [error, setError] = useState(null)
     const navigate = useNavigate();
@@ -21,9 +19,9 @@ const SignUp = () => {
         e.preventDefault()
         
 
-        const userdata = {first_name,last_name,Adress,PLZ}
+        const userdata = {first_name,last_name}
 
-        const response = await fetch("http://localhost:4000/bookbandits/signup" , {
+        const response = await fetch("http://localhost:4000/bookbandits/Login" , {
             method: "POST" ,
             body: JSON.stringify(userdata),
             headers: {
@@ -31,10 +29,11 @@ const SignUp = () => {
             }
         })
         const json = await response.json()
-        
+        console.log(json)
         const id = json._id
+        setUserID("")
         setUserID(id)
-        
+        console.log(userid)
 
         if (!response.ok) {
             setError(json.error)
@@ -42,11 +41,9 @@ const SignUp = () => {
      if (response.ok) {
         setfname("")
         setlname("")
-        setAdress("")
-        setPLZ("")
         setError(null)
         
-        
+        console.log(userID)
         console.log("Welcome, youre signed in")
      }
     }
@@ -54,7 +51,7 @@ const SignUp = () => {
   return (
    
     
-    <div className = "Signin" >
+    <div className = "Signup" >
         <form className="signin" onSubmit={handleSubmit}>
             <label>first_name</label>
             <input type= "text"
@@ -64,18 +61,8 @@ const SignUp = () => {
            
             <label>last_name</label>
             <input type= "text"
-                onChange={(e) => setlname(e.target.value)}
-                value={last_name}         />
-
-            <label>Adress</label>
-            <input type= "text"
-                onChange={(e) => setAdress(e.target.value)}
-                value={Adress}    />
-
-            <label>PLZ</label>
-            <input type= "text"
-                onChange={(e) => setPLZ(e.target.value)}
-                value={PLZ}    />
+            onChange={(e) => setlname(e.target.value)}
+            value={last_name}         />
                            
             <button onClick={console.log("aaaa")}>Sign In</button>
                       
@@ -89,4 +76,4 @@ const SignUp = () => {
 )
 } 
 
-export default SignUp 
+export default Login 

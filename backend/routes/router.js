@@ -28,7 +28,7 @@ router.get("/", (req,res) => {
 
 router.get("/collection", getBooks)
 
-router.post("/signup", signUser)
+router.post("/login", signUser)
 
 router.get("/:userid/user_collection", getUserBooks)
 
@@ -38,8 +38,7 @@ router.get("/collection/:id", getBook)
 
 router.post("/user/create_book", createBook)
 
-
-   
+router.post("/signup", createUser)   
 
 router.delete("/user/user_collection/:id", deleteBook)
 
