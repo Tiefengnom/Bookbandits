@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useUserContext } from "../hooks/useUserContext";
 import Select from "react-select";
+import { BarcodeScanner } from "./BarcodeScanner";
 
 const options = [
 	{ value: "new", label: "new" },
@@ -84,6 +85,7 @@ function AddBook() {
 
 	return (
 		<div>
+			<BarcodeScanner />
 			<form className='search-form' onSubmit={handleSubmit}>
 				<label>Enter ISBN</label>
 				<input value={input} onChange={handleChange}></input>
