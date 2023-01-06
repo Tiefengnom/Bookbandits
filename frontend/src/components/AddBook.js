@@ -18,6 +18,7 @@ function AddBook() {
 	const [error, setError] = useState(null);
 	const { userID, setUserID } = useUserContext();
 	const [bookState, setBookState] = useState();
+	const [startScan, setStartScan] =useState(false)
 
 	const handleChange = ({ target }) => {
 		setInput(target.value);
@@ -85,7 +86,9 @@ function AddBook() {
 
 	return (
 		<div>
-			<BarcodeScanner />
+			<button onClick={(e)=>setStartScan(true)} >Scan</button>
+			<button onClick={(e)=>setStartScan(false)} >Stop Scan</button>
+			{startScan && <BarcodeScanner setSearchKey={setSearchKey} /> }
 			<form className='search-form' onSubmit={handleSubmit}>
 				<label>Enter ISBN</label>
 				<input value={input} onChange={handleChange}></input>
@@ -94,7 +97,7 @@ function AddBook() {
 
 			<div className='search-result'>
 				{searchKey
-					? books
+					? books.length
 						? books.map((b) => {
 								return (
 									<div>
@@ -125,8 +128,8 @@ function AddBook() {
 									</div>
 								);
 						  })
-						: "loading info"
-					: "Please enter search key"}
+						: "No books found."
+					: "Please enter a valid search key."}
 			</div>
 		</div>
 	);
