@@ -4,6 +4,7 @@ import axios from "axios";
 import { useUserContext } from "../hooks/useUserContext";
 import Select from "react-select";
 import { BarcodeScanner } from "./BarcodeScanner";
+import BookIcon from "../assets/book-icon.png";
 
 const options = [
 	{ value: "new", label: "new" },
@@ -18,7 +19,7 @@ function AddBook() {
 	const [error, setError] = useState(null);
 	const { userID, setUserID } = useUserContext();
 	const [bookState, setBookState] = useState();
-	const [startScan, setStartScan] =useState(false)
+	const [startScan, setStartScan] = useState(false);
 
 	const handleChange = ({ target }) => {
 		setInput(target.value);
@@ -27,10 +28,9 @@ function AddBook() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log(input);
-		setSearchKey(input.split('-').join(''));
+		setSearchKey(input.split("-").join(""));
 	};
 
-	
 	// console.log(bookState.value);
 
 	const getBooks = async () => {
@@ -63,7 +63,7 @@ function AddBook() {
 			state: bookState.value,
 			owner: userID,
 		};
-		console.log(book)
+		console.log(book);
 		const response = await fetch("http://localhost:4000/bookbandits/user/create_book", {
 			method: "POST",
 			body: JSON.stringify(book),
@@ -86,9 +86,9 @@ function AddBook() {
 
 	return (
 		<div>
-			<button onClick={(e)=>setStartScan(true)} >Scan</button>
-			<button onClick={(e)=>setStartScan(false)} >Stop Scan</button>
-			{startScan && <BarcodeScanner setSearchKey={setSearchKey} /> }
+			<button onClick={(e) => setStartScan(true)}>Scan</button>
+			<button onClick={(e) => setStartScan(false)}>Stop Scan</button>
+			{startScan && <BarcodeScanner setSearchKey={setSearchKey} />}
 			<form className='search-form' onSubmit={handleSubmit}>
 				<label>Enter ISBN</label>
 				<input value={input} onChange={handleChange}></input>
@@ -116,13 +116,20 @@ function AddBook() {
 										<p>
 											<strong>Description:</strong> {b.volumeInfo.description}
 										</p>
-										<img src={b.volumeInfo.imageLinks?.smallThumbnail || ""} alt='book thumbnail' />
+										<img
+											src={b.volumeInfo.imageLinks?.smallThumbnail || BookIcon}
+											alt='book thumbnail'
+										/>
 										<form
 											onSubmit={(e) => {
 												e.preventDefault();
 												submitBook(b);
 											}}>
-											<Select placeholder='Select the state of your book' onChange={setBookState} options={options} />
+											<Select
+												placeholder='Select the state of your book'
+												onChange={setBookState}
+												options={options}
+											/>
 											<button type='submit'>Add to my books</button>
 										</form>
 									</div>
