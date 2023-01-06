@@ -16,7 +16,10 @@ useEffect(() => {
 
   return (
     fetchedBook &&    <div>
-     Some Book here: {fetchedBook.title}
+     Book Details: 
+     <h3>{fetchedBook.title}</h3>
+     <p>{fetchedBook.author}</p>
+     <p>{fetchedBook.state}</p>
     </div>
   )
 }
