@@ -36,15 +36,14 @@ function MyBooks() {
 										<p>
 											<strong>Authors:</strong> {b.author}
 										</p>
+									
 										<p>
 											<strong>Categories:</strong> {b.synopsis}
 										</p>
 										<p>
-											<strong>Language:</strong> {b.state}
+											<strong>Language:</strong> {b.language}
 										</p>
-										<p>
-											{/*<strong>Description:</strong> {b.owner.last_name}*/}
-										</p>
+										
 										
 										<form>
 											<input type='text' placeholder='add info'></input>
