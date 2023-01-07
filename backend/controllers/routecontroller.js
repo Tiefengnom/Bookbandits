@@ -98,6 +98,19 @@ const getUserBooks = async (req,res) => {
   
   }
 
+//Search books test
+const searchBooks = async (req, res) => {
+    console.log(req.params);
+    const books = await Book.find({ title: { $regex: req.params.query, $options: "i" } }, { title: 1 }).sort({
+        createdAt: -1,
+    });
+
+    res.status(200).json(books);
+};
+
+ 
+
+
 //End Books
 
 //User
@@ -166,7 +179,8 @@ getUser,
 deleteBook,
 updateBook,
 getUserBooks,
-signUser
+signUser,
+searchBooks
 
 
 }
