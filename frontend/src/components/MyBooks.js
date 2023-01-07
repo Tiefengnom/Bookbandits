@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from "react";
-import {useParams} from 'react-router-dom';
-import axios from "axios";
 import { useUserContext } from "../hooks/useUserContext";
 import DeleteBook from "./DeleteBook";
 
 
 function MyBooks() {
-	const [input, setInput] = useState("");
 	const [books, setBooks] = useState(null);
-	const [searchKey, setSearchKey] = useState();
-	const [error, setError] = useState(null);
-	const {userID, setUserID} = useUserContext()
+	const {userID} = useUserContext()
 
 	useEffect(() => {
 		const fetchBooks = async () => {
