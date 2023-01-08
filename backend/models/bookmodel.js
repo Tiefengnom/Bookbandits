@@ -29,6 +29,9 @@ type: String
 },
 category: {
 type: String
+},
+borrowed: {
+type: Boolean
 }
 
 

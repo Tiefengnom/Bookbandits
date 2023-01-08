@@ -64,6 +64,7 @@ function AddBook() {
 			category: data.categories[0],
 			state: bookState.value,
 			owner: userID,
+			borrowed: false
 		};
 		console.log(book)
 		const response = await fetch("http://localhost:4000/bookbandits/user/create_book", {

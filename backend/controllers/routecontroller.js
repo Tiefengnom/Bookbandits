@@ -41,11 +41,11 @@ const searchBook = async (req,res) => {
 
 //create a new book
 const createBook = async (req,res,next) => {
- const {title,author,synopsis,language,state,owner,category} = req.body
+ const {title,author,synopsis,language,state,owner,category,borrowed} = req.body
 let id = ""
     
  try  {
-      const book = await Book.create({title,author,synopsis,state,language,owner,category})
+      const book = await Book.create({title,author,synopsis,state,language,owner,category,borrowed})
       
       res.status(200).json(book)
                   
@@ -87,12 +87,13 @@ const getUserBooks = async (req,res) => {
 
    
 
-  //update a book
+  // rent and update a book
   
   const updateBook = async (req,res) => {
   
    const {id} = req.params
-  
+  console.log(req.body)
+
    if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(404).json({error: "No such book"})
    }
@@ -104,8 +105,8 @@ const getUserBooks = async (req,res) => {
    if(!book) {
       return res.status(404).json({error: "No such book"})
       }
-  
-   res.status(200).json(book)
+  console.log(book)
+   res.status(200).json({"mms": "deluxe"})
   
   }
 
@@ -178,7 +179,8 @@ deleteBook,
 updateBook,
 getUserBooks,
 signUser,
-searchBook
+searchBook, 
+
 
 
 }

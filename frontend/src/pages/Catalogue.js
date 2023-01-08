@@ -36,21 +36,16 @@ function Catalogue() {
             }
         })
         const json = await response.json()
-        setSearchedBooks(json)
-		console.log(searchedBooks)
-       
         
-        
-
-        if (!response.ok) {
+		if (!response.ok) {
             setError(json.error)
      }
+
      if (response.ok) {
-        
+		setSearchedBooks(json)
+		console.log(searchedBooks)
         setError(null)
-        
-        
-        console.log("Welcome, youre signed in")
+           
      }
     }
 	
@@ -79,6 +74,7 @@ function Catalogue() {
 					books.map((book) => (
 						<>
 							<p key={book._id}>{book.title}</p>
+							<p>borrowed: {book.borrowed}</p>
 							<p>{book.owner.first_name} {book.owner.last_name}</p>
 							<p>
 								<Link to={`/catalogue/${book._id}`}>more info</Link>
