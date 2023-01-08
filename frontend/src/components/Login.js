@@ -6,7 +6,7 @@ const Login = () => {
     const [first_name, setfname] = useState("");
     const [last_name, setlname] = useState("");
     const [error, setError] = useState(null);
-    const { userID, setUserID } = useUserContext();
+    const { user, setUser } = useUserContext();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -22,17 +22,18 @@ const Login = () => {
             },
         });
         const json = await response.json();
-        console.log(json);
+        console.log('json user' , json);
 
         const id = json._id;
-        setUserID(id);
+        setUser(json);
 
         if (response.ok) {
             setfname("");
             setlname("");
             setError(null);
 
-            console.log(userID);
+            console.log(id);
+            console.log(json.first_name);
             console.log("Welcome, youre signed in");
         } else {
             setError(json.error);
@@ -52,11 +53,11 @@ const Login = () => {
             </form>
             <NavLink
                 to={{
-                    pathname: `/${userID}`,
+                    pathname: `/${user._id}`,
                 }}>
                 Profile
             </NavLink>
-            <div>{userID}</div>
+            <div>{user._id}</div>
         </div>
     );
 };

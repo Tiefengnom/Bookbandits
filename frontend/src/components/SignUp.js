@@ -15,7 +15,7 @@ const SignUp = () => {
     const[userid, setUserid] = useState("")
     const [error, setError] = useState(null)
     const navigate = useNavigate();
-    const {userID, setUserID} = useUserContext()
+    const {user, setUser} = useUserContext()
     
 
     const handleSubmit= async (e) => {
@@ -34,7 +34,7 @@ const SignUp = () => {
         const json = await response.json()
         
         const id = json._id
-        setUserID(id)
+        setUser(json)
         
 
         if (!response.ok) {
@@ -103,7 +103,7 @@ const SignUp = () => {
                       
         </form>
         <NavLink to={{
-                pathname: `/${userID}`
+                pathname: `/${user._id}`
         }}  >Profile</NavLink>
         <div>{userid}</div>
     </div>

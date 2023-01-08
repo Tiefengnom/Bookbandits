@@ -6,7 +6,7 @@ import { useUserContext } from "../hooks/useUserContext"
 const Navbar = () => {
 	const navigate = useNavigate();
 	//remember to add active class to navbar in css
-	const {userID, setUserID} = useUserContext()
+	const {user, setUser} = useUserContext()
 
 	return (
 		<header>
@@ -21,14 +21,14 @@ const Navbar = () => {
                     <NavLink to='/catalogue' end>
 						<li>Catalogue</li>
 					</NavLink>
-					<Link to='/account'>
+					<Link to={`/${user._id}`} >
 						<li>Account</li>
 					</Link>
-					{!userID ? <li>Please log in</li> :	<NavLink to={{
-									pathname: `/${userID}/create_book`
+					{!user ? <li>Please log in</li> :	<NavLink to={{
+									pathname: `/${user._id}/create_book`
  									}}  ><li>Add Book</li></NavLink>}
-					{!userID ? <li>Please log in</li> : <NavLink to={{
-									pathname: `/${userID}/user_collection`
+					{!user ? <li>Please log in</li> : <NavLink to={{
+									pathname: `/${user._id}/user_collection`
  									}}  ><li>My Books</li></NavLink> }
                 <Link to="/login"><li>
                     Login    

@@ -4,11 +4,11 @@ import { useState } from "react";
 export const UserContext = createContext()
 
 export const UserContextProvider = ({ children }) => {
-const [userID, setUserID] = useState("")
+const [user, setUser] = useState("")
 
 
 return (
-<UserContext.Provider value = {{userID, setUserID}}>
+<UserContext.Provider value = {{user, setUser}}>
     { children }
 </UserContext.Provider>
 
