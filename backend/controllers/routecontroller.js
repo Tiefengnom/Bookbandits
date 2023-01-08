@@ -28,17 +28,6 @@ const getBook = async (req,res) => {
  res.status(200).json(book)
 }
 
-//get the books in the searchbar
-
-const searchBook = async (req,res) => {
-   const {search} = req.body
-   console.log(req.body)
-   const books = await Book.find({title: search})
-
-   res.status(200).json(books)
-
-}
-
 //create a new book
 const createBook = async (req,res,next) => {
  const {title,author,synopsis,language,state,owner,category,borrowed} = req.body
@@ -91,7 +80,7 @@ const getUserBooks = async (req,res) => {
   
   const updateBook = async (req,res) => {
   
-   const {id} = req.params
+  const {id} = req.params
   console.log(req.body)
 
    if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -110,18 +99,32 @@ const getUserBooks = async (req,res) => {
   
   }
 
-//Search books test
+//Search books by title, author, category and synopsis (global search)
 const searchBooks = async (req, res) => {
-    console.log(req.params);
-    const books = await Book.find({ title: { $regex: req.params.query, $options: "i" } }, { title: 1 }).sort({
+    console.log("params", req.params);
+    console.log("body", req.body);
+
+    const search = { $regex: req.params.query || req.body.query, $options: "i" };
+    const books = await Book.find(
+        { $or: [{ title: search }, { author: search }, { category: search }, { synopsis: search }] },
+        { title: 1, author: 1, synopsis: 1, category: 1 }
+    ).sort({
         createdAt: -1,
     });
 
     res.status(200).json(books);
 };
 
- 
+//test filter by language
+// const getLanguages= async (req, res)=>{Book.aggregate([{$group: {_id: "$language"}}]); }
 
+const getBooksByLanguage = async (req, res) => {
+    const { language } = req.params;
+    //book.find({language}) instead of {language:language} because it takes the key's name from the variable name.
+    const books = await Book.find({ language });
+
+    res.status(200).json({ books });
+};
 
 //End Books
 
@@ -130,16 +133,16 @@ const searchBooks = async (req, res) => {
 
 //signup as a User
 
-const signUser = async (req,res) => {
-   
-const {first_name,last_name} = req.body
+async function signUser(req, res) {
 
-const user = await User.findOne({first_name: first_name, last_name: last_name})
+   const { first_name, last_name } = req.body
 
-if(!user) {
-   return res.status(400).json({error: "No such user"})
+   const user = await User.findOne({ first_name: first_name, last_name: last_name })
+
+   if (!user) {
+      return res.status(400).json({ error: "No such user" })
    }
-res.status(200).json(user)
+   res.status(200).json(user)
 }
 
 //get a single user
@@ -183,17 +186,15 @@ const createUser = async (req,res) => {
 
 
 module.exports = {
-createUser,
-createBook,
-getBooks,
-getBook,
-getUser,
-deleteBook,
-updateBook,
-getUserBooks,
-signUser,
-searchBook,
-searchBooks
-
-
-}
+    createUser,
+    createBook,
+    getBooks,
+    getBook,
+    getUser,
+    deleteBook,
+    updateBook,
+    getUserBooks,
+    signUser,
+    searchBooks,
+    getBooksByLanguage
+};
