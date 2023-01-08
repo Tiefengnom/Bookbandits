@@ -105,8 +105,8 @@ const getUserBooks = async (req,res) => {
    if(!book) {
       return res.status(404).json({error: "No such book"})
       }
-  console.log(book)
-   res.status(200).json({"mms": "deluxe"})
+ 
+   res.status(200).json({book})
   
   }
 

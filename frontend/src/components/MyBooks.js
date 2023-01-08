@@ -64,8 +64,12 @@ function MyBooks() {
 										</p>
 										<p>
 											<strong>language:</strong> {b.language}
-										</p><p>
+										</p>
+										<p>
 											<strong>category:</strong> {b.category}
+										</p>
+										<p>
+											<strong>borrowed:</strong> {b.borrowed}
 										</p>
 										<p>
 											{/*<strong>Description:</strong> {b.owner.last_name}*/}

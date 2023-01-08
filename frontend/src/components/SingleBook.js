@@ -17,7 +17,7 @@ useEffect(() => {
   const handleClick = async () => {
     const response = await fetch(`http://localhost:4000/bookbandits/collection/${id}`, {
       method: "POST",
-			body: JSON.stringify({"mssg": "hello"}),
+			body: JSON.stringify({"borrowed": !fetchedBook.borrowed}),
 			headers: {
 				 "Content-Type": "application/json"
 			}

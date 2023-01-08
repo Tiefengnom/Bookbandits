@@ -40,7 +40,7 @@ router.get("/:userid", getUser)
 
 router.get("/collection/:id", getBook)
 
-router.post("collection/:id", updateBook)
+router.post("/collection/:id", updateBook)
 
 router.post("/user/create_book", createBook)
 

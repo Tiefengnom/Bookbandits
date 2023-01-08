@@ -74,7 +74,7 @@ function Catalogue() {
 					books.map((book) => (
 						<>
 							<p key={book._id}>{book.title}</p>
-							<p>borrowed: {book.borrowed}</p>
+							<p>borrowed: {book.borrowed ? <span>No</span> : <span>Yes</span>}</p>
 							<p>{book.owner.first_name} {book.owner.last_name}</p>
 							<p>
 								<Link to={`/catalogue/${book._id}`}>more info</Link>
