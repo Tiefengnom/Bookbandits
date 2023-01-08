@@ -28,17 +28,6 @@ const getBook = async (req,res) => {
  res.status(200).json(book)
 }
 
-//get the books in the searchbar
-
-const searchBook = async (req,res) => {
-   const {search} = req.body
-   console.log(req.body)
-   const books = await Book.find({title: search})
-
-   res.status(200).json(books)
-
-}
-
 //create a new book
 const createBook = async (req,res,next) => {
  const {title,author,synopsis,language,state,owner,category,borrowed} = req.body
@@ -110,17 +99,21 @@ const getUserBooks = async (req,res) => {
   
   }
 
-//Search books test
+//Search books by title, author, category and synopsis (global search)
 const searchBooks = async (req, res) => {
-    console.log(req.params);
-    const books = await Book.find({ title: { $regex: req.params.query, $options: "i" } }, { title: 1 }).sort({
+    console.log("params", req.params);
+    console.log("body", req.body);
+
+    const search = { $regex: req.params.query || req.body.query, $options: "i" };
+    const books = await Book.find(
+        { $or: [{ title: search }, { author: search }, { category: search }, { synopsis: search }] },
+        { title: 1, author: 1, synopsis: 1, category: 1 }
+    ).sort({
         createdAt: -1,
     });
 
     res.status(200).json(books);
 };
-
- 
 
 
 //End Books
@@ -183,17 +176,14 @@ const createUser = async (req,res) => {
 
 
 module.exports = {
-createUser,
-createBook,
-getBooks,
-getBook,
-getUser,
-deleteBook,
-updateBook,
-getUserBooks,
-signUser,
-searchBook,
-searchBooks
-
-
-}
+    createUser,
+    createBook,
+    getBooks,
+    getBook,
+    getUser,
+    deleteBook,
+    updateBook,
+    getUserBooks,
+    signUser,
+    searchBooks,
+};

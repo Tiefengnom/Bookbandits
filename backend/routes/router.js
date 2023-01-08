@@ -10,7 +10,6 @@ const {
     updateBook,
     getUserBooks,
     signUser,
-    searchBook,
     searchBooks
 }               = require("../controllers/routecontroller")
 
@@ -30,7 +29,7 @@ router.get("/", (req,res) => {
 
 router.get("/collection", getBooks)
 
-router.post("/collection",searchBook)
+router.post("/collection", searchBooks)
 
 router.get("/collection/search/:query", searchBooks)
 
