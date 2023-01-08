@@ -60,6 +60,8 @@ function AddBook() {
 			title: data.title,
 			author: data.authors.join(", "),
 			synopsis: data.description,
+			language: data.language,
+			category: data.categories[0],
 			state: bookState.value,
 			owner: userID,
 		};

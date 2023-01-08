@@ -11,6 +11,7 @@ const SignUp = () => {
     const[last_name, setlname] = useState("")
     const[Adress, setAdress] = useState("")
     const[PLZ, setPLZ] = useState("")
+    const[mail, setMail]= useState(null)
     const[userid, setUserid] = useState("")
     const [error, setError] = useState(null)
     const navigate = useNavigate();
@@ -21,7 +22,7 @@ const SignUp = () => {
         e.preventDefault()
         
 
-        const userdata = {first_name,last_name,Adress,PLZ}
+        const userdata = {first_name,last_name,Adress,PLZ,mail}
 
         const response = await fetch("http://localhost:4000/bookbandits/signup" , {
             method: "POST" ,
@@ -78,6 +79,27 @@ const SignUp = () => {
                 value={PLZ}    />
                            
             <button onClick={console.log("aaaa")}>Sign In</button>
+            <label>
+                <input
+                    type="radio"
+                    name="radio-group"
+                    value="Yes"
+                    onClick={(e) => {setMail(e.target.value); console.log(e.target.value)}}
+                  // 
+                    />
+                    <span>Yes</span>
+            </label>   
+            <label>
+                <input
+                type="radio"
+                name="radio-group"
+                value="No"
+                defaultChecked
+                
+                onClick={(e) => setMail(e.target.value)}
+                />
+                <span>No</span>
+            </label>
                       
         </form>
         <NavLink to={{

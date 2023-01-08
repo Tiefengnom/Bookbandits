@@ -30,11 +30,11 @@ const getBook = async (req,res) => {
 
 //create a new book
 const createBook = async (req,res,next) => {
- const {title,author,synopsis,state,owner} = req.body
+ const {title,author,synopsis,language,state,owner,category} = req.body
 let id = ""
     
  try  {
-      const book = await Book.create({title,author,synopsis,state,owner})
+      const book = await Book.create({title,author,synopsis,state,language,owner,category})
       
       res.status(200).json(book)
                   
@@ -136,11 +136,11 @@ const getUser = async (req,res) => {
 
 //create a new user
 const createUser = async (req,res) => {
- const {first_name,last_name,Adress,PLZ} = req.body
+ const {first_name,last_name,Adress,PLZ,mail} = req.body
 
     
  try    {
-        const user = await User.create({first_name,last_name,Adress,PLZ})
+        const user = await User.create({first_name,last_name,Adress,PLZ,mail})
         res.status(200).json(user)
         }
  catch (error) {
