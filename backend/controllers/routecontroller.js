@@ -80,7 +80,7 @@ const getUserBooks = async (req,res) => {
   
   const updateBook = async (req,res) => {
   
-   const {id} = req.params
+  const {id} = req.params
   console.log(req.body)
 
    if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -115,6 +115,16 @@ const searchBooks = async (req, res) => {
     res.status(200).json(books);
 };
 
+//test filter by language
+// const getLanguages= async (req, res)=>{Book.aggregate([{$group: {_id: "$language"}}]); }
+
+const getBooksByLanguage = async (req, res) => {
+    const { language } = req.params;
+    //book.find({language}) instead of {language:language} because it takes the key's name from the variable name.
+    const books = await Book.find({ language });
+
+    res.status(200).json({ books });
+};
 
 //End Books
 
@@ -123,16 +133,16 @@ const searchBooks = async (req, res) => {
 
 //signup as a User
 
-const signUser = async (req,res) => {
-   
-const {first_name,last_name} = req.body
+async function signUser(req, res) {
 
-const user = await User.findOne({first_name: first_name, last_name: last_name})
+   const { first_name, last_name } = req.body
 
-if(!user) {
-   return res.status(400).json({error: "No such user"})
+   const user = await User.findOne({ first_name: first_name, last_name: last_name })
+
+   if (!user) {
+      return res.status(400).json({ error: "No such user" })
    }
-res.status(200).json(user)
+   res.status(200).json(user)
 }
 
 //get a single user
@@ -186,4 +196,5 @@ module.exports = {
     getUserBooks,
     signUser,
     searchBooks,
+    getBooksByLanguage
 };

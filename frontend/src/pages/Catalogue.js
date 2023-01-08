@@ -55,7 +55,7 @@ function Catalogue() {
                     searchedBooks.map((book) => (
                         <>
                             <p key={book._id}>{book.title}</p>
-							<p key={book._id}>{book.author}</p>
+							<p>{book.author}</p>
                             <p>
                                 <Link to={`/catalogue/${book._id}`}>more info</Link>
                             </p>

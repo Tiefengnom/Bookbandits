@@ -10,7 +10,8 @@ const {
     updateBook,
     getUserBooks,
     signUser,
-    searchBooks
+    searchBooks,
+    getBooksByLanguage
 }               = require("../controllers/routecontroller")
 
 const router = express.Router()
@@ -32,6 +33,8 @@ router.get("/collection", getBooks)
 router.post("/collection", searchBooks)
 
 router.get("/collection/search/:query", searchBooks)
+
+router.get("/collection/language/:language", getBooksByLanguage)
 
 router.post("/login", signUser)
 
