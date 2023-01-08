@@ -15,7 +15,7 @@ function AddBook() {
     const [books, setBooks] = useState([]);
     const [searchKey, setSearchKey] = useState();
     const [error, setError] = useState(null);
-    const { userID } = useUserContext();
+    const { user } = useUserContext();
     const [bookState, setBookState] = useState();
     const [startScan, setStartScan] = useState(false);
 
@@ -61,7 +61,7 @@ function AddBook() {
 			language: data.language,
 			category: data.categories[0],
 			state: bookState.value,
-			owner: userID,
+			owner: user._id,
 			borrowed: false
 		};
 		console.log(book)

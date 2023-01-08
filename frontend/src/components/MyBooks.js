@@ -5,11 +5,11 @@ import DeleteBook from "./DeleteBook";
 
 function MyBooks() {
 	const [books, setBooks] = useState(null);
-	const {userID} = useUserContext()
+	const {user} = useUserContext()
 
 	useEffect(() => {
 		const fetchBooks = async () => {
-			const response = await fetch(`http://localhost:4000/bookbandits/${userID}/user_collection`);
+			const response = await fetch(`http://localhost:4000/bookbandits/${user._id}/user_collection`);
 			const json = await response.json();
 			console.log(json)
 
@@ -37,7 +37,7 @@ function MyBooks() {
 	return (
 		<div>
 			<div className='search-result'>
-				{userID
+				{user._id
 					? books
 						? books.map((b) => {
 								return (
