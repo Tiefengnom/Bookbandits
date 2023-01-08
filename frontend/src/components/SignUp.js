@@ -78,7 +78,7 @@ const SignUp = () => {
                 onChange={(e) => setPLZ(e.target.value)}
                 value={PLZ}    />
                            
-            <button onClick={console.log("aaaa")}>Sign In</button>
+            <button >Sign Up</button>
             <label>
                 <input
                     type="radio"

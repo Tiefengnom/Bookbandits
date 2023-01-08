@@ -28,6 +28,17 @@ const getBook = async (req,res) => {
  res.status(200).json(book)
 }
 
+//get the books in the searchbar
+
+const searchBook = async (req,res) => {
+   const {search} = req.body
+   console.log(req.body)
+   const books = await Book.find({title: search})
+
+   res.status(200).json(books)
+
+}
+
 //create a new book
 const createBook = async (req,res,next) => {
  const {title,author,synopsis,language,state,owner,category} = req.body
@@ -166,7 +177,8 @@ getUser,
 deleteBook,
 updateBook,
 getUserBooks,
-signUser
+signUser,
+searchBook
 
 
 }

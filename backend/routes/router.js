@@ -9,7 +9,8 @@ const {
     deleteBook,
     updateBook,
     getUserBooks,
-    signUser
+    signUser,
+    searchBook
 }               = require("../controllers/routecontroller")
 
 const router = express.Router()
@@ -27,6 +28,8 @@ router.get("/", (req,res) => {
 
 
 router.get("/collection", getBooks)
+
+router.post("/collection",searchBook)
 
 router.post("/login", signUser)
 
