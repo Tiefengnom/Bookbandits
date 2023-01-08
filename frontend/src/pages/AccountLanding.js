@@ -8,7 +8,7 @@ const AccountLanding = () => {
 
 	return (
 		<div>
-			<div>Welcome, {user.first_name}!</div>
+			{user &&  <div>Welcome, {user.first_name}!</div>}
 			<button onClick={() => navigate("user_collection")}>See all my books</button>
 
 			<button onClick={() => navigate("create_book")}> Add Book</button>
