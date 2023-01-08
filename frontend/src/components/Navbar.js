@@ -24,12 +24,12 @@ const Navbar = () => {
 					<Link to='/account'>
 						<li>Account</li>
 					</Link>
-					<NavLink to={{
+					{!userID ? <li>Please log in</li> :	<NavLink to={{
 									pathname: `/${userID}/create_book`
- 									}}  ><li>Add Book</li></NavLink>
-					<NavLink to={{
+ 									}}  ><li>Add Book</li></NavLink>}
+					{!userID ? <li>Please log in</li> : <NavLink to={{
 									pathname: `/${userID}/user_collection`
- 									}}  ><li>My Books</li></NavLink>
+ 									}}  ><li>My Books</li></NavLink> }
                 <Link to="/login"><li>
                     Login    
                 </li></Link>

@@ -28,13 +28,24 @@ const getBook = async (req,res) => {
  res.status(200).json(book)
 }
 
+//get the books in the searchbar
+
+const searchBook = async (req,res) => {
+   const {search} = req.body
+   console.log(req.body)
+   const books = await Book.find({title: search})
+
+   res.status(200).json(books)
+
+}
+
 //create a new book
 const createBook = async (req,res,next) => {
- const {title,author,synopsis,state,owner} = req.body
+ const {title,author,synopsis,language,state,owner,category,borrowed} = req.body
 let id = ""
     
  try  {
-      const book = await Book.create({title,author,synopsis,state,owner})
+      const book = await Book.create({title,author,synopsis,state,language,owner,category,borrowed})
       
       res.status(200).json(book)
                   
@@ -76,12 +87,13 @@ const getUserBooks = async (req,res) => {
 
    
 
-  //update a book
+  // rent and update a book
   
   const updateBook = async (req,res) => {
   
    const {id} = req.params
-  
+  console.log(req.body)
+
    if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(404).json({error: "No such book"})
    }
@@ -93,8 +105,8 @@ const getUserBooks = async (req,res) => {
    if(!book) {
       return res.status(404).json({error: "No such book"})
       }
-  
-   res.status(200).json(book)
+ 
+   res.status(200).json({book})
   
   }
 
@@ -149,11 +161,11 @@ const getUser = async (req,res) => {
 
 //create a new user
 const createUser = async (req,res) => {
- const {first_name,last_name,Adress,PLZ} = req.body
+ const {first_name,last_name,Adress,PLZ,mail} = req.body
 
     
  try    {
-        const user = await User.create({first_name,last_name,Adress,PLZ})
+        const user = await User.create({first_name,last_name,Adress,PLZ,mail})
         res.status(200).json(user)
         }
  catch (error) {
@@ -180,6 +192,7 @@ deleteBook,
 updateBook,
 getUserBooks,
 signUser,
+searchBook,
 searchBooks
 
 

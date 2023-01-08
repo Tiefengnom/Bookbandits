@@ -22,6 +22,18 @@ function MyBooks() {
         console.log(books)
 	}, []);
 
+
+
+	const handleDelete = async (e) => {
+	e.preventDefault()
+	console.log(e)
+
+
+
+
+	}
+
+
 	return (
 		<div>
 			<div className='search-result'>
@@ -30,7 +42,7 @@ function MyBooks() {
 						? books.map((b) => {
 								return (
 									<div>
-										<p>
+										<p key={b._id}>	
 											<strong>Title:</strong> {b.title}
 										</p>
 										<p>
@@ -38,9 +50,22 @@ function MyBooks() {
 										</p>
 									
 										<p>
-											<strong>Categories:</strong> {b.synopsis}
+											<strong>Synopsis:</strong> {b.synopsis}
 										</p>
 										<p>
+											<strong>state:</strong> {b.state}
+										</p>
+										<p>
+											<strong>language:</strong> {b.language}
+										</p>
+										<p>
+											<strong>category:</strong> {b.category}
+										</p>
+										<p>
+											<strong>borrowed:</strong> {b.borrowed ? <span> Yes</span> : <span>No</span>}
+										</p>
+										<p>
+											{/*<strong>Description:</strong> {b.owner.last_name}*/}
 											<strong>Language:</strong> {b.language}
 										</p>
 										
@@ -55,6 +80,7 @@ function MyBooks() {
 												</option>
 											</select>
 											<button type='submit'>Change info or state</button>
+											<button onClick={handleDelete} >delete</button>
 										</form>
 										<DeleteBook id={b._id}/>
 									</div>

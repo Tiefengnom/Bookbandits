@@ -14,12 +14,30 @@ useEffect(() => {
       console.log(fetchedBook)
   }, []) 
 
+  const handleClick = async () => {
+    const response = await fetch(`http://localhost:4000/bookbandits/collection/${id}`, {
+      method: "POST",
+			body: JSON.stringify({"borrowed": !fetchedBook.borrowed}),
+			headers: {
+				 "Content-Type": "application/json"
+			}
+
+
+    })
+        const json = await response.json();
+        console.log(json)
+
+  }
+
   return (
     fetchedBook &&    <div>
+     Some Book here: {fetchedBook.title}
+     <p>Is it free to borrow? </p> {fetchedBook.borrowed ? <p>Yes</p> : <p>No</p> }
+     <button onClick={handleClick}>Rent this Book?</button>
      Book Details: 
      <h3>{fetchedBook.title}</h3>
      <p>{fetchedBook.author}</p>
-     <p>{fetchedBook.state}</p>
+     <p>{fetchedBook.language}</p>
     </div>
   )
 }

@@ -48,28 +48,31 @@ function AddBook() {
         console.log(books);
     }, [searchKey]);
 
-    const submitBook = async (mybook) => {
-        const data = mybook.volumeInfo;
-        console.log("above return", data);
-        // saveToDB(data.title, data.desc)// async and await
-        //connect the selected option in the form to the state in db
-        //add dynamic params to owner
-        const book = {
-            title: data.title,
-            author: data.authors.join(", "),
-            synopsis: data.description,
-            state: bookState.value,
-            owner: userID,
-        };
-        console.log(book);
-        const response = await fetch("http://localhost:4000/bookbandits/user/create_book", {
-            method: "POST",
-            body: JSON.stringify(book),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-        const json = await response.json();
+	const submitBook = async (mybook) => {
+		const data = mybook.volumeInfo;
+		console.log("above return", data);
+		// saveToDB(data.title, data.desc)// async and await
+		//connect the selected option in the form to the state in db
+		//add dynamic params to owner
+		const book = {
+			title: data.title,
+			author: data.authors.join(", "),
+			synopsis: data.description,
+			language: data.language,
+			category: data.categories[0],
+			state: bookState.value,
+			owner: userID,
+			borrowed: false
+		};
+		console.log(book)
+		const response = await fetch("http://localhost:4000/bookbandits/user/create_book", {
+			method: "POST",
+			body: JSON.stringify(book),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+		const json = await response.json();
 
         if (!response.ok) {
             setError(json.error);

@@ -22,8 +22,9 @@ PLZ: {
 Books: {
     type: mongoose.Schema.Types.ObjectId, 
 ref: "Book"
-
-
+},
+mail: {
+    type: String
 }
 
 

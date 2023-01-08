@@ -23,8 +23,15 @@ owner: {
 type: mongoose.Schema.Types.ObjectId, 
 ref: "User",
 required: true
-
-
+},
+language: {
+type: String
+},
+category: {
+type: String
+},
+borrowed: {
+type: Boolean
 }
 
 

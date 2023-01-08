@@ -10,6 +10,7 @@ const {
     updateBook,
     getUserBooks,
     signUser,
+    searchBook,
     searchBooks
 }               = require("../controllers/routecontroller")
 
@@ -29,6 +30,8 @@ router.get("/", (req,res) => {
 
 router.get("/collection", getBooks)
 
+router.post("/collection",searchBook)
+
 router.get("/collection/search/:query", searchBooks)
 
 router.post("/login", signUser)
@@ -39,13 +42,15 @@ router.get("/:userid", getUser)
 
 router.get("/collection/:id", getBook)
 
+router.post("/collection/:id", updateBook)
+
 router.post("/user/create_book", createBook)
 
 router.post("/signup", createUser)   
 
-router.delete("/user/user_collection/:id", deleteBook)
+router.delete("/:userid/user_collection/:id", deleteBook)
 
-router.patch("/user/user_collection/:id", updateBook)
+router.patch("/:userid/user_collection/:id", updateBook)
 
 
 
