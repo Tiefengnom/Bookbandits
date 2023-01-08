@@ -11,7 +11,7 @@ const {
     getUserBooks,
     signUser,
     searchBook,
-    
+    searchBooks
 }               = require("../controllers/routecontroller")
 
 const router = express.Router()
@@ -31,6 +31,8 @@ router.get("/", (req,res) => {
 router.get("/collection", getBooks)
 
 router.post("/collection",searchBook)
+
+router.get("/collection/search/:query", searchBooks)
 
 router.post("/login", signUser)
 
