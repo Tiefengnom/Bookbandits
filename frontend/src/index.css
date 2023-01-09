@@ -36,3 +36,7 @@ header a {
 
   margin: 0 auto;
 }
+.hero-text {
+  position: relative;
+  top:50px;
+}

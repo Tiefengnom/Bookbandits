@@ -51,7 +51,7 @@ function Catalogue() {
           
             <form onSubmit={handleSubmit} >
             <span className="flex justify-center">
-                <input onChange={(e) => setSearch(e.target.value)} placeholder="Search..." className=" text-white bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2" />
+                <input onChange={(e) => setSearch(e.target.value)} placeholder="Search..." className=" text-white bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2 my-8 w-[270px]" />
                
                 <button type="button" class="inline-block transition duration-150 ease-in-out">
                     
@@ -79,7 +79,7 @@ function Catalogue() {
             <div className='Books'>
                 {books &&
                     books.map((book) => (
-                        <div className="book-card mb-2 bg-white p-3 shadow-lg rounded cursor-pointer transition-colors border-b-2 border-transparent hover:border-pink-500 text-gray-700 w-72 ">
+                        <div className="book-card mb-2 bg-white p-5 shadow-lg rounded cursor-pointer transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 w-72 mb-6">
                            <strong> <h3 key={book._id}>{book.title}</h3> </strong>
                             <p>borrowed: {book.borrowed ? <span>No</span> : <span>Yes</span>}</p>
                             <p>
