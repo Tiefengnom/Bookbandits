@@ -49,17 +49,20 @@ function AddBook() {
     }, [searchKey]);
 
 	const submitBook = async (mybook) => {
+       
 		const data = mybook.volumeInfo;
 		console.log("above return", data);
+        !data.categories ? console.log('no categories') : console.log(data.categories)
+        !data.synopsis ? console.log('no description') : console.log(data.synopsis)
 		// saveToDB(data.title, data.desc)// async and await
 		//connect the selected option in the form to the state in db
 		//add dynamic params to owner
 		const book = {
 			title: data.title,
 			author: data.authors.join(", "),
-			synopsis: data.description,
+			synopsis: data.description || 'none',
 			language: data.language,
-			category: data.categories[0],
+			category: data.categories? data.categories[0] : 'none',
 			state: bookState.value,
 			owner: user._id,
 			borrowed: false
@@ -76,6 +79,7 @@ function AddBook() {
 
         if (!response.ok) {
             setError(json.error);
+            console.log(json.error)
         }
         if (response.ok) {
             setSearchKey("");

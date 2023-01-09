@@ -1,6 +1,6 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useUserContext } from "../hooks/useUserContext"
-
+import logo from "../assets/favicon.ico/favicon.ico"
 //
 
 const Navbar = () => {
@@ -10,34 +10,35 @@ const Navbar = () => {
 
 	return (
 		<header>
-			<div className='container'>
+			<div className='container flex w-fit'>
 				<Link to='/'>
+					<img src={logo} alt='reading racoon'/>
 					<h1>BookBandits</h1>
 				</Link>
-				<ul className='navbar-list'>
-					<NavLink to='/' end>
-						<li>Home</li>
+				<ul className="navbar-list flex" >
+					<NavLink to="/" end>
+						<li className="text-center mx-auto px-4 w-full text-gray-400 group-hover:text-pink-500 border-b-2 border-transparent hover:border-pink-500">Home</li>
 					</NavLink>
                     <NavLink to='/catalogue' end>
-						<li>Catalogue</li>
+						<li className="text-center mx-auto px-4 w-full text-gray-400 group-hover:text-pink-500 border-b-2 border-transparent hover:border-pink-500">Catalogue</li>
 					</NavLink>
 					<Link to={`/${user._id}`} >
-						<li>Account</li>
+						<li className="text-center mx-auto px-4 w-full text-gray-400 group-hover:text-pink-500 border-b-2 border-transparent hover:border-pink-500">Account</li>
 					</Link>
-					{!user ? <li>Please log in</li> :	<NavLink to={{
+					{!user ? <li></li> :	<NavLink to={{
 									pathname: `/${user._id}/create_book`
- 									}}  ><li>Add Book</li></NavLink>}
-					{!user ? <li>Please log in</li> : <NavLink to={{
+ 									}}  ><li className="text-center mx-auto px-4 w-full text-gray-400 group-hover:text-pink-500 border-b-2 border-transparent hover:border-pink-500">Add Book</li></NavLink>}
+					{!user ? <li></li> : <NavLink to={{
 									pathname: `/${user._id}/user_collection`
- 									}}  ><li>My Books</li></NavLink> }
-                <Link to="/login"><li>
+ 									}}  ><li className="text-center mx-auto px-4 w-full text-gray-400 group-hover:text-pink-500 border-b-2 border-transparent hover:border-pink-500">My Books</li></NavLink> }
+                <Link to="/login"><li className="text-center mx-auto px-4 w-full text-gray-400 group-hover:text-pink-500 border-b-2 border-transparent hover:border-pink-500">
                     Login    
-                </li></Link>
-				<Link to="/signup"><li>
+                </li ></Link>
+				<Link to="/signup"><li className="text-center mx-auto px-4 w-full text-gray-400 group-hover:text-pink-500 border-b-2 border-transparent hover:border-pink-500">
                     SignUp 
-                </li></Link>
+                </li ></Link>
 				</ul>
-                <button onClick={()=>navigate(-1)} >Back</button>
+                <button onClick={()=>navigate(-1)} className="text-center text-gray-400 group-hover:text-pink-500 border-b-2 border-transparent hover:border-pink-500">Back</button>
 			</div>
 		</header>
 	);

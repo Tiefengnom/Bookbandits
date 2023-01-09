@@ -43,7 +43,7 @@ const Login = () => {
     };
 
     return (
-        <div className='Signup'>
+        <div className='login w-full h-screen bg-gradient-to-br from-yellow-500 to-pink-600 pt-12 pb-12 px-4 text-white'>
             <form className='signin' onSubmit={handleSubmit}>
                 <label>first_name</label>
                 <input type='text' onChange={(e) => setfname(e.target.value)} value={first_name} />

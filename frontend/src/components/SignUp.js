@@ -55,28 +55,28 @@ const SignUp = () => {
   return (
    
     
-    <div className = "Signin" >
+    <div className = "Signin " >
         <form className="signin" onSubmit={handleSubmit}>
             <label>first_name</label>
             <input type= "text"
                 onChange={(e) => setfname(e.target.value)}
-                value={first_name}    />
+                value={first_name}   className=" text-white bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2" />
 
            
             <label>last_name</label>
             <input type= "text"
                 onChange={(e) => setlname(e.target.value)}
-                value={last_name}         />
+                value={last_name}      className=" text-white bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"   />
 
             <label>Adress</label>
             <input type= "text"
                 onChange={(e) => setAdress(e.target.value)}
-                value={Adress}    />
+                value={Adress}  className=" text-white bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"  />
 
             <label>PLZ</label>
             <input type= "text"
                 onChange={(e) => setPLZ(e.target.value)}
-                value={PLZ}    />
+                value={PLZ}  className=" text-white bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"  />
                            
             <button >Sign Up</button>
             <label>
@@ -86,7 +86,7 @@ const SignUp = () => {
                     value="Yes"
                     onClick={(e) => {setMail(e.target.value); console.log(e.target.value)}}
                   // 
-                    />
+                  className=" text-white bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"/>
                     <span>Yes</span>
             </label>   
             <label>
