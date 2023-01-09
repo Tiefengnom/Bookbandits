@@ -1,6 +1,6 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useUserContext } from "../hooks/useUserContext"
-
+import logo from "../assets/favicon.ico/favicon.ico"
 //
 
 const Navbar = () => {
@@ -10,12 +10,13 @@ const Navbar = () => {
 
 	return (
 		<header>
-			<div className='container'>
+			<div className='container flex w-fit'>
 				<Link to='/'>
+					<img src={logo} alt='reading racoon'/>
 					<h1>BookBandits</h1>
 				</Link>
-				<ul className='navbar-list flex'>
-					<NavLink to='/' end>
+				<ul className="navbar-list flex" >
+					<NavLink to="/" end>
 						<li className="text-center mx-auto px-4 w-full text-gray-400 group-hover:text-pink-500 border-b-2 border-transparent hover:border-pink-500">Home</li>
 					</NavLink>
                     <NavLink to='/catalogue' end>
