@@ -36,6 +36,7 @@ const Login = () => {
           
             console.log(id);
             console.log(json.first_name);
+            console.log(json._id)
             console.log("Welcome, youre signed in");
         } else {
             setError(json.error);
