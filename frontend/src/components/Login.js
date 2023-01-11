@@ -36,6 +36,7 @@ const Login = () => {
           
             console.log(id);
             console.log(json.first_name);
+            console.log(json._id)
             console.log("Welcome, youre signed in");
         } else {
             setError(json.error);
@@ -43,8 +44,8 @@ const Login = () => {
     };
 
     return (
-        <div className='login w-full h-screen bg-gradient-to-br from-yellow-500 to-pink-600 pt-12 pb-12 px-4 text-white'>
-            <form className='signin' onSubmit={handleSubmit}>
+         <div className='login w-full h-screen bg-gradient-to-br from-yellow-500 to-pink-600 pt-12 pb-12 px-4 mt-6 text-black'>
+            {user ? user._id && <AccountLanding /> : <form className='signin' onSubmit={handleSubmit}>
                 <label>first_name</label>
                 <input type='text' onChange={(e) => setfname(e.target.value)} value={first_name} />
 
@@ -52,7 +53,7 @@ const Login = () => {
                 <input type='text' onChange={(e) => setlname(e.target.value)} value={last_name} />
 
                 <button type='submit'>Sign In</button>
-            </form>
+            </form>}
             {/* <NavLink
                 to={{
                     pathname: `/${user._id}`,

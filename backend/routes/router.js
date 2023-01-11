@@ -1,6 +1,6 @@
 const express = require("express")
 
-const {
+/*const {
     createUser,
     createBook,
     getBook,
@@ -12,7 +12,26 @@ const {
     signUser,
     searchBooks,
     getBooksByLanguage
-}               = require("../controllers/routecontroller")
+}               = require("../controllers/routecontroller")*/
+
+const {
+    createBook,
+    getBook,
+    getBooks,
+    deleteBook,
+    updateBook,
+    getUserBooks,
+    searchBooks,
+    getBooksByLanguage
+}               = require("../controllers/bookcontroller.js")
+
+
+
+const {
+    createUser,
+    getUser,
+    signUser,
+}               = require("../controllers/usercontroller")
 
 const router = express.Router()
 

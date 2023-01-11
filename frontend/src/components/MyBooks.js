@@ -36,7 +36,7 @@ function MyBooks() {
 
 	return (
 		<div>
-			<div className='search-result'>
+			<div className='search-result  bg-gradient-to-br from-yellow-500 to-pink-600'>
 				{user._id
 					? books
 						? books.map((b) => {

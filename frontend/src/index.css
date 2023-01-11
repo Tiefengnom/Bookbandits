@@ -33,10 +33,22 @@ header a {
 }
 .pages{
   max-width: 1400px;
-
+  
   margin: 0 auto;
 }
 .hero-text {
   position: relative;
   top:50px;
 }
+
+.Signin {
+height:100vh;
+display: flex;
+flex-direction: column;
+}
+
+.signin {
+  display: flex;
+  flex-direction: column;
+}
+

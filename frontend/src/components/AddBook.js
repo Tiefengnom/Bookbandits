@@ -40,6 +40,7 @@ function AddBook() {
         const data = await response.json();
 
         console.log(data.totalItems || 0);
+        
         return setBooks(data.items || []);
     };
 
@@ -54,6 +55,7 @@ function AddBook() {
 		console.log("above return", data);
         !data.categories ? console.log('no categories') : console.log(data.categories)
         !data.synopsis ? console.log('no description') : console.log(data.synopsis)
+        !data.imageLinks.smallThumbnail ? console.log("no image") : console.log(data.imageLinks.smallThumbnail)
 		// saveToDB(data.title, data.desc)// async and await
 		//connect the selected option in the form to the state in db
 		//add dynamic params to owner
@@ -65,7 +67,9 @@ function AddBook() {
 			category: data.categories? data.categories[0] : 'none',
 			state: bookState.value,
 			owner: user._id,
-			borrowed: false
+			borrowed: false,
+            image: data.imageLinks.smallThumbnail || "none"
+
 		};
 		console.log(book)
 		const response = await fetch("http://localhost:4000/bookbandits/user/create_book", {

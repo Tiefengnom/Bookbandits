@@ -47,7 +47,7 @@ function Catalogue() {
 
     return (
         <div className="flex justify-center">
-        <div className="  catalogue w-full pt-12 pb-12 px-4 text-white ">
+        <div className="  catalogue w-full pt-12 pb-12 px-4 text-white bg-gradient-to-br from-yellow-500 to-pink-600 ">
           
             <form onSubmit={handleSubmit} >
             <span className="flex justify-center">
@@ -85,6 +85,7 @@ function Catalogue() {
                             <p>
                                 {book.owner.first_name} {book.owner.last_name}
                             </p>
+                            <img src={book.image} />
                             <p>
                                 <Link to={`/catalogue/${book._id}`}>more info</Link>
                             </p>

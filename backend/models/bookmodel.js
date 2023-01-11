@@ -32,7 +32,10 @@ type: String
 },
 borrowed: {
 type: Boolean
-}
+},
+image: {
+    type: String
+} 
 
 
 }, {timestamps: true})

@@ -12,6 +12,7 @@ import AccountLanding from "./pages/AccountLanding";
 import Catalogue from "./pages/Catalogue";
 import SingleBook from "./components/SingleBook";
 import SignUp from "./components/SignUp";
+import Logout from "./components/Logout";
 
 function App() {
 	
@@ -52,6 +53,9 @@ function App() {
 						<Route path='catalogue' element={<Catalogue />}>
 							
 						</Route>
+						<Route
+							path="/logout"  element={<Logout />}
+						/>
 						<Route
 							path="/login"		element={<Login />}
 						/>
