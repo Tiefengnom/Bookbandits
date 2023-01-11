@@ -32,7 +32,7 @@ useEffect(() => {
   return (
     fetchedBook &&    <div>
      Some Book here: {fetchedBook.title}
-     <p>Is it free to borrow? </p> {fetchedBook.borrowed ? <p>Yes</p> : <p>No</p> }
+     <p>Is it free to borrow? </p> {fetchedBook.borrowed ? <p>No</p> : <p>Yes</p> }
      <button onClick={handleClick}>Rent this Book?</button>
      Book Details: 
      <h3>{fetchedBook.title}</h3>

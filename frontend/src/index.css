@@ -15,12 +15,13 @@ body {
   margin: 0;
   font-family: "Poppins";
   color:black;
+  font-size: 10pt;
 }
 header {
   background: #fff;
 }
 header .container {
-  max-width: 1400px;
+
   margin: 0 auto;
   padding: 10px 20px;
   display: flex;
@@ -32,8 +33,6 @@ header a {
   text-decoration: none;
 }
 .pages{
-  max-width: 1400px;
-  
   margin: 0 auto;
 }
 .hero-text {
@@ -52,3 +51,6 @@ flex-direction: column;
   flex-direction: column;
 }
 
+body p {
+  padding-bottom: 10px;
+}
