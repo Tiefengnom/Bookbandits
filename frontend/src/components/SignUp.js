@@ -56,7 +56,7 @@ const SignUp = () => {
    
     
     <div className = "Signin mt-20 bg-gradient-to-br from-yellow-500 to-pink-600 h-full " >
-        <form className="signin" onSubmit={handleSubmit}>
+        {!user ? <form className="signin" onSubmit={handleSubmit}>
             <label>first_name</label>
             <input type= "text"
                 onChange={(e) => setfname(e.target.value)}
@@ -101,11 +101,11 @@ const SignUp = () => {
                 <span>No</span>
             </label>
             </div>
-            <button >Sign Up</button>
-        </form>
-        <NavLink to={{
+            <button  class="mr-4 inline-block px-6 py-2 border-2 border-white-500 text-white-500 font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out">Sign Up</button>
+        </form> : <NavLink to={{
                 pathname: `/${user._id}`
-        }}  >Profile</NavLink>
+        }}  >To your Account</NavLink> }
+        
         <div>{userid}</div>
     </div>
 

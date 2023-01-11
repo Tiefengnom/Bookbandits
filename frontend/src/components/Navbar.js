@@ -41,12 +41,16 @@ const Navbar = () => {
 					{!user ? <li></li> : <NavLink to={{
 									pathname: `/${user._id}/user_collection`
  									}}  ><li className="text-center mx-auto px-4 w-fit text-gray-400 border-b-2 border-transparent hover:border-pink-500">My Books</li></NavLink> }
-                <Link to="/login"><li className="text-center mx-auto px-4 w-fit text-gray-400 border-b-2 border-transparent hover:border-pink-500">
+                {user ? <Link to="/logout"><li className="text-center mx-auto px-4 w-fit text-gray-400 border-b-2 border-transparent hover:border-pink-500">
+                    Logout   
+                </li ></Link>
+				:
+				<Link to="/login"><li className="text-center mx-auto px-4 w-fit text-gray-400 border-b-2 border-transparent hover:border-pink-500">
                     Login    
-                </li ></Link>
-				<Link to="/signup"><li className="text-center mx-auto px-4 w-fit text-gray-400 border-b-2 border-transparent hover:border-pink-500">
+                </li ></Link>}
+				{user ? <li></li>:<Link to="/signup"><li className="text-center mx-auto px-4 w-fit text-gray-400 border-b-2 border-transparent hover:border-pink-500">
                     SignUp 
-                </li ></Link>
+                </li ></Link>}
 				</ul>
                 <button onClick={()=>navigate(-1)} className="text-center text-gray-400 group-hover:text-pink-500 border-b-2 border-transparent hover:border-pink-500 hidden md-flex">Back</button>
 			</div>

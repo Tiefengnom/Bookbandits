@@ -118,3 +118,14 @@ const getBooks = async (req,res) => {
   };
   
   //End Books
+
+  module.exports = {
+    createBook,
+    getBooks,
+    getBook,
+    deleteBook,
+    updateBook,
+    getUserBooks,
+    searchBooks,
+    getBooksByLanguage
+};
