@@ -18,14 +18,14 @@ const Navbar = () => {
 				<Link to='/'>
 					<div className="flex justify-center align-center">
 					<img className="w-12" src={logo} alt='reading racoon'/>
-					<h1 className="m-[5px]">BookBandits</h1>
+					<h1 className="m-[5px]  text-gray-400">BookBandits</h1>
 					</div>
 				</Link>
 				<div onClick={()=>setMenuVisibility(!visibility)} className='text-3xl absolute right-8 top-6 cursor-pointer md:hidden'>
 				
       <div > <img className="w-6 mt-[-5px]" src={visibility ? cross : menu} alt='icon'/></div>
       </div>
-				<ul className={`md:flex md:items-center md:pb-0 pb-1 absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0  transition-all duration-500 ease-in ${visibility ? 'top-10 ':'top-[-490px]'}`} >
+				<ul className={`md:flex md:items-center md:pb-0 pb-1 absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 transition-all duration-500 ease-in ${visibility ? 'top-10 ':'top-[-490px]'}`} >
 					<NavLink to="/" end>
 						<li className="text-center mx-auto px-4 text-gray-400 border-b-2 border-transparent hover:border-pink-500 w-fit">Home</li>
 					</NavLink>

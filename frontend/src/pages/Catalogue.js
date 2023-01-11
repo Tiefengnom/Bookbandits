@@ -2,11 +2,35 @@ import React, { useEffect, useState } from "react";
 import { Outlet, Link } from "react-router-dom";
 import '../index.css'
 
+import Checklist from '../components/Checklist'
+
 function Catalogue() {
     const [books, setBooks] = useState(null);
     const [search, setSearch] = useState(null);
     const [searchedBooks, setSearchedBooks] = useState(null);
     const [error, setError] = useState(null);
+
+    const languages = [
+        { value: 'en', label: 'English' },
+        { value: 'de', label: 'Deutsch' },
+        { value: 'ro', label: 'Romana' },
+        { value: 'it', label: 'Italiano' },
+        { value: 'fr', label: 'Francaise' },
+      ];
+
+      const genres = [
+        { value: 'crime', label: 'crime' },
+        { value: 'romance', label: 'romance' },
+        { value: 'mystery', label: 'mystery' },
+        { value: 'fantasy', label: 'fantasy' },
+        { value: 'adventure', label: 'adventure' },
+      ];
+
+      const availability = [
+        { value: true, label: 'available now' },
+        { value: 'mail', label: 'available per mail' },
+        { value: 'local', label: 'locally available' },
+      ];
 
     const fetchBooks = async () => {
         const response = await fetch("http://localhost:4000/bookbandits/collection");
@@ -61,7 +85,15 @@ function Catalogue() {
                 
 </span>
             </form>
+            <div className="checklist p-4">
+            <Checklist options={languages} placeholder='Select Languages' /></div>
            
+            <div className="checklist p-4">
+            <Checklist options={genres} placeholder='Select Genres' /></div>
+           
+            <div className="checklist p-4">
+            <Checklist options={availability} placeholder='Availability' /></div>
+
             <div className="p-2">
             <div className='searchedBooks '>
                 {searchedBooks &&
