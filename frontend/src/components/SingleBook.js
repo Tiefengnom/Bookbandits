@@ -30,7 +30,7 @@ useEffect(() => {
   }
 
   return (
-    fetchedBook &&    <div>
+    fetchedBook &&    <div className=' mb-2 bg-white p-3 shadow-lg rounded cursor-pointer transition-colors border-b-2 border-transparent hover:border-pink-500 text-gray-700 w-72'>
      Some Book here: {fetchedBook.title}
      <p>Is it free to borrow? </p> {fetchedBook.borrowed ? <p>No</p> : <p>Yes</p> }
      <button onClick={handleClick}>Rent this Book?</button>

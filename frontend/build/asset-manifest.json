@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4a54cdb0.css",
+    "main.js": "/static/js/main.d5d47b78.js",
+    "static/media/logo-orange.png": "/static/media/logo-orange.59e8315ecd93bc6c64e3.png",
+    "static/media/book-icon.png": "/static/media/book-icon.9cd5cc9c8aa8dd01c3b3.png",
+    "index.html": "/index.html",
+    "main.4a54cdb0.css.map": "/static/css/main.4a54cdb0.css.map",
+    "main.d5d47b78.js.map": "/static/js/main.d5d47b78.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4a54cdb0.css",
+    "static/js/main.d5d47b78.js"
+  ]
+}
