@@ -25,11 +25,11 @@ const getBooks = async (req,res) => {
    
    //create a new book
    const createBook = async (req,res,next) => {
-    const {title,author,synopsis,language,state,owner,category,borrowed} = req.body
+    const {title,author,synopsis,language,state,owner,category,borrowed,image} = req.body
    let id = ""
        
     try  {
-         const book = await Book.create({title,author,synopsis,state,language,owner,category,borrowed})
+         const book = await Book.create({title,author,synopsis,state,language,owner,category,borrowed,image})
          
          res.status(200).json(book)
                      
@@ -61,11 +61,15 @@ const getBooks = async (req,res) => {
      
        // get books from a Usercollection
      
-     const getUserBooks = async (req,res) => {
-        const books = await Book.find({owner: req.params.userid}).sort({createdAt: -1})
-     
-        res.status(200).json(books)
-       }
+     const getUserBooks = async (req, res) => {
+         if (req.params.userid && req.params.userid !== 'undefined') {
+             const books = await Book.find({ owner: req.params.userid }).sort({ createdAt: -1 });
+
+             res.status(200).json(books);
+         } else {
+             res.status(400).json({ error: "Please log in first." });
+         }
+     };
 
        // rent and update a book
   

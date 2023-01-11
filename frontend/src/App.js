@@ -36,11 +36,11 @@ function App() {
 // }, [])
 
 	return (
-		<div className='App'>
+		<div className='App '>
 			<BrowserRouter>
 				<Navbar />
 
-				<div className='pages'>
+				<div className='pages m-[0px] h-screen text-center'>
 					<Routes>
 						<Route index element={<Home />} />
 

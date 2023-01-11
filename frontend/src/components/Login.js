@@ -52,7 +52,7 @@ const Login = () => {
                 <label>last_name</label>
                 <input type='text' onChange={(e) => setlname(e.target.value)} value={last_name} />
 
-                <button type='submit'>Sign In</button>
+                <button type='submit'>Log In</button>
             </form>}
             {/* <NavLink
                 to={{
@@ -61,7 +61,7 @@ const Login = () => {
                 Profile
             </NavLink>
             <div>{user._id}</div> */}
-            {user._id && <AccountLanding />}
+          
         </div>
     );
 };
