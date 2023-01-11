@@ -44,7 +44,7 @@ function Catalogue() {
 
     useEffect(() => {
         fetchBooks();
-        console.log(books);
+        
     }, []);
 
     const handleSubmit = async (e) => {
