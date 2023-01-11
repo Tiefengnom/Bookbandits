@@ -30,11 +30,11 @@ const getBook = async (req,res) => {
 
 //create a new book
 const createBook = async (req,res,next) => {
- const {title,author,synopsis,language,state,owner,category,borrowed,image} = req.body
+ const {title,author,synopsis,language,state,owner,category,borrowed} = req.body
 let id = ""
     
  try  {
-      const book = await Book.create({title,author,synopsis,state,language,owner,category,borrowed,image})
+      const book = await Book.create({title,author,synopsis,state,language,owner,category,borrowed})
       
       res.status(200).json(book)
                   
@@ -62,7 +62,7 @@ const deleteBook = async (req,res) => {
       }
   
    res.status(200).json(book)
-   
+  
   }
   
 

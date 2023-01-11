@@ -55,31 +55,31 @@ const SignUp = () => {
   return (
    
     
-    <div className = "Signin " >
+    <div className = "Signin mt-20 bg-gradient-to-br from-yellow-500 to-pink-600 h-full " >
         <form className="signin" onSubmit={handleSubmit}>
             <label>first_name</label>
             <input type= "text"
                 onChange={(e) => setfname(e.target.value)}
-                value={first_name}   className=" text-white bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2" />
+                value={first_name}   className=" text-orange-700 bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm  transition-colors placeholder-white placeholder-opacity-50 m-2" />
 
            
             <label>last_name</label>
             <input type= "text"
                 onChange={(e) => setlname(e.target.value)}
-                value={last_name}      className=" text-white bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"   />
+                value={last_name}      className=" text-orange-700 bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"   />
 
             <label>Adress</label>
             <input type= "text"
                 onChange={(e) => setAdress(e.target.value)}
-                value={Adress}  className=" text-white bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"  />
+                value={Adress}  className=" text-orange-700 bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"  />
 
             <label>PLZ</label>
             <input type= "text"
                 onChange={(e) => setPLZ(e.target.value)}
-                value={PLZ}  className=" text-white bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"  />
-                           
-            <button >Sign Up</button>
-            <label>
+                value={PLZ}  className=" text-orange-700 bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"  />
+
+                <div>    
+                <label> Mail
                 <input
                     type="radio"
                     name="radio-group"
@@ -100,7 +100,8 @@ const SignUp = () => {
                 />
                 <span>No</span>
             </label>
-                      
+            </div>
+            <button >Sign Up</button>
         </form>
         <NavLink to={{
                 pathname: `/${user._id}`
