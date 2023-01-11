@@ -85,6 +85,7 @@ function Catalogue() {
                             <p>
                                 {book.owner.first_name} {book.owner.last_name}
                             </p>
+                            <img src={book.image} />
                             <p>
                                 <Link to={`/catalogue/${book._id}`}>more info</Link>
                             </p>
