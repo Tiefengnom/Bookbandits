@@ -9,7 +9,7 @@ import menu from "../assets/hamburger.png"
 const Navbar = () => {
 	const navigate = useNavigate();
 	//remember to add active class to navbar in css
-	const {user, setUser} = useUserContext()
+	const {user} = useUserContext()
 	let [visibility,setMenuVisibility]=useState(false);
 
 	return (

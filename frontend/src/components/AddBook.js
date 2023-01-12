@@ -47,6 +47,7 @@ function AddBook() {
     useEffect(() => {
         getBooks();
         console.log(books);
+        // eslint-disable-next-line
     }, [searchKey]);
 
 	const submitBook = async (mybook) => {
@@ -83,7 +84,7 @@ function AddBook() {
 
         if (!response.ok) {
             setError(json.error);
-            console.log(json.error)
+            console.log(error)
         }
         if (response.ok) {
             setSearchKey("");

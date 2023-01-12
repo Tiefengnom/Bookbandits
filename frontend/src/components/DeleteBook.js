@@ -17,6 +17,7 @@ const DeleteBook = ({ id }) => {
             console.log("book deleted", json);
         } else {
             setError(json.error);
+            console.log(error)
         }
     };
 
