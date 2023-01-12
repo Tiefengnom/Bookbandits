@@ -24,7 +24,7 @@ const Home = () => {
                 Sign up
             </button>
             <div className='home search flex justify-center '>
-               {/* <Catalogue /> */}
+                {/* <Catalogue />  */}
             </div>
         </div>
     );

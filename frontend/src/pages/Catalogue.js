@@ -44,7 +44,6 @@ function Catalogue() {
     // const [selectedPlz, setSelectedPlz] = useState('');
 
 
-
     // const availabilities = [
     //     { value: true, label: "available now" },
     //     { value: "mail", label: "available per mail" },
@@ -94,10 +93,11 @@ setSearchValidation(false)
     };
 
     return (
-        <div className=' '>
-            <div className='flex justify-center'>
-                <div className='catalogue w-full pt-12 pb-12 px-4 '>
-                    <form onSubmit={handleSubmit}>
+        <div className='flex justify-center header h-full w-full  pt-12 pb-12 px-4  text-white'>
+            <div className='flex justify-center py-4n'>
+                <div className='catalogue w-full pt-12 pb-12 px-4 text-white lg:flex justify-between'>
+                <div>
+                    <form onSubmit={handleSubmit} className="side-menu ">
                         <span className='flex justify-center'>
                             <input
                                 onChange={(e) => setSearch(e.target.value)}
@@ -186,6 +186,7 @@ setSearchValidation(false)
                         <Outlet />
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     );
