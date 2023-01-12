@@ -96,21 +96,39 @@ const getBooks = async (req,res) => {
   
   //Search books by title, author, category and synopsis (global search)
   const searchBooks = async (req, res) => {
-      console.log("params", req.params);
+   try{   
+   console.log("params", req.params);
       console.log("body", req.body);
-  
-      const search = { $regex: req.params.query || req.body.query, $options: "i" };
-      const books = await Book.find(
-          { $or: [{ title: search }, { author: search }, { category: search }, { synopsis: search }] },
-          { title: 1, author: 1, synopsis: 1, category: 1 }
-      ).sort({
+
+      const query = {
+          $and: [],
+      };
+
+      if (req.params.query || req.body.query) {
+          const search = { $regex: req.params.query || req.body.query, $options: "i" };
+          query.$and.push({ $or: [{ title: search }, { author: search }, { category: search }, { synopsis: search }] });
+      }
+
+      if (req.body.language) {
+          query.$and.push({ language: req.body.language });
+      }
+
+      if (req.body.availability) {
+         query.$and.push({ borrowed: req.body.availability });
+     }
+console.log(query)
+      const books = await Book.find(query, { title: 1, author: 1, synopsis: 1, category: 1 }).sort({
           createdAt: -1,
       });
-  
-      res.status(200).json(books);
+
+      res.status(200).json(books);}
+      catch (error) {
+         console.log(error)
+      }
   };
   
   //test filter by language
+
   // const getLanguages= async (req, res)=>{Book.aggregate([{$group: {_id: "$language"}}]); }
   
   const getBooksByLanguage = async (req, res) => {

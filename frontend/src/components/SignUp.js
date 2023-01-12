@@ -84,7 +84,7 @@ const SignUp = () => {
                     value="Yes"
                     onClick={(e) => {setMail(e.target.value); console.log(e.target.value)}}
                   // 
-                  className=" text-white bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"/>
+                  className=" bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"/>
                     <span>Yes</span>
             </label>   
             <label>
@@ -99,7 +99,7 @@ const SignUp = () => {
                 <span>No</span>
             </label>
             </div>
-            <button  class="mr-4 inline-block px-6 py-2 border-2 border-white-500 text-white-500 font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out">Sign Up</button>
+            <button  class="mr-4 inline-block px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out">Sign Up</button>
         </form> : <NavLink to={{
                 pathname: `/${user._id}`
         }}  >To your Account</NavLink> }

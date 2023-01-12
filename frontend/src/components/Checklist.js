@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 
+export default function Checklist({options, placeholder, setSelectedOption}) {
+  // LIFTED THE STATE TO CATALOGUE const [selectedOption, setSelectedOption] = useState(null);
 
+//   const fetchBooksByLanguage = async () => {
+//     const response = await fetch(`http://localhost:4000/bookbandits/collection/language/${selectedOption}`);
+//     const json = await response.json();
 
-export default function Checklist({options, placeholder}) {
-  const [selectedOption, setSelectedOption] = useState(null);
+//     if (response.ok) {
+//       setSelectedOption(json);
+//     }
+// };
 
   return (
     <div className="App text-black w-[288px]">
       <Select
-        defaultValue={selectedOption}
-        onChange={setSelectedOption}
+        onChange={(selection)=>setSelectedOption(selection.value)}
         options={options}
-        isMulti
         placeholder={placeholder}
         isSearchable
         theme={(theme) => ({

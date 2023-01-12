@@ -14,7 +14,7 @@ const Navbar = () => {
 
 	return (
 		<header className="header">
-			<div className='container flex w-full fixed top-0 left-0 right-0 bg-white z-[99]'>
+			<div className='header container flex w-screen  fixed top-0 left-0 right-0 bg-white z-[99]'>
 				<Link to='/'>
 					<div className="flex justify-center align-center">
 					<img className="w-12" src={logo} alt='reading racoon'/>
@@ -26,6 +26,7 @@ const Navbar = () => {
       <div > <img className="w-6 mt-[-5px]" src={visibility ? cross : menu} alt='icon'/></div>
       </div>
 				<ul className={`md:flex md:items-center md:pb-0 pb-1 absolute md:static bg-white md:z-auto left-0 w-full md:w-auto md:pl-0 transition-all duration-500 ease-in ${visibility ? 'top-12 ':'top-[-490px]'}`} >
+					
 					<NavLink to="/" end>
 						<li className="text-center mx-auto px-4 text-gray-400 border-b-2 border-transparent hover:border-pink-500 w-fit">Home</li>
 					</NavLink>

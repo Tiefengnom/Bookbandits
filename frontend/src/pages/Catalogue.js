@@ -4,34 +4,52 @@ import "../index.css";
 
 import Checklist from "../components/Checklist";
 import Logo from "../assets/logo-orange.png";
+// import Switch from "../components/Switch";
+
+//values are static so they dont need to be inside the component function because theyx dont need to be recalculated every time. performance reasons. 
+
+const languages = [
+    { value: "", label: "none" },
+    { value: "en", label: "English" },
+    { value: "de", label: "German" },
+    { value: "ro", label: "Romanian" },
+    { value: "it", label: "Italian" },
+    { value: "fr", label: "French" },
+    { value: "es", label: "Spanish" },
+    { value: "ru", label: "Russian" },
+];
+
+const genres = [
+    { value: "", label: "none" },
+    { value: "crime", label: "crime" },
+    { value: "romance", label: "romance" },
+    { value: "mystery", label: "mystery" },
+    { value: "fantasy", label: "fantasy" },
+    { value: "adventure", label: "adventure" },
+];
+
 
 function Catalogue() {
     const [books, setBooks] = useState(null);
     const [search, setSearch] = useState(null);
     const [searchedBooks, setSearchedBooks] = useState(null);
     const [error, setError] = useState(null);
+    const [language, setLanguage] = useState('');
+    const [genre, setGenre] = useState('');
+    const [availability, setAvailability] = useState(false);
+    const [searchValidation, setSearchValidation]=useState(false);
+   
+    //LATER
+    // const [selectedDelivery, setSelectedDelivery] = useState('');
+    // const [selectedPlz, setSelectedPlz] = useState('');
 
-    const languages = [
-        { value: "en", label: "English" },
-        { value: "de", label: "Deutsch" },
-        { value: "ro", label: "Romana" },
-        { value: "it", label: "Italiano" },
-        { value: "fr", label: "Francaise" },
-    ];
 
-    const genres = [
-        { value: "crime", label: "crime" },
-        { value: "romance", label: "romance" },
-        { value: "mystery", label: "mystery" },
-        { value: "fantasy", label: "fantasy" },
-        { value: "adventure", label: "adventure" },
-    ];
 
-    const availability = [
-        { value: true, label: "available now" },
-        { value: "mail", label: "available per mail" },
-        { value: "local", label: "locally available" },
-    ];
+    // const availabilities = [
+    //     { value: true, label: "available now" },
+    //     { value: "mail", label: "available per mail" },
+    //     { value: "local", label: "locally available" },
+    // ];
 
     const fetchBooks = async () => {
         const response = await fetch("http://localhost:4000/bookbandits/collection");
@@ -50,10 +68,14 @@ function Catalogue() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(search);
+setSearchValidation(false)
+        if (!search && !availability && !language) 
+        {setSearchValidation(true);
+            return }
 
         const response = await fetch("http://localhost:4000/bookbandits/collection", {
             method: "POST",
-            body: JSON.stringify({ query: search }),
+            body: JSON.stringify({ query: search, language: language, availability: availability}),
             headers: {
                 "Access-Control-Allow-Origin": "*",
                 "Content-Type": "application/json",
@@ -72,18 +94,18 @@ function Catalogue() {
     };
 
     return (
-        <div className='flex justify-center header h-full w-full bg-gradient-to-br from-yellow-500 to-pink-600 pt-12 pb-12 px-4 text-white'>
+        <div className=' '>
             <div className='flex justify-center'>
-                <div className='catalogue w-full pt-12 pb-12 px-4 text-white'>
+                <div className='catalogue w-full pt-12 pb-12 px-4 '>
                     <form onSubmit={handleSubmit}>
                         <span className='flex justify-center'>
                             <input
                                 onChange={(e) => setSearch(e.target.value)}
                                 placeholder='Search...'
-                                className='text-white bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2 my-8 w-[270px]'
+                                className=' bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2 my-8 w-[270px]'
                             />
 
-                            <button type='button' class='inline-block transition duration-150 ease-in-out'>
+                            <button type='submit' class='inline-block transition duration-150 ease-in-out'>
                                 <svg
                                     aria-hidden='true'
                                     focusable='false'
@@ -99,18 +121,24 @@ function Catalogue() {
                                 </svg>
                             </button>
                         </span>
+                        {searchValidation && <p>Please enter a search criterion.</p>}
                     </form>
                     <div className='checklist p-4'>
-                        <Checklist options={languages} placeholder='Select Languages' />
+                        <Checklist options={languages} placeholder='Select Languages' setSelectedOption={setLanguage} />
                     </div>
 
                     <div className='checklist p-4'>
-                        <Checklist options={genres} placeholder='Select Genres' />
+                        <Checklist options={genres} placeholder='Select Genres' setSelectedOption={setGenre} />
                     </div>
 
-                    <div className='checklist p-4'>
-                        <Checklist options={availability} placeholder='Availability' />
-                    </div>
+                    {/* <Switch
+        isOn={mail}
+        handleToggle={() => setCheck(!check)}
+      /> */}
+                     {/* <Switch
+        isOn={availability}
+        handleToggle={() => setAvailability(!availability)}
+      /> */}
 
                     <div className='p-2'>
                         <div className='searchedBooks '>
