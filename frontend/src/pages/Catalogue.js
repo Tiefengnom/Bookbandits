@@ -6,6 +6,29 @@ import Checklist from "../components/Checklist";
 import Logo from "../assets/logo-orange.png";
 // import Switch from "../components/Switch";
 
+//values are static so they dont need to be inside the component function because theyx dont need to be recalculated every time. performance reasons. 
+
+const languages = [
+    { value: "", label: "none" },
+    { value: "en", label: "English" },
+    { value: "de", label: "German" },
+    { value: "ro", label: "Romanian" },
+    { value: "it", label: "Italian" },
+    { value: "fr", label: "French" },
+    { value: "es", label: "Spanish" },
+    { value: "ru", label: "Russian" },
+];
+
+const genres = [
+    { value: "", label: "none" },
+    { value: "crime", label: "crime" },
+    { value: "romance", label: "romance" },
+    { value: "mystery", label: "mystery" },
+    { value: "fantasy", label: "fantasy" },
+    { value: "adventure", label: "adventure" },
+];
+
+
 function Catalogue() {
     const [books, setBooks] = useState(null);
     const [search, setSearch] = useState(null);
@@ -14,31 +37,13 @@ function Catalogue() {
     const [language, setLanguage] = useState('');
     const [genre, setGenre] = useState('');
     const [availability, setAvailability] = useState(false);
+    const [searchValidation, setSearchValidation]=useState(false);
    
     //LATER
     // const [selectedDelivery, setSelectedDelivery] = useState('');
     // const [selectedPlz, setSelectedPlz] = useState('');
 
 
-    const languages = [
-        { value: "", label: "none" },
-        { value: "en", label: "English" },
-        { value: "de", label: "German" },
-        { value: "ro", label: "Romanian" },
-        { value: "it", label: "Italian" },
-        { value: "fr", label: "French" },
-        { value: "es", label: "Spanish" },
-        { value: "ru", label: "Russian" },
-    ];
-
-    const genres = [
-        { value: "", label: "none" },
-        { value: "crime", label: "crime" },
-        { value: "romance", label: "romance" },
-        { value: "mystery", label: "mystery" },
-        { value: "fantasy", label: "fantasy" },
-        { value: "adventure", label: "adventure" },
-    ];
 
     // const availabilities = [
     //     { value: true, label: "available now" },
@@ -63,6 +68,10 @@ function Catalogue() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(search);
+setSearchValidation(false)
+        if (!search && !availability && !language) 
+        {setSearchValidation(true);
+            return }
 
         const response = await fetch("http://localhost:4000/bookbandits/collection", {
             method: "POST",
@@ -111,6 +120,7 @@ function Catalogue() {
                                 </svg>
                             </button>
                         </span>
+                        {searchValidation && <p>Please enter a search criterion.</p>}
                     </form>
                     <div className='checklist p-4'>
                         <Checklist options={languages} placeholder='Select Languages' setSelectedOption={setLanguage} />
