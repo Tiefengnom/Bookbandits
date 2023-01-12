@@ -36,7 +36,7 @@ function App() {
 // }, [])
 
 	return (
-		<div className='App '>
+		<div className='App flex justify-center h-full w-full bg:white-600 pt-12 pb-12 px-4 '>
 			<BrowserRouter>
 				<Navbar />
 
