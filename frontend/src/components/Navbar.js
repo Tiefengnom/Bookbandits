@@ -14,7 +14,7 @@ const Navbar = () => {
 
 	return (
 		<header className="header">
-			<div className='header container flex w-screen  fixed top-0 left-0 right-0 bg-white z-[99]'>
+			<div className='flex w-full fixed top-0 left-0 right-0 bg-white z-[99] justify-between p-4'>
 				<Link to='/'>
 					<div className="flex justify-center align-center">
 					<img className="w-12" src={logo} alt='reading racoon'/>

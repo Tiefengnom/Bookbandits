@@ -38,7 +38,8 @@ function App() {
 			<BrowserRouter>
 				<Navbar />
 
-				<div className='pages m-[0px] h-screen text-center'>
+				<div className='pages m-[0px] h-full text-center pt-[100px] bg-gradient-to-br from-yellow-500 to-pink-600'>
+					<h1 className="text-white text-6xl p-[50px] max-width: 60%;" >Free your books. Become a BookBandit.</h1>
 					<Routes>
 						<Route index element={<Home />} />
 
