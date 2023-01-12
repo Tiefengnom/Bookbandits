@@ -67,6 +67,7 @@ function Catalogue() {
             setError(null);
         } else {
             setError(json.error);
+            console.log(error)
         }
     };
 

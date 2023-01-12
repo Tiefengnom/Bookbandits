@@ -11,7 +11,7 @@ useEffect(() => {
     fetch(`http://localhost:4000/bookbandits/collection/${id}`)
       .then(res => res.json())
       .then(finalResult => setFetchedBook(finalResult))
-      
+  // eslint-disable-next-line 
   }, []) 
 
   const handleClick = async () => {
@@ -38,7 +38,7 @@ useEffect(() => {
      <h3>{fetchedBook.title}</h3>
      <p>{fetchedBook.author}</p>
      <p>{fetchedBook.language}</p>
-     <img src={fetchedBook.image} />
+     <img src={fetchedBook.image} alt="book cover" />
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+
 import { useUserContext } from "../hooks/useUserContext";
 import AccountLanding from "../pages/AccountLanding";
 
@@ -8,7 +8,7 @@ const Login = () => {
     const [last_name, setlname] = useState("");
     const [error, setError] = useState(null);
     const { user, setUser } = useUserContext();
-    const navigate = useNavigate();
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -40,6 +40,7 @@ const Login = () => {
             console.log("Welcome, youre signed in");
         } else {
             setError(json.error);
+            console.log(error)
         }
     };
 

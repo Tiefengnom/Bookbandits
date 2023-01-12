@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Link, NavLink, useNavigate} from "react-router-dom"
+import { NavLink, useNavigate} from "react-router-dom"
 import { useUserContext } from "../hooks/useUserContext"
 //
 
@@ -32,8 +32,6 @@ const SignUp = () => {
             }
         })
         const json = await response.json()
-        
-        const id = json._id
         setUser(json)
         
 
@@ -106,7 +104,7 @@ const SignUp = () => {
                 pathname: `/${user._id}`
         }}  >To your Account</NavLink> }
         
-        <div>{userid}</div>
+        <div>{user.first_name}</div>
     </div>
 
 )

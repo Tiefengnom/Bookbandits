@@ -1,5 +1,5 @@
 import React from "react";
-import Catalogue from "./Catalogue";
+// import Catalogue from "./Catalogue";
 import { useNavigate } from "react-router-dom";
 import "../index.css";
 //right now catalogue is a component in home and a stand-alone page..need to decide
