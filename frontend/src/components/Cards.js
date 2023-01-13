@@ -1,12 +1,16 @@
 import React from "react";
 import logo from '../assets/logo-orange.png'
+import { useNavigate } from "react-router-dom";
 
 function Cards() {
+
+
+    const navigate = useNavigate();
     return (
-        <div className="flex justify-around flex-wrap">
+        <div className="flex justify-around flex-wrap pb-16">
             <div className='cards-home m-4'>
                 <div class='flex justify-center'>
-                    <div class='rounded-lg shadow-lg bg-white p-4 w-[300px]'>
+                    <div class='rounded-lg shadow-lg  hover:bg-white p-4 w-[300px]'  onClick={() => navigate("/signup")}>
                         <a href='#!' className='flex justify-center'>
                             <img
                                 class='rounded-full h-[160px] w-[200px] m-0'
@@ -27,7 +31,7 @@ function Cards() {
 
             <div className='cards-home m-4'>
                 <div class='flex justify-center'>
-                    <div class='rounded-lg shadow-lg bg-white p-4 w-[300px]'>
+                    <div class='rounded-lg shadow-lg p-4  hover:bg-white w-[300px]' onClick={() => navigate("/signup")}>
                         <a href='#!' className='flex justify-center'>
                             <img
                               class='rounded-full h-[160px] w-[200px] m-0'
@@ -48,7 +52,7 @@ function Cards() {
 
             <div className='cards-home m-4'>
                 <div class='flex justify-center'>
-                    <div class='rounded-lg shadow-lg bg-white p-4 w-[300px]'>
+                    <div class='rounded-lg shadow-lg hover:bg-white p-4 w-[300px]' onClick={() => navigate("/catalogue")}>
                         <a href='#!' className='flex justify-center'>
                             <img
                               class='rounded-full h-[160px] w-[200px] m-0'
