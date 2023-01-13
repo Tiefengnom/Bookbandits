@@ -5,6 +5,7 @@ import "../index.css";
 import girl from "../assets/flyer-girl.png";
 import boy from "../assets/flyer-boy.png";
 import Cards from "../components/Cards";
+// import Carousell from "../components/Carousell"
 //right now catalogue is a component in home and a stand-alone page..need to decide
 
 const Home = () => {
@@ -40,12 +41,13 @@ const Home = () => {
             {/* <div className='home search flex justify-center '>
                {/* <Catalogue /> */}
             {/* </div> */}
-            <div className='bg-white w-screen text-center'>
+            <div className='bg-gradient-to-br from-pink-100 to-yellow-200 w-screen text-center'>
                 <div className='w-4/5 m-auto'>
                     <h1 className='text-4xl m-0 p-24'>How it works</h1>
                     <Cards />
                 </div>
             </div>
+            {/* <Carousell/> */}
         </div>
     );
 };

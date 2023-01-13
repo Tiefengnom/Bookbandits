@@ -157,11 +157,11 @@ function Catalogue() {
                             {searchedBooks &&
                                 searchedBooks.map((book) => (
                                     <div className='book-card p-4 m-4 bg-white  shadow-lg rounded  transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 w-72 text-center'>
-                                        <img
+                                        <Link to={`/catalogue/${book._id}`}><img
                                             src={book.image ? book.image : Book}
                                             alt='book cover'
                                             className='w-[150px] m-auto py-6'
-                                        />
+                                        /></Link> 
                                         <strong>
                                             {" "}
                                             <h3 key={book._id}>{book.title}</h3>{" "}
@@ -186,11 +186,11 @@ function Catalogue() {
                             {books &&
                                 books.map((book) => (
                                     <div className='book-card p-4 m-4 bg-white  shadow-lg rounded  transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 w-72 text-center'>
-                                        <img
+                                        <Link to={`/catalogue/${book._id}`}> <img
                                             src={book.image ? book.image : Book}
                                             alt='book cover'
                                             className='w-[150px] m-auto '
-                                        />
+                                        /></Link>
                                         <strong>
                                             {" "}
                                             <h3 key={book._id}>{book.title}</h3>{" "}
