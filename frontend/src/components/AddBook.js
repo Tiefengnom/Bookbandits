@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useUserContext } from "../hooks/useUserContext";
 import Select from "react-select";
 import { BarcodeScanner } from "./BarcodeScanner";
-import BookIcon from "../assets/book-icon.png";
+import Book from "../assets/book-open.png";
 
 const options = [
     { value: "new", label: "new" },
@@ -127,7 +127,7 @@ function AddBook() {
                                           <strong>Description:</strong> {b.volumeInfo.description}
                                       </p>
                                       <img
-                                          src={b.volumeInfo.imageLinks?.smallThumbnail || BookIcon}
+                                          src={b.volumeInfo.imageLinks?.smallThumbnail || Book}
                                           alt='book thumbnail'
                                       />
                                       <form

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useUserContext } from "../hooks/useUserContext";
 import DeleteBook from "./DeleteBook";
-import Logo from "../assets/logo-orange.png";
+import Book from "../assets/book-open.png";
 
 
 function MyBooks() {
@@ -36,7 +36,7 @@ function MyBooks() {
 								return (
 									<div className="book-card mb-2 bg-white p-5 shadow-lg rounded transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 w-72 mb-6">
 										<div>
-										<img src={b.image? b.image : Logo} className="w-[100px] m-auto" alt='book-cover'/> </div>
+										<img src={b.image? b.image : Book} className="w-[100px] m-auto" alt='book-cover'/> </div>
 										<p key={b._id}>	
 											<strong>Title:</strong> {b.title}
 										</p>

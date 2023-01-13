@@ -3,7 +3,7 @@ import { Outlet, Link } from "react-router-dom";
 import "../index.css";
 
 import Checklist from "../components/Checklist";
-import Logo from "../assets/logo-orange.png";
+import Book from "../assets/book-open.png";
 // import Switch from "../components/Switch";
 
 //values are static so they dont need to be inside the component function because theyx dont need to be recalculated every time. performance reasons.
@@ -91,11 +91,10 @@ function Catalogue() {
     };
 
     return (
-        <div >
+        <div>
             <div>
                 <div>
                     <div className='catalogue w-full pt-12 px-4 lg:flex lg:justify-center md:align-center'>
-                      
                         <div className='checklist p-4 flex justify-center'>
                             <Checklist
                                 options={languages}
@@ -108,8 +107,8 @@ function Catalogue() {
                             <Checklist options={genres} placeholder='Select genre' setSelectedOption={setGenre} />
                         </div>
 
-                        <form onSubmit={handleSubmit} className="checklist p-4 flex justify-center">
-                            <span className="h-fit">
+                        <form onSubmit={handleSubmit} className='checklist p-4 flex justify-center'>
+                            <span className='h-fit'>
                                 <input
                                     onChange={(e) => setSearch(e.target.value)}
                                     placeholder='Search...'
@@ -127,7 +126,7 @@ function Catalogue() {
                                         xmlns='http://www.w3.org/2000/svg'
                                         viewBox='0 0 512 512'>
                                         <path
-                                            fill='currentColor'
+                                            fill='white'
                                             d='M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z'></path>
                                     </svg>
                                 </button>
@@ -144,7 +143,7 @@ function Catalogue() {
       /> */}
 
                     <div className='p-2  bg-orange-50 bg-opacity-20 w-fit  rounded-sm'>
-                        <div className="p-2 m-auto">
+                        <div className='p-2 m-auto'>
                             {searchedBooks === null ? (
                                 <div></div>
                             ) : searchedBooks.length === 0 ? (
@@ -157,22 +156,38 @@ function Catalogue() {
                         <div className='searchedBooks Books p-4 md:flex md:justify-center md:flex-wrap'>
                             {searchedBooks &&
                                 searchedBooks.map((book) => (
-                                    <div className='book-card m-4 bg-white p-3 shadow-lg rounded transition-colors border-b-2 border-transparent hover:border-pink-500 text-gray-700 w-72'>
-                                        <h3 key={book._id}>{book.title}</h3>
+                                    <div className='book-card p-4 m-4 bg-white  shadow-lg rounded  transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 w-72 text-center'>
+                                        <img
+                                            src={book.image ? book.image : Book}
+                                            alt='book cover'
+                                            className='w-[150px] m-auto py-6'
+                                        />
+                                        <strong>
+                                            {" "}
+                                            <h3 key={book._id}>{book.title}</h3>{" "}
+                                        </strong>
+
                                         <p>{book.author}</p>
-                                        <p className='hover:text-pink-500'>
-                                            <Link to={`/catalogue/${book._id}`}>More Info</Link>
+                                        <p>Language: {book.language}</p>
+
+                                        <p>
+                                            <p>Available: {book.borrowed ? <span>No</span> : <span>Yes</span>}</p>
+                                            <p className='hover:text-pink-600'>
+                                                <Link to={`/catalogue/${book._id}`}><button className=' bg-white bg-opacity-60 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
+                                                        More info
+                                                    </button></Link>
+                                            </p>
                                         </p>
                                     </div>
                                 ))}
                         </div>
-                        <h2 className='text-2xl mb-3 p-4'>Complete List of Books</h2>
+                        <h2 className='text-2xl mb-3 p-4'>All Books</h2>
                         <div className='Books p-4 md:flex md:justify-center md:flex-wrap'>
                             {books &&
                                 books.map((book) => (
                                     <div className='book-card p-4 m-4 bg-white  shadow-lg rounded  transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 w-72 text-center'>
                                         <img
-                                            src={book.image ? book.image : Logo}
+                                            src={book.image ? book.image : Book}
                                             alt='book cover'
                                             className='w-[150px] m-auto '
                                         />
@@ -187,7 +202,12 @@ function Catalogue() {
                                         <p>
                                             <p>Available: {book.borrowed ? <span>No</span> : <span>Yes</span>}</p>
                                             <p className='hover:text-pink-600'>
-                                                <Link to={`/catalogue/${book._id}`}>More info</Link>
+                                                <Link to={`/catalogue/${book._id}`}>
+                                                    {" "}
+                                                    <button className=' bg-white bg-opacity-60 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
+                                                        More Info
+                                                    </button>
+                                                </Link>
                                             </p>
                                         </p>
                                     </div>
