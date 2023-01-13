@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useUserContext } from "../hooks/useUserContext";
 import DeleteBook from "./DeleteBook";
 import Book from "../assets/book-open.png";
-import SingleBook from "./SingleBook"
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 
 function MyBooks() {
@@ -60,6 +60,11 @@ function MyBooks() {
 										<p>
 											<strong>Available:</strong> {b.borrowed ? <span> No</span> : <span>Yes</span>}
 										</p>
+										<p className='hover:text-pink-600'>
+                                                <Link to={`/catalogue/${b._id}`}><button className=' bg-white bg-opacity-60 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
+                                                        More info
+                                                    </button></Link>
+                                            </p>
 										<p>
 											{b.borrowed && <span>Borrowed by User-id</span>}
 										</p>
