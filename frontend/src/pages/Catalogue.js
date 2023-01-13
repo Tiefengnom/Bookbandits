@@ -35,7 +35,7 @@ function Catalogue() {
     const [error, setError] = useState(null);
     const [language, setLanguage] = useState("");
     const [genre, setGenre] = useState("");
-    const [availability, setAvailability] = useState(false);
+    // const [availability, setAvailability] = useState(false);
     const [searchValidation, setSearchValidation] = useState(false);
 
     //LATER
@@ -72,10 +72,10 @@ function Catalogue() {
 
         const response = await fetch("http://localhost:4000/bookbandits/collection", {
             method: "POST",
-            body: JSON.stringify({ query: search, language: language, availability: availability }),
+            body: JSON.stringify({ query: search, language: language, genre: genre }),
             headers: {
                 "Access-Control-Allow-Origin": "*",
-                "Content-Type": "application/json",
+                "Content-Type": "application/json",    
             },
         });
         const json = await response.json();
