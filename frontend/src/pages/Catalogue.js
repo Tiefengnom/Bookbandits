@@ -35,7 +35,7 @@ function Catalogue() {
     const [error, setError] = useState(null);
     const [language, setLanguage] = useState("");
     const [genre, setGenre] = useState("");
-    const [availability, setAvailability] = useState(false);
+    // const [availability, setAvailability] = useState(false);
     const [searchValidation, setSearchValidation] = useState(false);
 
     //LATER
@@ -72,10 +72,10 @@ function Catalogue() {
 
         const response = await fetch("http://localhost:4000/bookbandits/collection", {
             method: "POST",
-            body: JSON.stringify({ query: search, language: language, availability: availability }),
+            body: JSON.stringify({ query: search, language: language, genre: genre }),
             headers: {
                 "Access-Control-Allow-Origin": "*",
-                "Content-Type": "application/json",
+                "Content-Type": "application/json",    
             },
         });
         const json = await response.json();
@@ -157,11 +157,11 @@ function Catalogue() {
                             {searchedBooks &&
                                 searchedBooks.map((book) => (
                                     <div className='book-card p-4 m-4 bg-white  shadow-lg rounded  transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 w-72 text-center'>
-                                        <img
+                                        <Link to={`/catalogue/${book._id}`}><img
                                             src={book.image ? book.image : Book}
                                             alt='book cover'
                                             className='w-[150px] m-auto py-6'
-                                        />
+                                        /></Link> 
                                         <strong>
                                             {" "}
                                             <h3 key={book._id}>{book.title}</h3>{" "}
@@ -186,11 +186,11 @@ function Catalogue() {
                             {books &&
                                 books.map((book) => (
                                     <div className='book-card p-4 m-4 bg-white  shadow-lg rounded  transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 w-72 text-center'>
-                                        <img
+                                        <Link to={`/catalogue/${book._id}`}> <img
                                             src={book.image ? book.image : Book}
                                             alt='book cover'
                                             className='w-[150px] m-auto '
-                                        />
+                                        /></Link>
                                         <strong>
                                             {" "}
                                             <h3 key={book._id}>{book.title}</h3>{" "}
