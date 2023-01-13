@@ -35,7 +35,10 @@ type: Boolean
 },
 image: {
     type: String
-} 
+},
+btime: {
+    type: String
+}
 
 
 }, {timestamps: true})

@@ -73,7 +73,7 @@ const getBooks = async (req,res) => {
 
        // rent and update a book
   
-  const updateBook = async (req,res) => {
+  const updateBook = async (req,res, next) => {
   
     const {id} = req.params
     console.log(req.body)
@@ -91,7 +91,7 @@ const getBooks = async (req,res) => {
         }
    
      res.status(200).json({book})
-    
+    next()
     }
   
   //Search books by title, author, category and synopsis (global search)

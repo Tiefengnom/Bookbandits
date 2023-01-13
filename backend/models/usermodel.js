@@ -25,7 +25,16 @@ ref: "Book"
 },
 mail: {
     type: String
-}
+},
+bbooks : [
+     {
+        title : String,
+        book_id : mongoose.Schema.Types.ObjectId,
+        btime : String
+    }
+]
+
+    
 
 
 
