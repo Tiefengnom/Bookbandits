@@ -65,7 +65,7 @@ function Catalogue() {
         e.preventDefault();
         console.log(search);
         setSearchValidation(false);
-        if (!search && !availability && !language) {
+        if (!search && !genre && !language) {
             setSearchValidation(true);
             return;
         }
