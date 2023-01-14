@@ -3,11 +3,13 @@ import { useUserContext } from "../hooks/useUserContext";
 import DeleteBook from "./DeleteBook";
 import Book from "../assets/book-open.png";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useUBContext } from "../hooks/useUBContext";
 
 
 function MyBooks() {
 	const [books, setBooks] = useState(null);
 	const {user} = useUserContext()
+	const {bBooks,setbBooks} = useUBContext()
 
 	useEffect(() => {
 		const fetchBooks = async () => {
