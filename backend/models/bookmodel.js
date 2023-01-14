@@ -35,7 +35,13 @@ type: Boolean
 },
 image: {
     type: String
-} 
+},
+btime: {
+    type: String
+},
+borrower : {
+    type: mongoose.Schema.Types.ObjectId
+}
 
 
 }, {timestamps: true})

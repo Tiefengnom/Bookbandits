@@ -50,8 +50,66 @@ async function signUser(req, res) {
      }
  }
  
+ const UpdateUser = async (req,res,next) => {
+   const {id} = req.params
+   const {owner,btime,title,borrower} = req.body
+
+   if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(404).json({error: "No such user"})
+   }
+
+   const user = await User.findOneAndUpdate({_id: owner}, {
+   $push: {bbooks: {btime,title,book_id: id,borrower}}
+
+   })
+
+   if(!user) {
+      return res.status(404).json({error: "No such user"})
+      }
+     next()
+
+ }
+
+ const RentUser = async (req,res) => {
+   const {id} = req.params
+   const {borrower,btime,title} = req.body
+
+   if (!mongoose.Types.ObjectId.isValid(borrower)) {
+      return res.status(404).json({error: "No such user"})
+   }
+
+   const user = await User.findOneAndUpdate({_id: borrower}, {
+      $push: {rbooks: {btime,title,book_id: id}}
+   
+      })
+
+      if(!user) {
+         return res.status(404).json({error: "No such user"})
+         }
+        
+
+ }
+
+ const updateBook = async (req,res, next) => {
+  
+   const {id} = req.params
+   console.log(req.body)
  
- 
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+       return res.status(404).json({error: "No such book"})
+    }
+    
+    const book = await Book.findOneAndUpdate({_id: id}, {
+    ...req.body
+    })
+   
+    if(!book) {
+       return res.status(404).json({error: "No such book"})
+       }
+  
+    res.status(200).json({book})
+   next()
+   }
  
  
  //End User
@@ -62,4 +120,6 @@ async function signUser(req, res) {
      createUser,
      getUser,
      signUser,
+     UpdateUser,
+     RentUser
       };

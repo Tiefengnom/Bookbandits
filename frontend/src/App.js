@@ -11,6 +11,7 @@ import Catalogue from "./pages/Catalogue";
 import SingleBook from "./components/SingleBook";
 import SignUp from "./components/SignUp";
 import Logout from "./components/Logout";
+import "react-datetime/css/react-datetime.css"
 
 function App() {
 	
@@ -54,6 +55,7 @@ function App() {
 						<Route
 							path="/logout"  element={<Logout />}
 						/>
+						
 						<Route
 							path="/login"		element={<Login />}
 						/>
