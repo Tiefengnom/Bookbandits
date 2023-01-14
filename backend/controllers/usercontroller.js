@@ -50,7 +50,7 @@ async function signUser(req, res) {
      }
  }
  
- const UpdateUser = async (req,res) => {
+ const UpdateUser = async (req,res,next) => {
    const {id} = req.params
    const {owner,btime,title} = req.body
 
@@ -66,7 +66,27 @@ async function signUser(req, res) {
    if(!user) {
       return res.status(404).json({error: "No such user"})
       }
-     
+     next()
+
+ }
+
+ const RentUser = async (req,res) => {
+   const {id} = req.params
+   const {borrower,btime,title} = req.body
+
+   if (!mongoose.Types.ObjectId.isValid(borrower)) {
+      return res.status(404).json({error: "No such user"})
+   }
+
+   const user = await User.findOneAndUpdate({_id: borrower}, {
+      $push: {rbooks: {btime,title,book_id: id}}
+   
+      })
+
+      if(!user) {
+         return res.status(404).json({error: "No such user"})
+         }
+        
 
  }
 
@@ -100,5 +120,6 @@ async function signUser(req, res) {
      createUser,
      getUser,
      signUser,
-     UpdateUser
+     UpdateUser,
+     RentUser
       };

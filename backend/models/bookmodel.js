@@ -38,6 +38,9 @@ image: {
 },
 btime: {
     type: String
+},
+borrower : {
+    type: mongoose.Schema.Types.ObjectId
 }
 
 

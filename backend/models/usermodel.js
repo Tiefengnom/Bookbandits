@@ -32,9 +32,14 @@ bbooks : [
         book_id : mongoose.Schema.Types.ObjectId,
         btime : String
     }
-]
-
-    
+],
+rbooks : [
+    {
+    title : String,
+        book_id : mongoose.Schema.Types.ObjectId,
+        btime : String
+    }]
+  
 
 
 
