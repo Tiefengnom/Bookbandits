@@ -22,7 +22,7 @@ const {
     updateBook,
     getUserBooks,
     searchBooks,
-    getBooksByLanguage
+    //getBooksByLanguage
 }               = require("../controllers/bookcontroller.js")
 
 
@@ -53,9 +53,9 @@ router.get("/collection", getBooks)
 
 router.post("/collection", searchBooks)
 
-router.get("/collection/search/:query", searchBooks)
+// router.get("/collection/search/:query", searchBooks)
 
-router.get("/collection/language/:language", getBooksByLanguage)
+// router.get("/collection/language/:language", getBooksByLanguage)
 
 router.post("/login", signUser)
 

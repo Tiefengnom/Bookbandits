@@ -21,9 +21,9 @@ const languages = [
 
 const genres = [
     { value: "", label: "none" },
-    { value: "crime", label: "crime" },
+    { value: "drama", label: "drama" },
     { value: "romance", label: "romance" },
-    { value: "mystery", label: "mystery" },
+    { value: "fiction", label: "fiction" },
     { value: "fantasy", label: "fantasy" },
     { value: "adventure", label: "adventure" },
 ];
