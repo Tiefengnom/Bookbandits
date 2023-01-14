@@ -62,7 +62,7 @@ function MyBooks() {
 										</p>
 										<p className='hover:text-pink-600'>
                                                 <Link to={`/catalogue/${b._id}`}><button className=' bg-white bg-opacity-60 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
-                                                        More info
+                                                        More info and booking
                                                     </button></Link>
                                             </p>
 										<p>
