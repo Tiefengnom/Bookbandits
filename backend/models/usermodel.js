@@ -30,14 +30,16 @@ bbooks : [
      {
         title : String,
         book_id : mongoose.Schema.Types.ObjectId,
-        btime : String
+        btime : String,
+        borrower : mongoose.Schema.Types.ObjectId
     }
 ],
 rbooks : [
     {
     title : String,
         book_id : mongoose.Schema.Types.ObjectId,
-        btime : String
+        btime : String,
+        owner : mongoose.Schema.Types.ObjectId
     }]
   
 

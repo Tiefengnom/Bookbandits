@@ -52,14 +52,14 @@ async function signUser(req, res) {
  
  const UpdateUser = async (req,res,next) => {
    const {id} = req.params
-   const {owner,btime,title} = req.body
+   const {owner,btime,title,borrower} = req.body
 
    if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(404).json({error: "No such user"})
    }
 
    const user = await User.findOneAndUpdate({_id: owner}, {
-   $push: {bbooks: {btime,title,book_id: id}}
+   $push: {bbooks: {btime,title,book_id: id,borrower}}
 
    })
 
