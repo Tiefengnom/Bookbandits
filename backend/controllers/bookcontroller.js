@@ -94,6 +94,21 @@ const getBooks = async (req,res) => {
     next()
     }
   
+    //change, that a rquested book is not given
+
+    const denybook = async (req,res) => {
+        const {borrowed} = req.body
+
+        const book = await Book.findOneAndUpdate({})
+
+
+    }
+
+
+
+
+
+
   //Search books by title, author, category and synopsis (global search)
   const searchBooks = async (req, res) => {
       try {

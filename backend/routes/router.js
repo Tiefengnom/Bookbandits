@@ -63,6 +63,8 @@ router.get("/:userid/user_collection", getUserBooks)
 
 router.get("/:userid", getUser)
 
+router.post("/:userid", )
+
 router.get("/collection/:id", getBook)
 
 router.post("/collection/:id", updateBook, UpdateUser, RentUser )

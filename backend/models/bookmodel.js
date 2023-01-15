@@ -41,6 +41,9 @@ btime: {
 },
 borrower : {
     type: mongoose.Schema.Types.ObjectId
+},
+pending: {
+    type: Boolean
 }
 
 
