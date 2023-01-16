@@ -37,11 +37,12 @@ async function signUser(req, res) {
  
  //create a new user
  const createUser = async (req,res) => {
-  const {first_name,last_name,Adress,PLZ,mail,password} = req.body
+  const {first_name,last_name,email,Adress,PLZ,mail,password} = req.body
  
      
   try    {
-         const user = await User.create({first_name,last_name,Adress,PLZ,mail,password})
+         const user = await User.signup(first_name,last_name,Adress,PLZ, mail, email,password )
+        
          res.status(200).json(user)
          }
   catch (error) {

@@ -1,17 +1,17 @@
 const mongoose = require("mongoose")
 const bcrypt = require("bcrypt")
-const { UserContext } = require("../../frontend/src/context/Usercontext")
+
 
 const Schema = mongoose.Schema
 
 const userSchema = new Schema({
 first_name: {
 type: String,
-required : true
+
 },
 last_name: {
 type: String,
-required : true
+
 },
 email : {
 type: String,
@@ -20,11 +20,11 @@ unique: true
 },
 Adress: {
     type: String,
-    required: true
+    
 },
 PLZ: {
     type: Number,
-    required: true
+    
 },
 mail: {
     type: String
@@ -58,7 +58,7 @@ rbooks : [
 }, {timestamps: true})
 
 // static signup method
-userSchema.statics.signup = async (email,password) => {
+userSchema.statics.signup = async function(first_name,last_name,Adress,PLZ, mail, email, password)  {
 
     const exists = await this.findOne({email})
 
@@ -70,7 +70,7 @@ const salt = await bcrypt.genSalt(10)
 
 const hash = await bcrypt.hash(password, salt)
 
-const user = await this.create({email, password: hash })
+const user = await this.create({first_name,last_name,Adress,PLZ, mail, email, password: hash })
 
 return user
 }
