@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 const bcrypt = require("bcrypt")
+const validator = require("validator")
 
 
 const Schema = mongoose.Schema
@@ -59,6 +60,18 @@ rbooks : [
 
 // static signup method
 userSchema.statics.signup = async function(first_name,last_name,Adress,PLZ, mail, email, password)  {
+
+    //validation
+    if(!email || !password || !first_name || !last_name || !Adress || !PLZ  ) {
+        throw Error("All fields must be filled")
+    }
+    if(!validator.isEmail(email)) {
+        throw Error("Email is not valid")
+    }
+    if (!validator.isStrongPassword(password)) {
+        throw Error("Password not strong enough")
+    }
+
 
     const exists = await this.findOne({email})
 
