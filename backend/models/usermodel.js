@@ -62,7 +62,7 @@ rbooks : [
 userSchema.statics.signup = async function(first_name,last_name,Adress,PLZ, mail, email, password)  {
 
     //validation
-    if(!email || !password || !first_name || !last_name || !Adress || !PLZ  ) {
+    if(!email || !password || !first_name || !last_name || !Adress || !PLZ   ) {
         throw Error("All fields must be filled")
     }
     if(!validator.isEmail(email)) {
