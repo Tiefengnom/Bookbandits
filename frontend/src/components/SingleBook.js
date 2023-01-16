@@ -49,7 +49,7 @@ function SingleBook() {
                 <p>Language: {fetchedBook.language}</p> 
                 <p>Available now? </p> {fetchedBook.borrowed ? <span>No</span> : <span>Yes</span> }</div> 
                 <div className="max-w-xl p-4 md:pl-10">
-                <p className="text-left mt-8 md:mt-0">{fetchedBook.synopsis}</p> 
+                <p className="text-left mt-8 md:mt-0 border-b-2 border-pink-600 pb-8">{fetchedBook.synopsis}</p> 
                 {/* <p>{fetchedBook.owner}</p> */}
                
               
@@ -85,11 +85,11 @@ function SingleBook() {
                         </button>
                     )
                 ) : (
-                    <button className=' bg-white bg-opacity-90 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
+                    <p className="pt-8">
                         {" "}
                         You have borrowed this book until {fetchedBook.btime.slice(8, 10)}.{fetchedBook.btime.slice(5, 7)}.
                         {fetchedBook.btime.slice(0, 4)}{" "}
-                    </button>
+                    </p>
                     
                 )}
                 {user._id &&  <button

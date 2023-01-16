@@ -95,7 +95,7 @@ function AddBook() {
     };
 
     return (
-        <div>
+        <div className=' mb-2 bg-white p-3 shadow-lg rounded transition-colors border-b-2 border-transparent md:w-5/6 lg:max-w-screen-3xl m-auto'>
             <button onClick={(e) => setStartScan(true)}  className='mt-6 mb-6 mr-4 inline-block px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out m-2'>Scan</button>
             <button onClick={(e) => setStartScan(false)} className=' bg-white bg-opacity-90 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer m-2'>Stop Scan</button>
             {startScan && <BarcodeScanner setSearchKey={setSearchKey} />}
