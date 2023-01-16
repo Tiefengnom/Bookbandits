@@ -46,7 +46,7 @@ const navigate=useNavigate()
                 Book Details:
                 <h3 onClick={(e) => console.log(fetchedBook.btime)}>{fetchedBook.title}</h3>
                 <p>{fetchedBook.author}</p>
-                <p onClick={(e) => console.log(fetchedBook.btime)}>{fetchedBook.language}</p>
+                <p >{fetchedBook.language}</p>
                 <p>{fetchedBook.owner}</p>
                 <img src={fetchedBook.image} alt='book cover' />
                 <button

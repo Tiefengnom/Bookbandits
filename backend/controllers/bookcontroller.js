@@ -1,4 +1,5 @@
 const Book = require("../models/bookmodel")
+const User = require("../models/usermodel")
 const mongoose = require("mongoose")
 
 const getBooks = async (req,res) => {
@@ -25,11 +26,13 @@ const getBooks = async (req,res) => {
    
    //create a new book
    const createBook = async (req,res,next) => {
-    const {title,author,synopsis,language,state,owner,category,borrowed,image} = req.body
+    const {title,author,synopsis,language,state,owner,category,borrowed,image,pending} = req.body
    let id = ""
        
     try  {
-         const book = await Book.create({title,author,synopsis,state,language,owner,category,borrowed,image})
+         const book = await Book.create({title,author,synopsis,state,language,owner,category,borrowed,image,pending})
+         
+         
          
          res.status(200).json(book)
                      
@@ -94,6 +97,55 @@ const getBooks = async (req,res) => {
     next()
     }
   
+    //change, that a rquested book is not given
+
+    const denyBook = async (req,res) => {
+        const {borrowed,bid} = req.body
+
+        if (!mongoose.Types.ObjectId.isValid(bid)) {
+            return res.status(404).json({error: "No such book"})
+         }
+
+        const book = await Book.findOneAndUpdate({_id:bid}, {
+            borrowed: false,
+            borrower:""
+        })
+
+        if(!book) {
+            return res.status(404).json({error: "No such book"})
+            }
+
+            res.status(200).json({book})
+            
+
+    }
+
+    const lentBook = async (req,res) => {
+        const {bid} = req.body
+
+ if (!mongoose.Types.ObjectId.isValid(bid)) {
+            return res.status(404).json({error: "No such book"})
+         }
+
+         const book = await Book.findOneAndUpdate({_id:bid}, {
+            pending : true
+        })
+
+        if(!book) {
+            return res.status(404).json({error: "No such book"})
+            }
+
+            res.status(200).json({book})
+
+
+    }
+
+
+
+
+
+
+
   //Search books by title, author, category and synopsis (global search)
   const searchBooks = async (req, res) => {
       try {
@@ -157,5 +209,7 @@ const getBooks = async (req,res) => {
     updateBook,
     getUserBooks,
     searchBooks,
-    getBooksByLanguage
+    getBooksByLanguage,
+    denyBook,
+    lentBook
 };

@@ -19,13 +19,11 @@ PLZ: {
     type: Number,
     required: true
 },
-Books: {
-    type: mongoose.Schema.Types.ObjectId, 
-ref: "Book"
-},
+
 mail: {
     type: String
 },
+// bbooks is the books somebody has lent out to other people
 bbooks : [
      {
         title : String,
@@ -34,13 +32,19 @@ bbooks : [
         borrower : mongoose.Schema.Types.ObjectId
     }
 ],
+//rbooks is the books the user hat rented from other users
 rbooks : [
     {
     title : String,
         book_id : mongoose.Schema.Types.ObjectId,
         btime : String,
         owner : mongoose.Schema.Types.ObjectId
-    }]
+    }],
+    Books : {
+        book_id: mongoose.Schema.Types.ObjectId,
+        
+    }
+    
   
 
 

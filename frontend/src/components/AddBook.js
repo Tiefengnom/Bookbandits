@@ -69,6 +69,7 @@ function AddBook() {
 			state: bookState.value,
 			owner: user._id,
 			borrowed: false,
+            pending: false,
             image: data.imageLinks.smallThumbnail || "none"
 
 		};

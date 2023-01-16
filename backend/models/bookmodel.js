@@ -40,7 +40,11 @@ btime: {
     type: String
 },
 borrower : {
-    type: mongoose.Schema.Types.ObjectId
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+},
+pending: {
+    type: Boolean
 }
 
 

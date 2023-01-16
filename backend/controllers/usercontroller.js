@@ -8,9 +8,9 @@ const mongoose = require("mongoose")
 
 async function signUser(req, res) {
 
-    const { first_name, last_name } = req.body
+    const { first_name, last_name, password } = req.body
  
-    const user = await User.findOne({ first_name: first_name, last_name: last_name })
+    const user = await User.findOne({ first_name: first_name, last_name: last_name/*,password :password*/ })
  
     if (!user) {
        return res.status(400).json({ error: "No such user" })
@@ -37,11 +37,11 @@ async function signUser(req, res) {
  
  //create a new user
  const createUser = async (req,res) => {
-  const {first_name,last_name,Adress,PLZ,mail} = req.body
+  const {first_name,last_name,Adress,PLZ,mail,password} = req.body
  
      
   try    {
-         const user = await User.create({first_name,last_name,Adress,PLZ,mail})
+         const user = await User.create({first_name,last_name,Adress,PLZ,mail,password})
          res.status(200).json(user)
          }
   catch (error) {
@@ -50,6 +50,22 @@ async function signUser(req, res) {
      }
  }
  
+const Bookentry = async (req,res,next) => {
+const {id} = req.params
+
+if (!mongoose.Types.ObjectId.isValid(id)) {
+   return res.status(404).json({error: "No such user"})
+}
+
+const user = await User.findOneAndUpdate({_id: id}, {
+   $push: {Books: {btime,title,book_id: id,borrower}}
+
+   })
+
+
+}
+
+
  const UpdateUser = async (req,res,next) => {
    const {id} = req.params
    const {owner,btime,title,borrower} = req.body

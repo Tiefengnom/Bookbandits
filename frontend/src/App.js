@@ -55,6 +55,7 @@ function App() {
 						<Route
 							path="/logout"  element={<Logout />}
 						/>
+						<Route path="/user_collection" element={<MyBooks />}/>
 						
 						<Route
 							path="/login"		element={<Login />}
