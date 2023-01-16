@@ -62,7 +62,7 @@ const AccountLanding = () => {
                         ))}
 
                     </div>
-                    <p>Books which you currently burrowed from others</p>
+                    <p>Borrowed by you</p>
                     {rentbooks.map((b) => (
                             <div key={b._id}>
                             <div>{b.title}</div>

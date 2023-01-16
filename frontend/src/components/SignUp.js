@@ -57,25 +57,25 @@ const SignUp = () => {
   return (
    
     
-    <div className = "Signin mt-20 bg-gradient-to-br from-yellow-500 to-pink-600 h-full " >
+    <div className = "Signin mt-20 h-full " >
         {!user ? <form className="signin" onSubmit={handleSubmit}>
-            <label>first_name</label>
+            <label>First Name</label>
             <input type= "text"
                 onChange={(e) => setfname(e.target.value)}
                 value={first_name}   className=" text-orange-700 bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm  transition-colors placeholder-white placeholder-opacity-50 m-2" />
 
            
-            <label>last_name</label>
+            <label>Last Name</label>
             <input type= "text"
                 onChange={(e) => setlname(e.target.value)}
                 value={last_name}      className=" text-orange-700 bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"   />
 
-            <label>Adress</label>
+            <label>Address</label>
             <input type= "text"
                 onChange={(e) => setAdress(e.target.value)}
                 value={Adress}  className=" text-orange-700 bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"  />
 
-            <label>PLZ</label>
+            <label>Postal Code</label>
             <input type= "text"
                 onChange={(e) => setPLZ(e.target.value)}
                 value={PLZ}  className=" text-orange-700 bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"  />
@@ -88,15 +88,15 @@ const SignUp = () => {
 
            
                 <div>    
-                <label> Mail
-                <input
+                <label> Are you willing to send your books per mail?
+                <input className="px-2"
                     type="radio"
                     name="radio-group"
                     value="Yes"
                     onClick={(e) => {setMail(e.target.value); console.log(e.target.value)}}
                   // 
                   className=" bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"/>
-                    <span>Yes</span>
+                    <span >Yes</span>
             </label>   
             <label>
                 <input
@@ -106,11 +106,12 @@ const SignUp = () => {
                 defaultChecked
                 
                 onClick={(e) => setMail(e.target.value)}
-                />
+                className="m-2"/>
                 <span>No</span>
             </label>
             </div>
-            <button  class="mr-4 inline-block px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out">Sign Up</button>
+            <div className="flex justify-center pt-2">
+                <button type='submit' className=' bg-white bg-opacity-60 px-6 py-2 w-fit font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer m-2' >Sign up</button> </div>
         </form> :
             
         <NavLink to={{
@@ -119,8 +120,8 @@ const SignUp = () => {
         
         }
         
-        <button onClick={console.log(user)}>Hello</button>
-        <div>{user.first_name}</div>
+        {/* <button onClick={console.log(user)}>Hello</button>
+        <div>{user.first_name}</div> */}
     </div>
 
 )

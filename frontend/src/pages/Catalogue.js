@@ -115,7 +115,8 @@ function Catalogue() {
                                     className=' bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-80 w-[270px] m-0 mr-4'
                                 />
 
-                                <button type='submit' className='inline-block transition duration-150 ease-in-out'>
+                                <button type='submit' className=' bg-white bg-opacity-60 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
+                                    <p>Apply Filters</p>
                                     <svg
                                         aria-hidden='true'
                                         focusable='false'
