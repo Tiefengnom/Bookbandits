@@ -1,4 +1,6 @@
 const mongoose = require("mongoose")
+const bcrypt = require("bcrypt")
+const { UserContext } = require("../../frontend/src/context/Usercontext")
 
 const Schema = mongoose.Schema
 
@@ -11,6 +13,11 @@ last_name: {
 type: String,
 required : true
 },
+email : {
+type: String,
+unique: true
+
+},
 Adress: {
     type: String,
     required: true
@@ -19,7 +26,6 @@ PLZ: {
     type: Number,
     required: true
 },
-
 mail: {
     type: String
 },
@@ -43,13 +49,32 @@ rbooks : [
     Books : {
         book_id: mongoose.Schema.Types.ObjectId,
         
+    },
+    password : {
+        type: String,
     }
     
   
-
-
-
-
 }, {timestamps: true})
+
+// static signup method
+userSchema.statics.signup = async (email,password) => {
+
+    const exists = await this.findOne({email})
+
+    if(exists) {
+        throw Error("Email already in use")
+    }
+
+const salt = await bcrypt.genSalt(10)
+
+const hash = await bcrypt.hash(password, salt)
+
+const user = await this.create({email, password: hash })
+
+return user
+}
+
+
 
 module.exports = mongoose.model("User", userSchema)
