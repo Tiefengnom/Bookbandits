@@ -121,7 +121,7 @@ function Catalogue() {
                                         focusable='false'
                                         data-prefix='fas'
                                         data-icon='search'
-                                        class='w-4'
+                                        className='w-4'
                                         role='img'
                                         xmlns='http://www.w3.org/2000/svg'
                                         viewBox='0 0 512 512'>
@@ -156,7 +156,7 @@ function Catalogue() {
                         <div className='searchedBooks Books p-4 md:flex md:justify-center md:flex-wrap'>
                             {searchedBooks &&
                                 searchedBooks.map((book) => (
-                                    <div className='book-card p-4 m-4 bg-white  shadow-lg rounded  transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 w-72 text-center'>
+                                    <div key={book._id} className='book-card p-4 m-4 bg-white  shadow-lg rounded  transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 w-72 text-center'>
                                         <Link to={`/catalogue/${book._id}`}><img
                                             src={book.image ? book.image : Book}
                                             alt='book cover'
@@ -170,14 +170,14 @@ function Catalogue() {
                                         <p>{book.author}</p>
                                         <p>Language: {book.language}</p>
 
-                                        <p>
+                                        <div>
                                             <p>Available: {book.borrowed ? <span>No</span> : <span>Yes</span>}</p>
                                             <p className='hover:text-pink-600'>
                                                 <Link to={`/catalogue/${book._id}`}><button className=' bg-white bg-opacity-60 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
                                                         More info
                                                     </button></Link>
                                             </p>
-                                        </p>
+                                        </div>
                                     </div>
                                 ))}
                         </div>
@@ -185,7 +185,7 @@ function Catalogue() {
                         <div className='Books p-4 md:flex md:justify-center md:flex-wrap'>
                             {books &&
                                 books.map((book) => (
-                                    <div className='book-card p-4 m-4 bg-white  shadow-lg rounded  transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 w-72 text-center'>
+                                    <div key={book._id} className='book-card p-4 m-4 bg-white  shadow-lg rounded  transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 w-72 text-center'>
                                         <Link to={`/catalogue/${book._id}`}> <img
                                             src={book.image ? book.image : Book}
                                             alt='book cover'
@@ -199,7 +199,7 @@ function Catalogue() {
                                         <p>{book.author}</p>
                                         <p>Language: {book.language}</p>
 
-                                        <p>
+                                        <div>
                                             <p>Available: {book.borrowed ? <span>No</span> : <span>Yes</span>}</p>
                                             <p className='hover:text-pink-600'>
                                                 <Link to={`/catalogue/${book._id}`}>
@@ -209,7 +209,7 @@ function Catalogue() {
                                                     </button>
                                                 </Link>
                                             </p>
-                                        </p>
+                                        </div>
                                     </div>
                                 ))}
                         </div>
