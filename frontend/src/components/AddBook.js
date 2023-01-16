@@ -71,7 +71,6 @@ function AddBook() {
 			borrowed: false,
             pending: false,
             image: data.imageLinks?.smallThumbnail || "none"
-
 		};
 		console.log(book)
 		const response = await fetch("http://localhost:4000/bookbandits/user/create_book", {

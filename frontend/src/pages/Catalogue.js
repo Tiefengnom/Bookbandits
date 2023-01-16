@@ -54,6 +54,7 @@ function Catalogue() {
 
         if (response.ok) {
             setBooks(json);
+            console.log("All books:", json);
         }
     };
 
@@ -82,7 +83,7 @@ function Catalogue() {
 
         if (response.ok) {
             setSearchedBooks(json);
-            console.log(searchedBooks);
+            console.log("searched:", json);
             setError(null);
         } else {
             setError(json.error);
@@ -159,7 +160,7 @@ function Catalogue() {
                                 searchedBooks.map((book) => (
                                     <div key={book._id} className='book-card p-4 m-4 bg-white  shadow-lg rounded  transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 w-72 text-center'>
                                         <Link to={`/catalogue/${book._id}`}><img
-                                            src={book.image ? book.image : Book}
+                                            src={book.image || book.image === 'none' ? book.image : Book}
                                             alt='book cover'
                                             className='w-[150px] m-auto py-6'
                                         /></Link> 
@@ -184,13 +185,13 @@ function Catalogue() {
                         </div>
                         <h2 className='text-2xl mb-3 p-4'>All Books</h2>
                         <div className='Books p-4 md:flex md:justify-center md:flex-wrap'>
-                            {books &&
-                                books.map((book) => (
+                            { books && 
+                                books.map((book) => ( 
                                     <div key={book._id} className='book-card p-4 m-4 bg-white  shadow-lg rounded  transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 w-72 text-center'>
                                         <Link to={`/catalogue/${book._id}`}> <img
-                                            src={book.image ? book.image : Book}
+                                            src={book.image !== "none" ? book.image : Book}
                                             alt='book cover'
-                                            className='w-[150px] m-auto '
+                                            className='w-[150px] m-auto  py-6'
                                         /></Link>
                                         <strong>
                                             {" "}
