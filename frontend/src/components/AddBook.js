@@ -55,8 +55,8 @@ function AddBook() {
 		const data = mybook.volumeInfo;
 		console.log("above return", data);
         !data.categories ? console.log('no categories') : console.log(data.categories)
-        !data.synopsis ? console.log('no description') : console.log(data.synopsis)
-        !data.imageLinks.smallThumbnail ? console.log("no image") : console.log(data.imageLinks.smallThumbnail)
+        !data.description ? console.log('no description') : console.log(data.description)
+        !data.imageLinks?.smallThumbnail ? console.log("no image") : console.log(data.imageLinks.smallThumbnail)
 		// saveToDB(data.title, data.desc)// async and await
 		//connect the selected option in the form to the state in db
 		//add dynamic params to owner
@@ -70,7 +70,7 @@ function AddBook() {
 			owner: user._id,
 			borrowed: false,
             pending: false,
-            image: data.imageLinks.smallThumbnail || "none"
+            image: data.imageLinks?.smallThumbnail || "none"
 
 		};
 		console.log(book)
