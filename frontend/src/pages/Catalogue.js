@@ -113,7 +113,7 @@ function Catalogue() {
                                 <input
                                     onChange={(e) => setSearch(e.target.value)}
                                     placeholder='Search...'
-                                    className=' bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-80 w-[270px] m-0 mr-4'
+                                    className=' bg-white bg-opacity-90 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-gray placeholder-opacity-80 w-[270px] m-0 mr-4'
                                 />
 
                              

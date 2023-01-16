@@ -58,33 +58,33 @@ const SignUp = () => {
   return (
    
     
-    <div className = "Signin mt-20 h-full " >
+    <div className = "Signin mt-20 h-full text-left" >
         {!user ? <form className="signin" onSubmit={handleSubmit}>
             <label>First Name</label>
             <input type= "text"
                 onChange={(e) => setfname(e.target.value)}
-                value={first_name}   className=" bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm  transition-colors placeholder-white placeholder-opacity-50 m-2" />
+                value={first_name}   className=" bg-white bg-opacity-90 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm  transition-colors placeholder-white placeholder-opacity-50 my-2" />
 
            
             <label>Last Name</label>
             <input type= "text"
                 onChange={(e) => setlname(e.target.value)}
-                value={last_name}      className=" bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"   />
+                value={last_name}      className=" bg-white bg-opacity-90 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 my-2"   />
 
             <label>Address</label>
             <input type= "text"
                 onChange={(e) => setAdress(e.target.value)}
-                value={Adress}  className=" bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"  />
+                value={Adress}  className=" bg-white bg-opacity-90 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 my-2"  />
 
             <label>Postal Code</label>
             <input type= "text"
                 onChange={(e) => setPLZ(e.target.value)}
-                value={PLZ}  className="  bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"  />
+                value={PLZ}  className="  bg-white bg-opacity-90 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 my-2"  />
 
             <label>Password</label>
             <input type= "Password"
                 onChange={(e) => setPassword(e.target.value)}
-                value={password}  className=" bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"  />
+                value={password}  className=" bg-white bg-opacity-90 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 my-2"  />
 
 
            
@@ -112,7 +112,7 @@ const SignUp = () => {
             </label>
             </div>
             <div className="flex justify-center pt-2">
-                <button type='submit' className=' bg-white bg-opacity-60 px-6 py-2 w-fit font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer m-2' >Sign up</button> </div>
+                <button type='submit' className=' bg-white bg-opacity-90 px-6 py-2 w-fit font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer m-2' >Sign up</button> </div>
         </form> :
 
         <AccountLanding/>}
