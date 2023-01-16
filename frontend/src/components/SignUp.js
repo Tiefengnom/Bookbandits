@@ -2,6 +2,7 @@ import { useState } from "react"
 import { NavLink, useNavigate} from "react-router-dom"
 import { useUserContext } from "../hooks/useUserContext"
 import { useUBContext } from "../hooks/useUBContext";
+import AccountLanding from "../pages/AccountLanding";
 //
 
 
@@ -50,7 +51,7 @@ const SignUp = () => {
         setError(null)
         
         
-        console.log("Welcome, youre signed in")
+        console.log("Welcome, you are signed in")
      }
     }
 
@@ -113,15 +114,16 @@ const SignUp = () => {
             <div className="flex justify-center pt-2">
                 <button type='submit' className=' bg-white bg-opacity-60 px-6 py-2 w-fit font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer m-2' >Sign up</button> </div>
         </form> :
-            
-        <NavLink to={{
-                pathname: `/${user._id}`
-        }}  >To your Account</NavLink> 
+
+        <AccountLanding/>}
+           
+        {/* // <NavLink to={{
+        //         pathname: `/${user._id}`
+        // }}  >To your Account</NavLink> 
         
-        }
+        // } */}
         
-        {/* <button onClick={console.log(user)}>Hello</button>
-        <div>{user.first_name}</div> */}
+      
     </div>
 
 )
