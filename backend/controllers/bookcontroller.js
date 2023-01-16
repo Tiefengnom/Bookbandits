@@ -1,4 +1,5 @@
 const Book = require("../models/bookmodel")
+const User = require("../models/usermodel")
 const mongoose = require("mongoose")
 
 const getBooks = async (req,res) => {
@@ -31,6 +32,9 @@ const getBooks = async (req,res) => {
     try  {
          const book = await Book.create({title,author,synopsis,state,language,owner,category,borrowed,image})
          
+         const user = await User.findOneAndUpdate({_id :owner}, {
+            $push: {Books: book._id}
+         })
          res.status(200).json(book)
                      
          } 
@@ -96,13 +100,47 @@ const getBooks = async (req,res) => {
   
     //change, that a rquested book is not given
 
-    const denybook = async (req,res) => {
-        const {borrowed} = req.body
+    const denyBook = async (req,res) => {
+        const {borrowed,bid} = req.body
 
-        const book = await Book.findOneAndUpdate({})
+        if (!mongoose.Types.ObjectId.isValid(bid)) {
+            return res.status(404).json({error: "No such book"})
+         }
+
+        const book = await Book.findOneAndUpdate({_id:bid}, {
+            borrowed: false,
+            borrower:""
+        })
+
+        if(!book) {
+            return res.status(404).json({error: "No such book"})
+            }
+
+            res.status(200).json({book})
+            
+
+    }
+
+    const lentBook = async (req,res) => {
+        const {bid} = req.body
+
+ if (!mongoose.Types.ObjectId.isValid(bid)) {
+            return res.status(404).json({error: "No such book"})
+         }
+
+         const book = await Book.findOneAndUpdate({_id:bid}, {
+            pending : true
+        })
+
+        if(!book) {
+            return res.status(404).json({error: "No such book"})
+            }
+
+            res.status(200).json({book})
 
 
     }
+
 
 
 
@@ -172,5 +210,7 @@ const getBooks = async (req,res) => {
     updateBook,
     getUserBooks,
     searchBooks,
-    getBooksByLanguage
+    getBooksByLanguage,
+    denyBook,
+    lentBook
 };

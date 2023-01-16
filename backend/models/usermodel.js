@@ -19,10 +19,10 @@ PLZ: {
     type: Number,
     required: true
 },
-Books: {
+Books: [{
     type: mongoose.Schema.Types.ObjectId, 
 ref: "Book"
-},
+}],
 mail: {
     type: String
 },
@@ -42,7 +42,10 @@ rbooks : [
         book_id : mongoose.Schema.Types.ObjectId,
         btime : String,
         owner : mongoose.Schema.Types.ObjectId
-    }]
+    }],
+    password : {
+        type : String
+    }
   
 
 

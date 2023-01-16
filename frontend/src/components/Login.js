@@ -8,6 +8,7 @@ import { useUBContext } from "../hooks/useUBContext";
 const Login = () => {
     const [first_name, setfname] = useState("");
     const [last_name, setlname] = useState("");
+    const [password,setPassword] = useState("")
     const [error, setError] = useState(null);
     const { user, setUser } = useUserContext();
     const {bBooks, setbBooks} = useUBContext()
@@ -17,7 +18,7 @@ const Login = () => {
         e.preventDefault();
         console.log("submit");
 
-        const userdata = { first_name, last_name };
+        const userdata = { first_name, last_name,password};
 
         const response = await fetch("http://localhost:4000/bookbandits/Login", {
             method: "POST",
@@ -31,11 +32,12 @@ const Login = () => {
 
         const id = json._id;
         setUser(json);
-        setbBooks((prev) => [...prev  , ...json.bbooks])
+        if (!json.bbooks === []) {setbBooks((prev) => [...prev  , ...json.bbooks]) }
 
         if (response.ok) {
             setfname("");
             setlname("");
+            setPassword("")
             setError(null);
           
             console.log(id);
@@ -50,7 +52,7 @@ const Login = () => {
 
     return (
          <div className='login w-full h-screen bg-gradient-to-br from-yellow-500 to-pink-600 pt-12 pb-12 px-4 mt-6 text-black'>
-            {user ? user._id && <AccountLanding /> : <form className='signin' onSubmit={handleSubmit}>
+            {user._id ? user._id && <AccountLanding /> : <form className='signin' onSubmit={handleSubmit}>
                 <label>first_name</label>
                 <input type='text' onChange={(e) => setfname(e.target.value)} value={first_name} />
 
@@ -58,6 +60,11 @@ const Login = () => {
                 <input type='text' onChange={(e) => setlname(e.target.value)} value={last_name} />
 
                 <button type='submit'>Log In</button>
+
+                <label>password</label>
+                <input type='password' onChange={(e) => setPassword(e.target.value)} value={password} />
+
+
             </form>}
             {/* <NavLink
                 to={{

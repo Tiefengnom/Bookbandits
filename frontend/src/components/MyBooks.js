@@ -35,6 +35,7 @@ function MyBooks() {
 			<div className='search-result h-full'>
 				{user._id
 					? books
+					
 						? books.map((b) => {
 								return (
 									<div className="book-card mb-2 bg-white p-5 shadow-lg rounded transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 w-72 mb-6">
@@ -93,6 +94,7 @@ function MyBooks() {
 									</div>
 								);
 						})
+						
 						: "loading info"
 					: "Not logged in"}
 			</div>

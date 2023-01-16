@@ -22,6 +22,8 @@ const {
     updateBook,
     getUserBooks,
     searchBooks,
+    denyBook,
+    lentBook
     //getBooksByLanguage
 }               = require("../controllers/bookcontroller.js")
 
@@ -61,9 +63,11 @@ router.post("/login", signUser)
 
 router.get("/:userid/user_collection", getUserBooks)
 
-router.get("/:userid", getUser)
 
-router.post("/:userid", )
+
+router.post("/:deniedbook", denyBook )
+
+router.post("/:lentbook", lentBook)
 
 router.get("/collection/:id", getBook)
 
