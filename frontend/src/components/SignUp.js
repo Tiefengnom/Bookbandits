@@ -63,28 +63,28 @@ const SignUp = () => {
             <label>First Name</label>
             <input type= "text"
                 onChange={(e) => setfname(e.target.value)}
-                value={first_name}   className=" text-orange-700 bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm  transition-colors placeholder-white placeholder-opacity-50 m-2" />
+                value={first_name}   className=" bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm  transition-colors placeholder-white placeholder-opacity-50 m-2" />
 
            
             <label>Last Name</label>
             <input type= "text"
                 onChange={(e) => setlname(e.target.value)}
-                value={last_name}      className=" text-orange-700 bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"   />
+                value={last_name}      className=" bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"   />
 
             <label>Address</label>
             <input type= "text"
                 onChange={(e) => setAdress(e.target.value)}
-                value={Adress}  className=" text-orange-700 bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"  />
+                value={Adress}  className=" bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"  />
 
             <label>Postal Code</label>
             <input type= "text"
                 onChange={(e) => setPLZ(e.target.value)}
-                value={PLZ}  className=" text-orange-700 bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"  />
+                value={PLZ}  className="  bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"  />
 
             <label>Password</label>
             <input type= "Password"
                 onChange={(e) => setPassword(e.target.value)}
-                value={password}  className=" text-orange-700 bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"  />
+                value={password}  className=" bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"  />
 
 
            
