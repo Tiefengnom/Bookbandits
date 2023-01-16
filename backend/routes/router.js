@@ -63,11 +63,11 @@ router.post("/login", signUser)
 
 router.get("/:userid/user_collection", getUserBooks)
 
+router.get("/:userid", getUser)
 
+router.post("/deniedbook", denyBook )
 
-router.post("/:deniedbook", denyBook )
-
-router.post("/:lentbook", lentBook)
+router.post("/lentbook", lentBook)
 
 router.get("/collection/:id", getBook)
 

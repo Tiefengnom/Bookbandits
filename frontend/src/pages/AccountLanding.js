@@ -10,6 +10,7 @@ const AccountLanding = () => {
     const {bBooks, setbBooks} = useUBContext()
     const navigate = useNavigate();
     const rentbooks = user.rbooks
+    const bbooks = user.bbooks
 
     const lentBook = async (b) => {
         const response = await fetch("http://localhost:4000/bookbandits/lentbook", {
@@ -44,7 +45,7 @@ const AccountLanding = () => {
                     <button onClick={ console.log(user)}>click</button>
                     <div>
                         <p>Books from you which are currently borrowed</p>
-                        {bBooks.map((b) => (
+                        {bbooks.map((b) => (
                             <>
                             <div>{b.title}</div>
                             {!b.pending && b.borrowed ? <><button >There is Interest in {b.title}!Do you want to rent this book to {b.borrower}? </button>

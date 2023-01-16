@@ -26,15 +26,14 @@ const getBooks = async (req,res) => {
    
    //create a new book
    const createBook = async (req,res,next) => {
-    const {title,author,synopsis,language,state,owner,category,borrowed,image} = req.body
+    const {title,author,synopsis,language,state,owner,category,borrowed,image,pending} = req.body
    let id = ""
        
     try  {
-         const book = await Book.create({title,author,synopsis,state,language,owner,category,borrowed,image})
+         const book = await Book.create({title,author,synopsis,state,language,owner,category,borrowed,image,pending})
          
-         const user = await User.findOneAndUpdate({_id :owner}, {
-            $push: {Books: book._id}
-         })
+         
+         
          res.status(200).json(book)
                      
          } 
