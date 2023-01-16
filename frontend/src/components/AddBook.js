@@ -111,7 +111,7 @@ function AddBook() {
                     ? books.length
                         ? books.map((b) => {
                               return (
-                                  <div>
+                                  <div key={b.id}>
                                       <p>
                                           <strong>Title:</strong> {b.volumeInfo.title}
                                       </p>
