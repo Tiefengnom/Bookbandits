@@ -40,9 +40,9 @@ const navigate=useNavigate()
                 {!user._id ? <div>To book Books and see the Moment they are available, please register an account.</div> :
                 !fetchedBook.borrowed ? !btime ?  <Datetime input={false} onChange={(e) => {setBtime(e._d)}}/> 
                 :
-                <button onClick={handleClick} className='bg-white bg-opacity-60 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>Now book your Book!</button> 
+                <button onClick={handleClick} className='bg-white bg-opacity-90 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>Now book your Book!</button> 
                 :
-                <button  className=' bg-white bg-opacity-60 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>  This Book is rented until  {fetchedBook.btime.slice(8,10)}.{fetchedBook.btime.slice(5,7)}.{fetchedBook.btime.slice(0,4)} </button>}
+                <button  className=' bg-white bg-opacity-90 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>  This Book is rented until  {fetchedBook.btime.slice(8,10)}.{fetchedBook.btime.slice(5,7)}.{fetchedBook.btime.slice(0,4)} </button>}
                 Book Details:
                 <h3 onClick={(e) => console.log(fetchedBook.btime)}>{fetchedBook.title}</h3>
                 <p>{fetchedBook.author}</p>

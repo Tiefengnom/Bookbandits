@@ -38,13 +38,13 @@ const AccountLanding = () => {
     
 
     return (
-        <div className=' header w-full h-full bg-gradient-to-br from-yellow-500 to-pink-600 pt-12 pb-12 px-4  mt-10 '>
+        <div className=' header w-full h-full  pt-12 pb-12 px-4  mt-10 '>
             {user && <div>Welcome, {user.first_name}!</div>}
                 <div>
                     {" "}
-                    <button onClick={ console.log(user)}>click</button>
+                    
                     <div>
-                        <p>Books from you which are currently borrowed</p>
+                        <p>Books borrowed from you</p>
                         {bbooks.map((b) => (
                             <div key={b._id}>
                             <div>{b.title}</div>
@@ -54,7 +54,7 @@ const AccountLanding = () => {
                             <><div>Rented until {b.btime}</div>
                             <div>Rented by {b.borrower}</div>
                                                     {" "}
-                                                    <button  onClick={() => navigate(`/catalogue/${b.book_id}`)} className=' bg-white bg-opacity-60 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
+                                                    <button  onClick={() => navigate(`/catalogue/${b.book_id}`)} className=' bg-white bg-opacity-90 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
                                                         More Info
                                                     </button></>}
                                                 
@@ -62,7 +62,7 @@ const AccountLanding = () => {
                         ))}
 
                     </div>
-                    <p>Borrowed by you</p>
+                    <p>Books borrowed by you</p>
                     {rentbooks.map((b) => (
                             <div key={b._id}>
                             <div>{b.title}</div>
