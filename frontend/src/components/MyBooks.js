@@ -28,17 +28,17 @@ function MyBooks() {
 
     return (
         <div>
-            <div className='search-result h-full'>
+            <div className='search-result h-full p-4 md:flex md:justify-center md:flex-wrap'>
                 {user._id
                     ? books
                         ? books.length
                             ? books.map((b) => {
                                   return (
-                                      <div className='book-card mb-2 bg-white p-5 shadow-lg rounded transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 w-72 '>
+                                      <div className='book-cardp-4 m-4 bg-white p-5 shadow-lg rounded transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 w-72 text-center'>
                                           <div>
                                               <img
-                                                  src={b.image ? b.image : Book}
-                                                  className='w-[100px] m-auto'
+                                                  src={b.image !== "none" ? b.image : Book}
+                                                  className='h-[200px] m-auto mb-4'
                                                   alt='book-cover'
                                               />{" "}
                                           </div>
@@ -72,6 +72,7 @@ function MyBooks() {
                                                   </button>
                                               </Link>
                                           </p>
+                                          
                                           <p>{b.borrowed && <span>Borrowed by User-id</span>}</p>
                                           <p>{/*<strong>Description:</strong> {b.owner.last_name}*/}</p>
 

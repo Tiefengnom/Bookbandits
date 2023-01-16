@@ -162,7 +162,7 @@ function Catalogue() {
                                         <Link to={`/catalogue/${book._id}`}><img
                                             src={book.image || book.image === 'none' ? book.image : Book}
                                             alt='book cover'
-                                            className='w-[150px] m-auto py-6'
+                                            className='h-[200px] m-auto mb-4'
                                         /></Link> 
                                         <strong>
                                             {" "}
@@ -191,7 +191,7 @@ function Catalogue() {
                                         <Link to={`/catalogue/${book._id}`}> <img
                                             src={book.image !== "none" ? book.image : Book}
                                             alt='book cover'
-                                            className='w-[150px] m-auto  py-6'
+                                            className='h-[200px] m-auto mb-4'
                                         /></Link>
                                         <strong>
                                             {" "}
