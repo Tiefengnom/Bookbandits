@@ -17,8 +17,8 @@ const Navbar = () => {
 			<div className='header flex w-screen justify-between p-4 fixed top-0 left-0 right-0 bg-white z-[99]'>
 				<Link to='/'>
 					<div className="flex justify-center align-center">
-					<img className="w-12" src={logo} alt='reading racoon'/>
-					<h1 className="m-[5px]  text-gray-400">BookBandits</h1>
+					<img className="w-12 h-15" src={logo} alt='reading racoon'/>
+					<h1 className="m-[5px] text-xl font-medium text-gray-400">BookBandits</h1>
 					</div>
 				</Link>
 				<div onClick={()=>setMenuVisibility(!visibility)} className='text-3xl absolute right-8 top-6 cursor-pointer md:hidden'>

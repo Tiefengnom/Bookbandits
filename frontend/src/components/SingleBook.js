@@ -61,11 +61,11 @@ function SingleBook() {
                         <p>To borrow books and see their availability, please create an account.</p>{" "}
                         <button
                             onClick={() => navigate("/signup")}
-                            className=' bg-white bg-opacity-90 px-6 py-2 border-2 border-white-500 font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[35%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer m-3'>
+                            className=' bg-white bg-opacity-90 px-6 py-2 border-2 border-white-500 font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[35%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer m-3'>
                             Sign up
                         </button> <button
                     onClick={() => navigate("/catalogue")}
-                    className=' bg-white bg-opacity-60 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer m-3'>
+                    className=' bg-white bg-opacity-60 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer m-3'>
                     Catalogue
                 </button> {" "}
                     </div>
@@ -80,7 +80,7 @@ function SingleBook() {
                     ) : (
                         <button
                             onClick={handleClick}
-                            className='bg-white bg-opacity-90 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
+                            className='bg-white bg-opacity-90 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
                             Request Book
                         </button>
                     )
@@ -94,7 +94,7 @@ function SingleBook() {
                 )}
                 {user._id &&  <button
                         onClick={() => navigate(`/${user._id}/user_collection`)}
-                        className='mt-6 mb-6 mr-4 inline-block px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out'>
+                        className='mt-6 mb-6 mr-4 inline-block px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out'>
                        My books
                     </button>} </div> </div>
             </div>

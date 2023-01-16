@@ -112,7 +112,7 @@ const SignUp = () => {
             </label>
             </div>
             <div className="flex justify-center pt-2">
-                <button type='submit' className=' bg-white bg-opacity-60 px-6 py-2 w-fit font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer m-2' >Sign up</button> </div>
+                <button type='submit' className=' bg-white bg-opacity-60 px-6 py-2 w-fit font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer m-2' >Sign up</button> </div>
         </form> :
 
         <AccountLanding/>}

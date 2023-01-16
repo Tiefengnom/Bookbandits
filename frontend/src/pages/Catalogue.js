@@ -116,7 +116,12 @@ function Catalogue() {
                                     className=' bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-80 w-[270px] m-0 mr-4'
                                 />
 
-                                <button type='submit' className=' bg-white w-fit bg-opacity-90 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer flex'>
+                             
+                            </span>
+                        </form>
+                    </div>
+<div className="flex justify-center align-center">
+                    <button type='submit' className='text-center bg-white w-fit bg-opacity-90 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer flex'>
                                     <p>Apply Filters</p>
                                     <svg
                                         aria-hidden='true'
@@ -131,10 +136,7 @@ function Catalogue() {
                                             fill='white'
                                             d='M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z'></path>
                                     </svg>
-                                </button>
-                            </span>
-                        </form>
-                    </div>
+                                </button> </div>
                     {/* <Switch
         isOn={mail}
         handleToggle={() => setCheck(!check)}
@@ -175,7 +177,7 @@ function Catalogue() {
                                         <div>
                                             <p>Available: {book.borrowed ? <span>No</span> : <span>Yes</span>}</p>
                                             <p className='hover:text-pink-600'>
-                                                <Link to={`/catalogue/${book._id}`}><button className=' bg-white bg-opacity-60 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
+                                                <Link to={`/catalogue/${book._id}`}><button className=' bg-white bg-opacity-60 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
                                                         More info
                                                     </button></Link>
                                             </p>
@@ -206,7 +208,7 @@ function Catalogue() {
                                             <p className='hover:text-pink-600'>
                                                 <Link to={`/catalogue/${book._id}`}>
                                                     {" "}
-                                                    <button className=' bg-white bg-opacity-90 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
+                                                    <button className=' bg-white bg-opacity-90 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
                                                         More Info
                                                     </button>
                                                 </Link>

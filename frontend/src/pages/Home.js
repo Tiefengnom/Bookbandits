@@ -22,13 +22,13 @@ const Home = () => {
                     <div className='flex gap-2 justify-center'>
                         <button
                             onClick={() => navigate("/catalogue")}
-                            className=' bg-white bg-opacity-90 px-6 py-1 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
+                            className=' bg-white bg-opacity-90 px-6 py-1 border-2 border-white-500  font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
                             Browse
                         </button>
 
                         <button
                             onClick={() => navigate("/signup")}
-                            className=' bg-white bg-opacity-90 px-6 py-2 border-2 border-white-500 font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[35%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
+                            className=' bg-white bg-opacity-90 px-6 py-2 border-2 border-white-500 font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[35%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
                             Sign up
                         </button>
                     </div>

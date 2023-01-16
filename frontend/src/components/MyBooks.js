@@ -67,7 +67,7 @@ function MyBooks() {
                                           </p>
                                           <p className='hover:text-pink-600'>
                                               <Link to={`/catalogue/${b._id}`}>
-                                                  <button className=' bg-white bg-opacity-90 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
+                                                  <button className=' bg-white bg-opacity-90 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
                                                       More info and booking
                                                   </button>
                                               </Link>
@@ -88,7 +88,7 @@ function MyBooks() {
                                               </select>
                                               <button
                                                   type='submit'
-                                                  className='bg-orange bg-opacity-[45%]  mb-3 mr-4 inline-block px-6 py-2 border-2 border-white-500 font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out'>
+                                                  className='bg-orange bg-opacity-[45%]  mb-3 mr-4 inline-block px-6 py-2 border-2 border-white-500 font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out'>
                                                   Change info or state
                                               </button>
                                           </form>

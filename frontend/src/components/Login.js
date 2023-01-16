@@ -62,7 +62,7 @@ const Login = () => {
                 <label>Password</label>
                 <input type='password' onChange={(e) => setPassword(e.target.value)} value={password} className="  bg-white bg-opacity-90 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm  transition-colors placeholder-white placeholder-opacity-50 m-2"/>
                 <div className="flex justify-center pt-2">
-                <button type='submit' className=' bg-white bg-opacity-90 px-6 py-2 w-fit font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer m-2' >Log In</button> </div>
+                <button type='submit' className=' bg-white bg-opacity-90 px-6 py-2 w-fit font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer m-2' >Log In</button> </div>
 
             </form>}
           
