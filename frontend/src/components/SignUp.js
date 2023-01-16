@@ -89,7 +89,7 @@ const SignUp = () => {
            
                 <div>    
                 <label> Are you willing to send your books per mail?
-                <input className="px-2"
+                <input 
                     type="radio"
                     name="radio-group"
                     value="Yes"
