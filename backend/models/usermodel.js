@@ -37,7 +37,10 @@ bbooks : [
         book_id : mongoose.Schema.Types.ObjectId,
         btime : String,
         borrower : mongoose.Schema.Types.ObjectId,
-        
+        borrowerfname : String,
+        borrowerlname: String,
+        borrowed : Boolean,
+        pending: Boolean,
     }
 ],
 //rbooks is the books the user hat rented from other users
@@ -46,7 +49,8 @@ rbooks : [
     title : String,
         book_id : mongoose.Schema.Types.ObjectId,
         btime : String,
-        owner : mongoose.Schema.Types.ObjectId
+        owner : mongoose.Schema.Types.ObjectId,
+        allowed : Boolean
     }],
     Books : {
         book_id: mongoose.Schema.Types.ObjectId,

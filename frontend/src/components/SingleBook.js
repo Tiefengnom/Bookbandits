@@ -23,7 +23,7 @@ const navigate=useNavigate()
         
         const response = await fetch(`http://localhost:4000/bookbandits/collection/${id}`, {
             method: "POST",
-            body: JSON.stringify({ borrowed: !fetchedBook.borrowed, owner: fetchedBook.owner,btime: btime, title: fetchedBook.title, borrower: user._id }),
+            body: JSON.stringify({ borrowed: !fetchedBook.borrowed, owner: fetchedBook.owner,btime: btime, title: fetchedBook.title, borrower: user._id, borrowerfname : user.first_name, borrowerlname: user.last_name, pending: false }),
             headers: {
                 "Content-Type": "application/json",
             },
@@ -37,17 +37,17 @@ const navigate=useNavigate()
             <div className=' mb-2 bg-white p-3 shadow-lg rounded cursor-pointer transition-colors border-b-2 border-transparent hover:border-pink-500 text-gray-700 w-72'>
                 <strong> {fetchedBook.title}  </strong>
                 <p>Available? </p> {fetchedBook.borrowed ? <p>No</p> : <p>Yes</p>}
-                {fetchedBook.owner === user._id ? <div>you cant rent your own Books! </div> : !user._id ? <div>To book Books and see the Moment they are available, please register an account.</div> :
+                {fetchedBook.owner._id === user._id ? <div>you cant rent your own Books! </div> : !user._id ? <div>To book Books and see the Moment they are available, please register an account.</div> :
                 !fetchedBook.borrowed ? !btime ?  <Datetime input={false} onChange={(e) => {setBtime(e._d)}}/> 
                 :
                 <button onClick={handleClick} className='bg-white bg-opacity-60 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>Now book your Book!</button> 
                 :
                 <button  className=' bg-white bg-opacity-60 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>  This Book is rented until  {fetchedBook.btime.slice(8,10)}.{fetchedBook.btime.slice(5,7)}.{fetchedBook.btime.slice(0,4)} </button>}
                 Book Details:
-                <h3 onClick={(e) => console.log(fetchedBook.btime)}>{fetchedBook.title}</h3>
+                <h3 onClick={(e) => console.log(`${new Date().getDate()}:${new Date().getMonth()}:${new Date().getFullYear()}`)}>{fetchedBook.title}</h3>
                 <p>{fetchedBook.author}</p>
                 <p >{fetchedBook.language}</p>
-                <p>{fetchedBook.owner}</p>
+                <p>Owner: {fetchedBook.owner.first_name} {fetchedBook.owner.last_name}</p>
                 <img src={fetchedBook.image} alt='book cover' />
                 <button
                     onClick={() => navigate("/catalogue")}

@@ -16,7 +16,7 @@ const getBooks = async (req,res) => {
        return res.status(404).json({error: "No such book"})
     }
    
-    const book = await Book.findById(id)
+    const book = await Book.findById(id).populate("owner")
    
     if (!book) {
        return res.status(400).json({error: "No such book"})
@@ -108,7 +108,7 @@ const getBooks = async (req,res) => {
   
     //change, that a rquested book is not given
 
-    const denyBook = async (req,res) => {
+    const denyBook = async (req,res,next) => {
         const {borrowed,bid} = req.body
 
         if (!mongoose.Types.ObjectId.isValid(bid)) {
@@ -118,7 +118,8 @@ const getBooks = async (req,res) => {
         const book = await Book.findOneAndUpdate({_id:bid}, {
             borrowed: false,
             borrower:"",
-            btime: ""
+            btime: "",
+            pending : false
 
         })
 
@@ -126,7 +127,7 @@ const getBooks = async (req,res) => {
             return res.status(404).json({error: "No such book"})
             }
 
-            res.status(200).json({book})
+            next()
             
 
     }

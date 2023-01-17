@@ -15,14 +15,14 @@ switch (action.type) {
 
 export const AuthContextProvider = ({children}) => {
     const [state, dispatch] = useReducer(authReducer, {
-        userpassword: null
+        user: null
     })
 
 console.log("AuthContext state: ", state)
 
 return (
-<AuthContextProvider value={{...state, dispatch}}>
+<AuthContext.Provider value={{...state, dispatch}}>
 {children}
-</AuthContextProvider>
+</AuthContext.Provider>
 )
 }

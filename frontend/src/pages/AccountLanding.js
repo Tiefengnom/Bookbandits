@@ -24,10 +24,10 @@ const AccountLanding = () => {
 
     }
 
-    const nolentBook = async (b) => {
+    const nolentBook = async (bookid,borrower) => {
         const response = await fetch("http://localhost:4000/bookbandits/deniedbook", {
             method: "POST",
-            body: JSON.stringify({borrowed: false, bid : b}),
+            body: JSON.stringify({borrowed: false, bid : bookid, user_id : user._id,borrower: borrower }),
             headers: {
                 "Content-Type": "application/json",
             },
@@ -49,10 +49,10 @@ const AccountLanding = () => {
                             <div key={b._id}>
                             <div>{b.title}</div>
                             {!b.pending && b.borrowed ? <><button >There is Interest in {b.title}!Do you want to rent this book to {b.borrower}? </button>
-                            <button onClick={lentBook(b._id)}>Yes</button><button onClick={nolentBook(b._id)}>No</button>
+                            <button onClick={lentBook(b._id)}>Yes</button><button onClick={nolentBook(b._id,b.borrower)}>No</button>
                             </> :
                             <><div>Rented until {b.btime}</div>
-                            <div>Rented by {b.borrower}</div>
+                           {b.borrowerfname ? <div>{b.borrowerfname}</div> : <div>Rented by {b.borrower}</div> }
                                                     {" "}
                                                     <button  onClick={() => navigate(`/catalogue/${b.book_id}`)} className=' bg-white bg-opacity-60 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
                                                         More Info

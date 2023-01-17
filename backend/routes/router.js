@@ -34,7 +34,9 @@ const {
     getUser,
     signUser,
     UpdateUser,
-    RentUser
+    RentUser,
+    clearOwner,
+    clearRenter
 }               = require("../controllers/usercontroller")
 
 const router = express.Router()
@@ -65,7 +67,7 @@ router.get("/:userid/user_collection", getUserBooks)
 
 router.get("/:userid", getUser)
 
-router.post("/deniedbook", denyBook )
+router.post("/deniedbook", denyBook, clearOwner, clearRenter )
 
 router.post("/lentbook", lentBook)
 
