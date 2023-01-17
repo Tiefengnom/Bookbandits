@@ -47,7 +47,7 @@ const Home = () => {
             {/* <div className='home search flex justify-center '>
                {/* <Catalogue /> */}
             {/* </div> */}
-            <div className='bg-gradient-to-br from-pink-100 to-yellow-200 w-screen text-center'>
+            <div className='bg-white w-screen text-center'>
                 <div className='w-4/5 m-auto'>
                     <h1 className='text-4xl m-0 p-24'>How it works</h1>
                     <Cards />
