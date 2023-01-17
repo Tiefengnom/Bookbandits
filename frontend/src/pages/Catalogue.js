@@ -120,7 +120,9 @@ function Catalogue() {
                             <Toggle toggle={enabledFrom} setToggle={setEnabledFrom} label={"Available via mail"} />
                         </div>
 
-                        <form onSubmit={handleSubmit} className='checklist p-4 flex justify-center'>
+                       
+                    </div>
+                    <form onSubmit={handleSubmit} className='checklist p-4 flex justify-center'>
                             <span className='h-fit'>
                                 <input
                                     onChange={(e) => setSearch(e.target.value)}
@@ -130,14 +132,14 @@ function Catalogue() {
                             </span>
                             <button
                                 type='submit'
-                                className='block text-center bg-white w-fit bg-opacity-90 px-10 py-2 border-2 border-white-500  font-medium text-xs leading-tight rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer mb-8'>
-                                <p className='mr-3 p-0'>Apply Filters</p>
+                                className='flex text-center bg-white w-fit bg-opacity-90 px-10 py-2 border-2 border-white-500  font-medium text-xs leading-tight rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer mb-8'>
+                                <p className='mr-1 p-0'>Apply Filters</p>
                                 <svg
                                     aria-hidden='true'
                                     focusable='false'
                                     data-prefix='fas'
                                     data-icon='search'
-                                    className='w-4'
+                                    className='w-4 m-0'
                                     role='img'
                                     xmlns='http://www.w3.org/2000/svg'
                                     viewBox='0 0 512 512'>
@@ -147,7 +149,6 @@ function Catalogue() {
                                 </svg>
                             </button>
                         </form>
-                    </div>
                     <div className='flex justify-center align-center'></div>
                     {/* <Switch
         isOn={mail}
