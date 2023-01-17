@@ -25,7 +25,7 @@ export default function Checklist({options, placeholder, setSelectedOption}) {
             borderRadius:5,
             colors: {
             ...theme.colors,
-              text: 'orangered',
+              text: 'grey',
               primary25: 'orange',
               primary: 'hotpink',
               borderColor: 'white',
