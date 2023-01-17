@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import "../index.css";
 
 import Checklist from "../components/Checklist";
 import Book from "../assets/book-open.png";
+import Toggle from "../components/Toggle";
 // import Switch from "../components/Switch";
 
 //values are static so they dont need to be inside the component function because theyx dont need to be recalculated every time. performance reasons.
@@ -21,14 +22,18 @@ const languages = [
 
 const genres = [
     { value: "", label: "none" },
+    { value: "Biography & Autobiography", label: "Biography & Autobiography" },
+    { value: "Art", label: "Art" },
+    { value: "Religion", label: "Religion" },
     { value: "drama", label: "drama" },
     { value: "romance", label: "romance" },
-    { value: "fiction", label: "fiction" },
+    { value: "Fiction", label: "Fiction" },
     { value: "fantasy", label: "fantasy" },
     { value: "adventure", label: "adventure" },
 ];
 
 function Catalogue() {
+    const navigate = useNavigate();
     const [books, setBooks] = useState(null);
     const [search, setSearch] = useState(null);
     const [searchedBooks, setSearchedBooks] = useState(null);
@@ -48,12 +53,16 @@ function Catalogue() {
     //     { value: "local", label: "locally available" },
     // ];
 
+    const [enabledFrom, setEnabledFrom] = useState();
+    const [enabledBy, setEnabledBy] = useState();
+
     const fetchBooks = async () => {
         const response = await fetch("http://localhost:4000/bookbandits/collection");
         const json = await response.json();
 
         if (response.ok) {
             setBooks(json);
+            console.log("All books:", json);
         }
     };
 
@@ -75,14 +84,14 @@ function Catalogue() {
             body: JSON.stringify({ query: search, language: language, genre: genre }),
             headers: {
                 "Access-Control-Allow-Origin": "*",
-                "Content-Type": "application/json",    
+                "Content-Type": "application/json",
             },
         });
         const json = await response.json();
 
         if (response.ok) {
             setSearchedBooks(json);
-            console.log(searchedBooks);
+            console.log("searched:", json);
             setError(null);
         } else {
             setError(json.error);
@@ -106,33 +115,40 @@ function Catalogue() {
                         <div className='checklist p-4 flex justify-center'>
                             <Checklist options={genres} placeholder='Select genre' setSelectedOption={setGenre} />
                         </div>
+                        <div className='flex align-middle justify-center mt-[20px]'>
+                            <Toggle toggle={enabledBy} setToggle={setEnabledBy} label={"Available now"} to />
+                            <Toggle toggle={enabledFrom} setToggle={setEnabledFrom} label={"Available via mail"} />
+                        </div>
 
                         <form onSubmit={handleSubmit} className='checklist p-4 flex justify-center'>
                             <span className='h-fit'>
                                 <input
                                     onChange={(e) => setSearch(e.target.value)}
                                     placeholder='Search...'
-                                    className=' bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-80 w-[270px] m-0 mr-4'
+                                    className=' bg-white bg-opacity-90 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-gray placeholder-opacity-80 w-[270px] m-0 mr-4'
                                 />
-
-                                <button type='submit' className='inline-block transition duration-150 ease-in-out'>
-                                    <svg
-                                        aria-hidden='true'
-                                        focusable='false'
-                                        data-prefix='fas'
-                                        data-icon='search'
-                                        className='w-4'
-                                        role='img'
-                                        xmlns='http://www.w3.org/2000/svg'
-                                        viewBox='0 0 512 512'>
-                                        <path
-                                            fill='white'
-                                            d='M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z'></path>
-                                    </svg>
-                                </button>
                             </span>
+                            <button
+                                type='submit'
+                                className='block text-center bg-white w-fit bg-opacity-90 px-10 py-2 border-2 border-white-500  font-medium text-xs leading-tight rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer mb-8'>
+                                <p className='mr-3 p-0'>Apply Filters</p>
+                                <svg
+                                    aria-hidden='true'
+                                    focusable='false'
+                                    data-prefix='fas'
+                                    data-icon='search'
+                                    className='w-4'
+                                    role='img'
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    viewBox='0 0 512 512'>
+                                    <path
+                                        fill='pink'
+                                        d='M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z'></path>
+                                </svg>
+                            </button>
                         </form>
                     </div>
+                    <div className='flex justify-center align-center'></div>
                     {/* <Switch
         isOn={mail}
         handleToggle={() => setCheck(!check)}
@@ -156,12 +172,15 @@ function Catalogue() {
                         <div className='searchedBooks Books p-4 md:flex md:justify-center md:flex-wrap'>
                             {searchedBooks &&
                                 searchedBooks.map((book) => (
-                                    <div key={book._id} className='book-card p-4 m-4 bg-white  shadow-lg rounded  transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 w-72 text-center'>
-                                        <Link to={`/catalogue/${book._id}`}><img
-                                            src={book.image ? book.image : Book}
+                                    <div
+                                        key={book._id}
+                                        className='book-card p-4 m-4 bg-white  shadow-lg rounded  transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 w-72 text-center'>
+                                        <img
+                                            onClick={()=>navigate(`/catalogue/${book._id}`)}
+                                            src={book.image || book.image === "none" ? book.image : Book}
                                             alt='book cover'
-                                            className='w-[150px] m-auto py-6'
-                                        /></Link> 
+                                            className='h-[200px] m-auto mb-4'
+                                        />
                                         <strong>
                                             {" "}
                                             <h3 key={book._id}>{book.title}</h3>{" "}
@@ -173,9 +192,11 @@ function Catalogue() {
                                         <div>
                                             <p>Available: {book.borrowed ? <span>No</span> : <span>Yes</span>}</p>
                                             <p className='hover:text-pink-600'>
-                                                <Link to={`/catalogue/${book._id}`}><button className=' bg-white bg-opacity-60 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
-                                                        More info
-                                                    </button></Link>
+                                                <button
+                                                    onClick={()=>navigate(`/catalogue/${book._id}`)}
+                                                    className=' bg-white bg-opacity-60 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
+                                                    More info
+                                                </button>
                                             </p>
                                         </div>
                                     </div>
@@ -185,12 +206,15 @@ function Catalogue() {
                         <div className='Books p-4 md:flex md:justify-center md:flex-wrap'>
                             {books &&
                                 books.map((book) => (
-                                    <div key={book._id} className='book-card p-4 m-4 bg-white  shadow-lg rounded  transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 w-72 text-center'>
-                                        <Link to={`/catalogue/${book._id}`}> <img
-                                            src={book.image ? book.image : Book}
+                                    <div
+                                        key={book._id}
+                                        className='book-card p-4 m-4 bg-white  shadow-lg rounded  transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 w-72 text-center'>
+                                        <img
+                                            onClick={()=>navigate(`/catalogue/${book._id}`)}
+                                            src={book.image !== "none" ? book.image : Book}
                                             alt='book cover'
-                                            className='w-[150px] m-auto '
-                                        /></Link>
+                                            className='h-[200px] m-auto mb-4'
+                                        />
                                         <strong>
                                             {" "}
                                             <h3 key={book._id}>{book.title}</h3>{" "}
@@ -202,12 +226,11 @@ function Catalogue() {
                                         <div>
                                             <p>Available: {book.borrowed ? <span>No</span> : <span>Yes</span>}</p>
                                             <p className='hover:text-pink-600'>
-                                                <Link to={`/catalogue/${book._id}`}>
-                                                    {" "}
-                                                    <button className=' bg-white bg-opacity-60 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
-                                                        More Info
-                                                    </button>
-                                                </Link>
+                                                <button
+                                                    onClick={()=>navigate(`/catalogue/${book._id}`)}
+                                                    className=' bg-white bg-opacity-90 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
+                                                    More Info
+                                                </button>
                                             </p>
                                         </div>
                                     </div>

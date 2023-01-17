@@ -71,7 +71,6 @@ function AddBook() {
 			borrowed: false,
             pending: false,
             image: data.imageLinks?.smallThumbnail || "none"
-
 		};
 		console.log(book)
 		const response = await fetch("http://localhost:4000/bookbandits/user/create_book", {
@@ -96,14 +95,14 @@ function AddBook() {
     };
 
     return (
-        <div>
-            <button onClick={(e) => setStartScan(true)}>Scan</button>
-            <button onClick={(e) => setStartScan(false)}>Stop Scan</button>
+        <div className=' mb-2 bg-white p-3 shadow-lg rounded transition-colors border-b-2 border-transparent lg:max-w-screen-3xl m-auto'>
+            <button onClick={(e) => setStartScan(true)}  className='mt-6 mb-6 mr-4 inline-block px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out m-2'>Scan</button>
+            <button onClick={(e) => setStartScan(false)} className=' bg-white bg-opacity-90 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer m-2'>Stop Scan</button>
             {startScan && <BarcodeScanner setSearchKey={setSearchKey} />}
             <form className='search-form' onSubmit={handleSubmit}>
                 <label>Enter ISBN</label>
-                <input value={input} onChange={handleChange}></input>
-                <button type='submit'>Search </button>
+                <input value={input} onChange={handleChange} className=" bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"></input>
+                <button type='submit' className=' bg-white bg-opacity-90 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer m-2'>Search </button>
             </form>
 
             <div className='search-result'>
@@ -128,7 +127,7 @@ function AddBook() {
                                           <strong>Description:</strong> {b.volumeInfo.description}
                                       </p>
                                       <img
-                                          src={b.volumeInfo.imageLinks?.smallThumbnail || Book}
+                                          src={b.volumeInfo.imageLinks?.medium || Book}
                                           alt='book thumbnail'
                                       />
                                       <form
@@ -140,8 +139,9 @@ function AddBook() {
                                               placeholder='Select the state of your book'
                                               onChange={setBookState}
                                               options={options}
+                                              
                                           />
-                                          <button type='submit'>Add to my books</button>
+                                          <button type='submit' className=' bg-white bg-opacity-60 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer m-2'>Add to my books</button>
                                       </form>
                                   </div>
                               );
