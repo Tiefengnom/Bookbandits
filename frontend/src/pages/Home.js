@@ -17,19 +17,19 @@ const Home = () => {
                 <img src={girl} alt='illustration-girl' className='w-[400px] h-[300px] mt-4' />
 
                 <div className=' mt-[20px]'>
-                    <h1 className=' w-full text-center text-4xl mb-8 leading-relaxed'>
+                    <h1 className=' w-full text-center  mb-8 leading-relaxed text-5xl font-bold '>
                         Free your Books. <br /> Be a BookBandit.
                     </h1>
                     <div className='flex gap-2 justify-center'>
                         <button
                             onClick={() => navigate("/catalogue")}
-                            className=' bg-white bg-opacity-90 px-6 py-1 border-2 border-white-500  font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
+                            className=' text-lg bg-white bg-opacity-90 px-6 py-1 font-medium  leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer mx-6'>
                             Browse
                         </button>
 
                         <button
                             onClick={() => navigate("/signup")}
-                            className=' bg-white bg-opacity-90 px-6 py-2 border-2 border-white-500 font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[35%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
+                            className='text-lg bg-white bg-opacity-90 px-6 py-2  font-medium  leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[35%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer mx-6'>
                             Sign up
                         </button>
                     </div>
@@ -47,9 +47,9 @@ const Home = () => {
             {/* <div className='home search flex justify-center '>
                {/* <Catalogue /> */}
             {/* </div> */}
-            <div className='bg-gradient-to-br from-pink-100 to-yellow-200 w-screen text-center'>
-                <div className='w-4/5 m-auto'>
-                    <h1 className='text-4xl m-0 p-24'>How it works</h1>
+            <div className='bg-white w-screen text-center'>
+                <div className='  w-4/5 m-auto'>
+                    <h1 className='text-5xl font-bold m-0 p-24'>How it works</h1>
                     <Cards />
                 </div>
             </div>

@@ -97,7 +97,7 @@ const SignUp = () => {
 
            
                 <div>    
-                <label> Are you willing to send your books per mail?
+                <label> Are you willing to send your books via mail?
                 <input 
                     type="radio"
                     name="radio-group"
@@ -121,10 +121,10 @@ const SignUp = () => {
             </div>
             <div className="flex justify-center pt-2">
                 <button type='submit' className=' bg-white bg-opacity-90 px-6 py-2 w-fit font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer m-2' >Sign up</button> </div>
-        </form> :
-
-        <AccountLanding/>}
-           
+        </form> :<>
+<p>Welcome to the BookBandits family! You have successfully signed up.</p>
+        <AccountLanding/>
+        </>}
         
       
     </div>

@@ -67,15 +67,15 @@ function SingleBook() {
                 /*{!user._id ? (
                     <div className="mt-8">
                         {" "}
-                        <p>To borrow books and see their availability, please create an account.</p>{" "}
+                        <p>To borrow books and see their availability, please create an account or log in.</p>{" "}
                         <button
                             onClick={() => navigate("/signup")}
                             className=' bg-white bg-opacity-90 px-6 py-2 border-2 border-white-500 font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[35%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer m-3'>
                             Sign up
                         </button> <button
-                    onClick={() => navigate("/catalogue")}
+                    onClick={() => navigate("/login")}
                     className=' bg-white bg-opacity-60 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer m-3'>
-                    Catalogue
+                    Log in
                 </button> {" "}
                     </div>
                 ) : !fetchedBook.borrowed ? (
@@ -96,7 +96,7 @@ function SingleBook() {
                 ) : (
                     <p className="pt-8">
                         {" "}
-                        You have borrowed this book until {fetchedBook.btime.slice(8, 10)}.{fetchedBook.btime.slice(5, 7)}.
+                        This book is not available until {fetchedBook.btime.slice(8, 10)}.{fetchedBook.btime.slice(5, 7)}.
                         {fetchedBook.btime.slice(0, 4)}{" "}
                     </p>
                     

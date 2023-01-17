@@ -11,5 +11,5 @@ export const BarcodeScanner = ({ setSearchKey }) => {
         onResult: setSearchKey,
     });
 
-    return <video ref={ref} />;
+    return <video ref={ref} className="m-auto border-8 w-[350px] md:w-[500px]  border-pink-600"/>;
 };

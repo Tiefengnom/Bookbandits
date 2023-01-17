@@ -120,24 +120,26 @@ function Catalogue() {
                             <Toggle toggle={enabledFrom} setToggle={setEnabledFrom} label={"Available via mail"} />
                         </div>
 
-                        <form onSubmit={handleSubmit} className='checklist p-4 flex justify-center'>
+                       
+                    </div>
+                    <form onSubmit={handleSubmit} className='checklist p-4 flex justify-center'>
                             <span className='h-fit'>
                                 <input
                                     onChange={(e) => setSearch(e.target.value)}
-                                    placeholder='Search...'
-                                    className=' bg-white bg-opacity-90 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-gray placeholder-opacity-80 w-[270px] m-0 mr-4'
+                                    placeholder='Search for key word...'
+                                    className='bg-white rounded-full border-2 border-pink-500 px-3 py-1 leading-none text-sm transition-colors placeholder-gray placeholder-opacity-80 w-[270px] m-0 mr-4'
                                 />
                             </span>
                             <button
                                 type='submit'
-                                className='block text-center bg-white w-fit bg-opacity-90 px-10 py-2 border-2 border-white-500  font-medium text-xs leading-tight rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer mb-8'>
-                                <p className='mr-3 p-0'>Apply Filters</p>
+                                className='flex text-center bg-white w-fit bg-opacity-90 px-10 py-2 border-2 border-white-500  font-medium text-xs leading-tight rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer mb-8'>
+                                <p className='mr-1 p-0 text-md'>Apply Filters</p>
                                 <svg
                                     aria-hidden='true'
                                     focusable='false'
                                     data-prefix='fas'
                                     data-icon='search'
-                                    className='w-4'
+                                    className='w-4 m-0'
                                     role='img'
                                     xmlns='http://www.w3.org/2000/svg'
                                     viewBox='0 0 512 512'>
@@ -147,7 +149,6 @@ function Catalogue() {
                                 </svg>
                             </button>
                         </form>
-                    </div>
                     <div className='flex justify-center align-center'></div>
                     {/* <Switch
         isOn={mail}
@@ -165,7 +166,7 @@ function Catalogue() {
                             ) : searchedBooks.length === 0 ? (
                                 <div>No results found.</div>
                             ) : (
-                                <div>Search Results</div>
+                                <div className='text-5xl mb-3 p-4 font-bold'>Search Results</div>
                             )}
                             {searchValidation && <p>Please enter a search criterion.</p>}{" "}
                         </div>
@@ -183,7 +184,7 @@ function Catalogue() {
                                         />
                                         <strong>
                                             {" "}
-                                            <h3 key={book._id}>{book.title}</h3>{" "}
+                                            <h3 key={book._id} className="text-lg text-bold">{book.title}</h3>{" "}
                                         </strong>
 
                                         <p>{book.author}</p>
@@ -202,7 +203,7 @@ function Catalogue() {
                                     </div>
                                 ))}
                         </div>
-                        <h2 className='text-2xl mb-3 p-4'>All Books</h2>
+                        <h2 className='text-5xl mb-3 p-4 font-bold'>All Books</h2>
                         <div className='Books p-4 md:flex md:justify-center md:flex-wrap'>
                             {books &&
                                 books.map((book) => (
@@ -217,7 +218,7 @@ function Catalogue() {
                                         />
                                         <strong>
                                             {" "}
-                                            <h3 key={book._id}>{book.title}</h3>{" "}
+                                            <h3 key={book._id} className="text-lg text-bold">{book.title}</h3>{" "}
                                         </strong>
 
                                         <p>{book.author}</p>

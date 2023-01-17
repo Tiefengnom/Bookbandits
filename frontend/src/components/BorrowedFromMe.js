@@ -6,7 +6,7 @@ function BorrowedFromMe({books, approve, reject}) {
    const navigate = useNavigate()
     return (
         <div>
-            <p>Books borrowed from me</p>
+            <p className="font-bold text-2xl">Books borrowed from me</p>
             {books.map((b) => (
                 <div key={b._id} className="bg-white-600 w-full p-5 shadow-lg rounded transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 text-center mt-4">
                     <div>{b.title}</div>
