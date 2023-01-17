@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../hooks/useUserContext"
 import logo from "../assets/logo-orange.png"
 import cross from "../assets/cross.png"
@@ -28,42 +28,40 @@ const Navbar = () => {
 				<ul className={`md:flex md:items-center md:pb-0 pb-1 absolute md:static bg-white md:z-auto left-0 w-full md:w-auto md:pl-0 transition-all duration-500 ease-in ${visibility ? 'top-12 ':'top-[-490px]'}`} >
 					
 				
-						<li className="text-center mx-auto px-4 text-gray-400 border-b-2 border-transparent hover:border-pink-500 w-fit"><button onClick={()=> navigate('/')}>Home	</button></li>
+						<li className="text-center mx-auto px-4 text-gray-400 border-b-2 border-transparent hover:border-pink-500 w-fit cursor-pointer"><button onClick={()=> navigate('/')}>Home	</button></li>
 				
 					
                    
-						<li className="text-center mx-auto px-4 w-fit text-gray-400 border-b-2 border-transparent hover:border-pink-500"><button onClick={()=> navigate('/catalogue')}> Catalogue 	</button></li>
+						<li className="text-center mx-auto px-4 w-fit text-gray-400 border-b-2 border-transparent hover:border-pink-500 cursor-pointer"><button onClick={()=> navigate('/catalogue')}> Catalogue 	</button></li>
 					
-					{/* <Link to={`/${user._id}`} >
-						<li className="text-center mx-auto px-4 w-fit text-gray-400 border-b-2 border-transparent hover:border-pink-500">Account</li>
-					</Link> */}
+				
 					{!user ? <li></li> :		<li  onClick={()=> navigate(`/${user._id}`)} className="text-center mx-auto px-4 w-fit text-gray-400 border-b-2 border-transparent hover:border-pink-500 cursor-pointer">Account</li>}
 					{!user ? <li></li> :	
 					
 					
-				<li onClick={()=> navigate(`/${user._id}/create_book`)} className="text-center mx-auto px-4 w-fit text-gray-400 border-b-2 border-transparent hover:border-pink-500">Add Book</li>}
+				<li onClick={()=> navigate(`/${user._id}/create_book`)} className="text-center mx-auto px-4 w-fit text-gray-400 border-b-2 border-transparent hover:border-pink-500 cursor-pointer">Add Book</li>}
 					{!user ? <li></li> : 
 					
 					
-					<li  onClick={()=> navigate(`/${user._id}/user_collection`)} className="text-center mx-auto px-4 w-fit text-gray-400 border-b-2 border-transparent hover:border-pink-500">My Books</li>}
+					<li  onClick={()=> navigate(`/${user._id}/user_collection`)} className="text-center mx-auto px-4 w-fit text-gray-400 border-b-2 border-transparent hover:border-pink-500 cursor-pointer">My Books</li>}
 
 					
 
-                {user ? <li onClick={()=> navigate("/logout")} className="text-center mx-auto px-4 w-fit text-gray-400 border-b-2 border-transparent hover:border-pink-500"> 
+                {user ? <li onClick={()=> navigate("/logout")} className="text-center mx-auto px-4 w-fit text-gray-400 border-b-2 border-transparent hover:border-pink-500 cursor-pointer"> 
                     Logout   
 				   </li >
 				:
 
 
 
-				<li onClick={()=> navigate("/login")} className="text-center mx-auto px-4 w-fit text-gray-400 border-b-2 border-transparent hover:border-pink-500"> 
+				<li onClick={()=> navigate("/login")} className="text-center mx-auto px-4 w-fit text-gray-400 border-b-2 border-transparent hover:border-pink-500 cursor-pointer"> 
                     Login    
 					  </li >}
-				{user ? <li></li>:<li onClick={()=> navigate("/signup")} className="text-center mx-auto px-4 w-fit text-gray-400 border-b-2 border-transparent hover:border-pink-500"> 
+				{user ? <li></li>:<li onClick={()=> navigate("/signup")} className="text-center mx-auto px-4 w-fit text-gray-400 border-b-2 border-transparent hover:border-pink-500 cursor-pointer"> 
                     Sign Up 
 				</li>}
 				</ul>
-                <button onClick={()=>navigate(-1)} className="text-center text-gray-400 group-hover:text-pink-500 border-b-2 border-transparent hover:border-pink-500 hidden md-flex">Back</button>
+                {/* <button onClick={()=>navigate(-1)} className="text-center text-gray-400 group-hover:text-pink-500 border-b-2 border-transparent hover:border-pink-500 hidden md-flex">Back</button> */}
 			</div>
 		</header>
 	);
@@ -71,6 +69,3 @@ const Navbar = () => {
 
 export default Navbar;
 
-//<NavLink to={{
-//	pathname: `/${userID}/create_book`
- //}}  >Add Book</NavLink>

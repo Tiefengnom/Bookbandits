@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { NavLink, useNavigate} from "react-router-dom"
+import { useNavigate} from "react-router-dom"
 import { useUserContext } from "../hooks/useUserContext"
 import { useUBContext } from "../hooks/useUBContext";
 import AccountLanding from "../pages/AccountLanding";
@@ -117,11 +117,6 @@ const SignUp = () => {
 
         <AccountLanding/>}
            
-        {/* // <NavLink to={{
-        //         pathname: `/${user._id}`
-        // }}  >To your Account</NavLink> 
-        
-        // } */}
         
       
     </div>
