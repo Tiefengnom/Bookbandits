@@ -28,8 +28,8 @@ const AccountLanding = () => {
             headers: {
                 "Content-Type": "application/json",
             },
-        });
-   
+        })};
+        
 
     const nolentBook = async (bookid,borrower) => {
         const response = await fetch("http://localhost:4000/bookbandits/deniedbook", {
@@ -116,6 +116,6 @@ const AccountLanding = () => {
             )}
         </div>
     );
-}};
+};
 
 export default AccountLanding;
