@@ -130,7 +130,7 @@ function Catalogue() {
                             </span>
                             <button
                                 type='submit'
-                                className='block text-center bg-white w-fit bg-opacity-90 px-10 py-2 border-2 border-white-500  font-medium text-xs leading-tight rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer flex mb-8'>
+                                className='block text-center bg-white w-fit bg-opacity-90 px-10 py-2 border-2 border-white-500  font-medium text-xs leading-tight rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer mb-8'>
                                 <p className='mr-3 p-0'>Apply Filters</p>
                                 <svg
                                     aria-hidden='true'
@@ -176,7 +176,7 @@ function Catalogue() {
                                         key={book._id}
                                         className='book-card p-4 m-4 bg-white  shadow-lg rounded  transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 w-72 text-center'>
                                         <img
-                                            onClick={navigate(`/catalogue/${book._id}`)}
+                                            onClick={()=>navigate(`/catalogue/${book._id}`)}
                                             src={book.image || book.image === "none" ? book.image : Book}
                                             alt='book cover'
                                             className='h-[200px] m-auto mb-4'
@@ -193,7 +193,7 @@ function Catalogue() {
                                             <p>Available: {book.borrowed ? <span>No</span> : <span>Yes</span>}</p>
                                             <p className='hover:text-pink-600'>
                                                 <button
-                                                    onClick={navigate(`/catalogue/${book._id}`)}
+                                                    onClick={()=>navigate(`/catalogue/${book._id}`)}
                                                     className=' bg-white bg-opacity-60 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
                                                     More info
                                                 </button>
@@ -210,7 +210,7 @@ function Catalogue() {
                                         key={book._id}
                                         className='book-card p-4 m-4 bg-white  shadow-lg rounded  transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 w-72 text-center'>
                                         <img
-                                            onClick={navigate(`/catalogue/${book._id}`)}
+                                            onClick={()=>navigate(`/catalogue/${book._id}`)}
                                             src={book.image !== "none" ? book.image : Book}
                                             alt='book cover'
                                             className='h-[200px] m-auto mb-4'
@@ -227,7 +227,7 @@ function Catalogue() {
                                             <p>Available: {book.borrowed ? <span>No</span> : <span>Yes</span>}</p>
                                             <p className='hover:text-pink-600'>
                                                 <button
-                                                    onClick={navigate(`/catalogue/${book._id}`)}
+                                                    onClick={()=>navigate(`/catalogue/${book._id}`)}
                                                     className=' bg-white bg-opacity-90 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>
                                                     More Info
                                                 </button>

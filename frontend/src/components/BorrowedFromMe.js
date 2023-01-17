@@ -15,8 +15,8 @@ function BorrowedFromMe({books, approve, reject}) {
                             <button>
                                 There is Interest in {b.title}!Do you want to rent this book to {b.borrower}?{" "}
                             </button>
-                            <button onClick={approve(b._id)}>Yes</button>
-                            <button onClick={reject(b._id)}>No</button>
+                            <button onClick={()=>approve(b._id)}>Yes</button>
+                            <button onClick={()=>reject(b._id)}>No</button>
                         </>
                     ) : (
                         <>
