@@ -7,9 +7,9 @@ function BorrowedByMe({books}) {
         <div>
             <p>Books borrowed by me</p>
             {books.map((b) => (
-                <div key={b._id}>
+                <div key={b._id} className="bg-white w-full p-5 shadow-lg rounded border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 text-center mt-4">
                     <div>{b.title}</div>
-                    <div>Rented until {b.btime}</div>
+                    <div>Borrowed until {b.btime}</div>
                     <div>Owner: {b.owner}</div>{" "}
                     <button
                         onClick={() => navigate(`/catalogue/${b.book_id}`)}

@@ -8,7 +8,7 @@ function BorrowedFromMe({books, approve, reject}) {
         <div>
             <p>Books borrowed from me</p>
             {books.map((b) => (
-                <div key={b._id}>
+                <div key={b._id} className="bg-white-600 w-full p-5 shadow-lg rounded transition-colors border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 text-center mt-4">
                     <div>{b.title}</div>
                     {!b.pending && b.borrowed ? (
                         <>

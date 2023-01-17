@@ -127,7 +127,7 @@ function AddBook() {
                                           <strong>Description:</strong> {b.volumeInfo.description}
                                       </p>
                                       <img
-                                          src={b.volumeInfo.imageLinks?.smallThumbnail || Book}
+                                          src={b.volumeInfo.imageLinks?.medium || Book}
                                           alt='book thumbnail'
                                       />
                                       <form
