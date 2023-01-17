@@ -44,7 +44,7 @@ const AccountLanding = () => {
                     {" "}
                     <button onClick={ console.log(user)}>click</button>
                     <div>
-                        <p>Books from you which are currently borrowed</p>
+                        <p>Books from you which are currently borrowed or aksed to be burrowed</p>
                         {bbooks.map((b) => (
                             <div key={b._id}>
                             <div>{b.title}</div>

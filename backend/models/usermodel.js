@@ -36,7 +36,8 @@ bbooks : [
         title : String,
         book_id : mongoose.Schema.Types.ObjectId,
         btime : String,
-        borrower : mongoose.Schema.Types.ObjectId
+        borrower : mongoose.Schema.Types.ObjectId,
+        
     }
 ],
 //rbooks is the books the user hat rented from other users

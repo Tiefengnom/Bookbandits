@@ -24,6 +24,15 @@ const getBooks = async (req,res) => {
     res.status(200).json(book)
    }
    
+   const getbBooks = async (req,res) => {
+    const books = await Book.find({}).populate("owner").sort({createdAt: -1})
+   
+    res.status(200).json(books)
+   }
+
+
+
+
    //create a new book
    const createBook = async (req,res,next) => {
     const {title,author,synopsis,language,state,owner,category,borrowed,image,pending} = req.body
@@ -108,7 +117,9 @@ const getBooks = async (req,res) => {
 
         const book = await Book.findOneAndUpdate({_id:bid}, {
             borrowed: false,
-            borrower:""
+            borrower:"",
+            btime: ""
+
         })
 
         if(!book) {

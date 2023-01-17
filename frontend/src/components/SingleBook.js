@@ -37,7 +37,7 @@ const navigate=useNavigate()
             <div className=' mb-2 bg-white p-3 shadow-lg rounded cursor-pointer transition-colors border-b-2 border-transparent hover:border-pink-500 text-gray-700 w-72'>
                 <strong> {fetchedBook.title}  </strong>
                 <p>Available? </p> {fetchedBook.borrowed ? <p>No</p> : <p>Yes</p>}
-                {!user._id ? <div>To book Books and see the Moment they are available, please register an account.</div> :
+                {fetchedBook.owner === user._id ? <div>you cant rent your own Books! </div> : !user._id ? <div>To book Books and see the Moment they are available, please register an account.</div> :
                 !fetchedBook.borrowed ? !btime ?  <Datetime input={false} onChange={(e) => {setBtime(e._d)}}/> 
                 :
                 <button onClick={handleClick} className='bg-white bg-opacity-60 px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight uppercase rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out cursor:pointer'>Now book your Book!</button> 

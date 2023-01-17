@@ -11,7 +11,7 @@ return jwt.sign({_id}, process.env.SECRET , {expiresIn: "3d"})
 
 //signup as a User
 
-async function signUser(req, res) {
+async function signUser(req, res,next) {
 
     const {email, password } = req.body
  
@@ -28,6 +28,7 @@ catch (error) {
       res.status(400).json({error: error.message})
 
   }
+  next()
  }
  
  //get a single user
