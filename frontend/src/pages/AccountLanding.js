@@ -4,8 +4,10 @@ import { useUserContext } from "../hooks/useUserContext";
 import { useUBContext } from "../hooks/useUBContext";
 import { Link, NavLink } from "react-router-dom";
 
+
 import BorrowedByMe from "../components/BorrowedByMe";
 import BorrowedFromMe from "../components/BorrowedFromMe";
+import Quotes from "../components/Quotes";
 
 const AccountLanding = () => {
     const { user } = useUserContext();
@@ -43,6 +45,7 @@ const AccountLanding = () => {
                 <>
                     {" "}
                     <div>Welcome, {user.first_name}!</div>
+                    <Quotes/>
                     <button
                         onClick={() => navigate(`/${user._id}/user_collection`)}
                         className='mt-6 mb-6 mr-4 inline-block px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out'>
@@ -54,7 +57,7 @@ const AccountLanding = () => {
                         {" "}
                         Add Book
                     </button>
-                    <Outlet />
+                  
                     <button
                         onClick={() => {
                             setEnabledBy(!enabledBy);
@@ -63,9 +66,7 @@ const AccountLanding = () => {
                        Borrowed by me
                     </button>
                  
-                    <div className={!enabledBy && "hidden"}>
-                        <BorrowedByMe books={bbooks} approve={lentBook} reject={nolentBook} />{" "}
-                    </div>
+                   
 
                     <button
                         onClick={() => {
@@ -74,6 +75,10 @@ const AccountLanding = () => {
                         className='mt-6 mb-6 mr-4 inline-block px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out'>
                        Borrowed from me
                     </button>
+                    <Outlet />
+                    <div className={!enabledBy && "hidden"}>
+                        <BorrowedByMe books={bbooks} approve={lentBook} reject={nolentBook} />{" "}
+                    </div>
                     <div className={!enabledFrom && "hidden"}>
                     <BorrowedFromMe books={rentbooks} />{" "}
                     </div>
