@@ -4,6 +4,7 @@ import "../index.css";
 
 import Checklist from "../components/Checklist";
 import Book from "../assets/book-open.png";
+import Toggle from "../components/Toggle";
 // import Switch from "../components/Switch";
 
 //values are static so they dont need to be inside the component function because theyx dont need to be recalculated every time. performance reasons.
@@ -47,6 +48,10 @@ function Catalogue() {
     //     { value: "mail", label: "available per mail" },
     //     { value: "local", label: "locally available" },
     // ];
+
+
+const [enabledFrom, setEnabledFrom]=useState();
+const [enabledBy, setEnabledBy]=useState();
 
     const fetchBooks = async () => {
         const response = await fetch("http://localhost:4000/bookbandits/collection");
@@ -107,6 +112,11 @@ function Catalogue() {
                         <div className='checklist p-4 flex justify-center'>
                             <Checklist options={genres} placeholder='Select genre' setSelectedOption={setGenre} />
                         </div>
+                        <div className='flex align-middle mt-[20px]'>
+<Toggle toggle={enabledBy} setToggle={setEnabledBy} label={"Available now"} to/>
+<Toggle toggle={enabledFrom} setToggle={setEnabledFrom} label={"Available via mail"}/>
+</div>
+                       
 
                         <form onSubmit={handleSubmit} className='checklist p-4 flex justify-center'>
                             <span className='h-fit'>

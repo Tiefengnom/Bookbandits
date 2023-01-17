@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useUserContext } from "../hooks/useUserContext";
 import { useUBContext } from "../hooks/useUBContext";
@@ -13,6 +13,9 @@ const AccountLanding = () => {
     const navigate = useNavigate();
     const rentbooks = user.rbooks;
     const bbooks = user.bbooks;
+
+    const [enabledBy, setEnabledBy] = useState(false);
+    const [enabledFrom, setEnabledFrom] = useState(false);
 
     const lentBook = async (b) => {
         const response = await fetch("http://localhost:4000/bookbandits/lentbook", {
@@ -52,8 +55,28 @@ const AccountLanding = () => {
                         Add Book
                     </button>
                     <Outlet />
-                    <BorrowedByMe books={bbooks} approve={lentBook} reject={nolentBook} />
+                    <button
+                        onClick={() => {
+                            setEnabledBy(!enabledBy);
+                        }}
+                        className='mt-6 mb-6 mr-4 inline-block px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out'>
+                       Borrowed by me
+                    </button>
+                 
+                    <div className={!enabledBy && "hidden"}>
+                        <BorrowedByMe books={bbooks} approve={lentBook} reject={nolentBook} />{" "}
+                    </div>
+
+                    <button
+                        onClick={() => {
+                            setEnabledFrom(!enabledFrom);
+                        }}
+                        className='mt-6 mb-6 mr-4 inline-block px-6 py-2 border-2 border-white-500  font-medium text-xs leading-tight  rounded-full hover:bg-pink-600 hover:bg-opacity-[45%] focus:outline-none focus:ring-0 transition duration-150 ease-in-out'>
+                       Borrowed from me
+                    </button>
+                    <div className={!enabledFrom && "hidden"}>
                     <BorrowedFromMe books={rentbooks} />{" "}
+                    </div>
                 </>
             )}
         </div>
