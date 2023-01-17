@@ -9,7 +9,8 @@ function BorrowedByMe({books}) {
             {books.map((b) => (
                 <div key={b._id} className="bg-white w-full p-5 shadow-lg rounded border-b-[4px] border-transparent hover:border-pink-500 text-gray-700 text-center mt-4">
                     <div>{b.title}</div>
-                    <div>Borrowed until {b.btime}</div>
+                   
+                    <div>Borrowed until {b.btime.toLocaleString("ia", { dateStyle: "short" })}</div>
                     <div>Owner: {b.owner}</div>{" "}
                     <button
                         onClick={() => navigate(`/catalogue/${b.book_id}`)}

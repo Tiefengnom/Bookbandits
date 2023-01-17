@@ -9,6 +9,7 @@ function MyBooks() {
     const [books, setBooks] = useState(null);
     const { user } = useUserContext();
     const { bBooks, setbBooks } = useUBContext();
+    const [didDelete, setDidDelete]=useState(false);
 
     useEffect(() => {
         const fetchBooks = async () => {
@@ -24,7 +25,7 @@ function MyBooks() {
         fetchBooks();
         console.log(books);
         // eslint-disable-next-line
-    }, []);
+    }, [didDelete]);
 
     return (
         <div>
@@ -92,7 +93,7 @@ function MyBooks() {
                                                   Change info or state
                                               </button>
                                           </form>
-                                          <DeleteBook id={b._id} />
+                                          <DeleteBook id={b._id} setDidDelete={setDidDelete} didDelete={didDelete}/>
                                       </div>
                                   );
                               })

@@ -3,7 +3,7 @@ import React from 'react'
 function Toggle({toggle, setToggle, label}) {
   return (
     <div >
-         <label class='inline-flex relative items-center mr-5 cursor-pointer'>
+         <label class='inline-flex relative items-center  mr-5 cursor-pointer'>
                         <input type='checkbox' className='sr-only peer' checked={toggle} readOnly />
                         <div
                             onClick={() => {
