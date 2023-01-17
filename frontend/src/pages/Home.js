@@ -5,6 +5,7 @@ import "../index.css";
 import girl from "../assets/flyer-girl.png";
 import boy from "../assets/flyer-boy.png";
 import Cards from "../components/Cards";
+import Quotes from "../components/Quotes";
 // import Carousell from "../components/Carousell"
 //right now catalogue is a component in home and a stand-alone page..need to decide
 
@@ -32,6 +33,8 @@ const Home = () => {
                             Sign up
                         </button>
                     </div>
+
+                    <Quotes/>
                 </div>
 
                 <div className='right w-1/3'>
