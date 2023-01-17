@@ -49,7 +49,7 @@ const AccountLanding = () => {
                     <button onClick={ console.log(user)}>click</button>
                     <div>
                         <p>Books from you which are currently borrowed or aksed to be burrowed</p>
-                        {bbooks.map((b) => (
+                        {borrowedFromMe.map((b) => (
                             <div key={b._id}>
                             <div>{b.title}</div>
                             {!b.pending && b.borrowed ? <><button >There is Interest in {b.title}!Do you want to rent this book to {b.borrower}? </button>
@@ -67,7 +67,7 @@ const AccountLanding = () => {
 
                     </div>
                     <p>Books which you currently burrowed from others</p>
-                    {rentbooks.map((b) => (
+                    {borrowedByMe.map((b) => (
                             <div key={b._id}>
                             <div>{b.title}</div>
                             <div>Rented until {b.btime}</div>
@@ -116,6 +116,6 @@ const AccountLanding = () => {
             )}
         </div>
     );
-};
+}};
 
 export default AccountLanding;
