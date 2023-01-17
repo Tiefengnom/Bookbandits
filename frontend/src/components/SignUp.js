@@ -11,6 +11,7 @@ const SignUp = () => {
     const[first_name, setfname] = useState("")
     const[last_name, setlname] = useState("")
     const[Adress, setAdress] = useState("")
+    const[email,setEmail] = useState("")
     const[password,setPassword] = useState("")
     const[PLZ, setPLZ] = useState("")
     const[mail, setMail]= useState(null)
@@ -26,7 +27,7 @@ const SignUp = () => {
         e.preventDefault()
         
 
-        const userdata = {first_name,last_name,Adress,PLZ,mail,password}
+        const userdata = {first_name,last_name,email,Adress,PLZ,mail,password}
 
         const response = await fetch("http://localhost:4000/bookbandits/signup" , {
             method: "POST" ,
@@ -36,8 +37,8 @@ const SignUp = () => {
             }
         })
         const json = await response.json()
-        setUser(json)
-        if (!json.bbooks === []) {setbBooks((prev) => [...prev  , ...json.bbooks]) }
+        setUser(json.user)
+        /*if (!json.bbooks === []) {setbBooks((prev) => [...prev  , ...json.bbooks]) }*/
 
         if (!response.ok) {
             setError(json.error)
@@ -69,6 +70,13 @@ const SignUp = () => {
             <input type= "text"
                 onChange={(e) => setlname(e.target.value)}
                 value={last_name}      className=" text-orange-700 bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"   />
+
+            <label>Email</label>
+            <input type= "text"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}  className=" text-orange-700 bg-white bg-opacity-20 rounded-full border-2 border-transparent focus:border-white focus:border-opacity-50 focus:outline-none px-3 py-1 leading-none text-sm transition-colors placeholder-white placeholder-opacity-50 m-2"  />
+
+
 
             <label>Adress</label>
             <input type= "text"

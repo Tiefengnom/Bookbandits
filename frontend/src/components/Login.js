@@ -30,8 +30,8 @@ const Login = () => {
         const json = await response.json();
         console.log("json user", json);
 
-        const id = json._id;
-        setUser(json);
+        const id = json.user._id;
+        setUser(json.user);
         /*if (!json.bbooks === []) {setbBooks((prev) => [...prev  , ...json.bbooks]) }*/
 
         if (response.ok) {

@@ -1,21 +1,33 @@
 const User = require("../models/usermodel")
 const mongoose = require("mongoose")
+const jwt = require("jsonwebtoken")
+
+const createToken = (_id) => {
+return jwt.sign({_id}, process.env.SECRET , {expiresIn: "3d"})
 
 
+}
 //User
 
 //signup as a User
 
 async function signUser(req, res) {
 
-    const { first_name, last_name, password } = req.body
+    const {email, password } = req.body
  
-    const user = await User.findOne({ first_name: first_name, last_name: last_name/*,password :password*/ })
- 
-    if (!user) {
-       return res.status(400).json({ error: "No such user" })
-    }
-    res.status(200).json(user)
+    try    {
+      const user = await User.login(email,password )
+     
+      //create a Token
+      const token = await createToken(user._id)
+
+
+      res.status(200).json({user,token})
+      }
+catch (error) {
+      res.status(400).json({error: error.message})
+
+  }
  }
  
  //get a single user
@@ -43,7 +55,11 @@ async function signUser(req, res) {
   try    {
          const user = await User.signup(first_name,last_name,Adress,PLZ, mail, email,password )
         
-         res.status(200).json(user)
+         //create a Token
+         const token = await createToken(user._id)
+
+
+         res.status(200).json({user,token})
          }
   catch (error) {
          res.status(400).json({error: error.message})
